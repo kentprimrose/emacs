@@ -164,41 +164,41 @@
 
 ;; Ido-mode
 ;; ========================================
-(use-package ido
-  :ensure t
+;; (use-package ido
+;;   :ensure t
 
-  :custom
-  (ido-enable-flex-matching t)
-  (ido-use-filename-at-point 'guess)
-  (ido-use-url-at-point 'guess)
-  (ido-create-new-buffer 'always)
-  (ido-work-directory-match-only t)
-  (ido-auto-merge-work-directories-length -1)
-  (ido-case-fold t)
-  (ido-use-virtual-buffers t)
-  (ido-file-extensions-order
-   '(".org" ".txt" ".py" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf"))
-  (ido-use-faces nil ) ; for flx-ido-mode
+;;   :custom
+;;   (ido-enable-flex-matching t)
+;;   (ido-use-filename-at-point 'guess)
+;;   (ido-use-url-at-point 'guess)
+;;   (ido-create-new-buffer 'always)
+;;   (ido-work-directory-match-only t)
+;;   (ido-auto-merge-work-directories-length -1)
+;;   (ido-case-fold t)
+;;   (ido-use-virtual-buffers t)
+;;   (ido-file-extensions-order
+;;    '(".org" ".txt" ".py" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf"))
+;;   (ido-use-faces nil ) ; for flx-ido-mode
 
-  :config
-  (ido-mode 1)
-  ;; (ido-everywhere 1) ;; no longer necessary (?)
+;;   :config
+;;   (ido-mode 1)
+;;   ;; (ido-everywhere 1) ;; no longer necessary (?)
 
-  (use-package ido-completing-read+
-    :ensure t
+;;   (use-package ido-completing-read+
+;;     :ensure t
 
-    :config
-    (ido-ubiquitous-mode 1))
+;;     :config
+;;     (ido-ubiquitous-mode 1))
 
-  (use-package smex
-    :ensure t
+;; (use-package smex
+;;   :ensure t
 
-    :config
-    (smex-initialize)
+;;   :config
+;;   (smex-initialize)
 
-    :bind (("M-x" . smex)
-           ("M-X" . smex-major-mode-commands)
-           ("C-c C-c M-x" . execute-extended-command)))) ; old M-x
+;;   :bind (("M-x" . smex)
+;;          ("M-X" . smex-major-mode-commands)
+;;          ("C-c C-c M-x" . execute-extended-command)))) ; old M-x
 
 ;; Helm
 ;; ========================================
@@ -215,22 +215,64 @@
   :config
   (helm-mode 1)
 
-  :bind (("C-h a" . helm-apropos)
-         ("C-c C-f" . helm-recentf)))
+  (use-package helm-ag
+    :ensure t
+    :defer t)
 
-(use-package helm-ag
-  :ensure t
-  :defer t)
+  (use-package swiper-helm
+    :ensure t
+    :defer t
+    :bind ("M-s M-s" . swiper-helm))
 
-(use-package helm-pt
-  :ensure t
-  :defer t)
+  :bind (("C-h a"   . helm-apropos)
+         ("C-x C-f" . helm-find-files)
+         ("C-c C-r" . helm-recentf))
+  )
 
-(use-package swiper-helm
+;; Ivy
+;; ========================================
+(use-package ivy
   :ensure t
   :defer t
 
-  :bind ("M-s M-s" . swiper-helm))
+  :custom
+  (ivy-use-virtual-buffers t)
+  (enable-recursive-minibuffers t)
+  ;; (ivy-count-format "")
+  ;; (ivy-display-style nil)
+  ;; (ivy-minibuffer-faces nil)
+
+  :config
+  (ivy-mode 1)
+  (counsel-mode 1)
+
+  :bind (("C-s" . swiper)
+		 ("M-x" . counsel-M-x)
+		 ("C-c g" . counsel-git)
+		 ("C-c j" . counsel-git-grep)
+		 ("C-c k" . counsel-ag)
+		 )
+  )
+
+;; (use-package flx
+  ;; :ensure t
+  ;; :defer t
+
+  ;; :custom
+  ;; (ivy-re-builders-alist '((t . ivy--regex-fuzzy))))
+
+;; (use-package counsel
+  ;; :ensure t
+  ;; :defer t
+
+  ;; :config
+  ;; (counsel-mode 1))
+
+;; (use-package swiper
+  ;; :ensure t
+  ;; :defer t
+
+  ;; :bind ("M-s M-s" . swiper))
 
 ;; projectile
 ;; ========================================
@@ -241,50 +283,16 @@
   :custom
   (projectile-global-mode t)
   (projectile-mode-line
-        '(:eval
-          (if (file-remote-p default-directory)
-              " Projectile"
-            (format " Proj[%s]"
-                    (projectile-project-name)))))
+   '(:eval
+     (if (file-remote-p default-directory)
+         " Projectile"
+       (format " Proj[%s]"
+               (projectile-project-name)))))
 
   :config
   (use-package helm-projectile
     :ensure t
     :config (helm-projectile-on)))
-
-;; Ivy
-;; ========================================
-;; (use-package ivy
-;;   :ensure t
-;;   :defer t
-;;
-;;   :custom
-;;   (ivy-count-format "")
-;;   (ivy-display-style nil)
-;;   (ivy-minibuffer-faces nil)
-;;
-;;   :config
-;;   (ivy-mode 1))
-;;
-;; (use-package flx
-;;   :ensure t
-;;   :defer t
-;;
-;;   :custom
-;;   (ivy-re-builders-alist '((t . ivy--regex-fuzzy))))
-;;
-;; (use-package counsel
-;;   :ensure t
-;;   :defer t
-;;
-;;   :config
-;;   (counsel-mode 1))
-;;
-;; (use-package swiper
-;;   :ensure t
-;;   :defer t
-;;
-;;   :bind ("M-s M-s" . swiper))
 
 ;; recentf
 ;; ========================================
@@ -344,8 +352,8 @@
 
   :config
   (use-package helm-flyspell
-	:ensure t
-	:defer t)
+    :ensure t
+    :defer t)
 
   :bind (("<f8>" . helm-flyspell-correct)
          ("C-S-<f8>" . flyspell-mode)

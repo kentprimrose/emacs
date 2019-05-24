@@ -7,7 +7,7 @@
  '(auto-package-update-interval 1)
  '(package-selected-packages
    (quote
-    (helm-flyspell helm-flyspell-correct org color-theme-sanityinc-tomorrow blacken py-yapf evil-leader delight markdown-mode virtualenvwrapper elpy magit-gitflow projectile helm benchmark-init yaml-mode web-mode vdiff use-package terraform-mode swiper-helm smex smart-mode-line overcast-theme org-journal multi-term magit json-mode js2-mode ido-completing-read+ helm-pt helm-projectile helm-org-rifle helm-ag go-mode flycheck eyebrowse exec-path-from-shell evil-nerd-commenter evil elfeed dockerfile-mode company auto-compile ag)))
+	(helm-orgcard helm-flyspell helm-flyspell-correct org color-theme-sanityinc-tomorrow blacken py-yapf evil-leader delight markdown-mode virtualenvwrapper elpy magit-gitflow projectile helm benchmark-init yaml-mode web-mode vdiff use-package terraform-mode swiper-helm smex smart-mode-line overcast-theme org-journal multi-term magit json-mode js2-mode ido-completing-read+ helm-pt helm-projectile helm-org-rifle helm-ag go-mode flycheck eyebrowse exec-path-from-shell evil-nerd-commenter evil elfeed dockerfile-mode company auto-compile ag)))
  '(rm-blacklist (quote (" Undo-Tree" " ElDoc" " company")))
  '(safe-local-variable-values (quote ((buffer-read-only . true))))
  '(sml/mode-width (quote full))

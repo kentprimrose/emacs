@@ -349,5 +349,11 @@
 
   :bind (("C-c s" . helm-org-rifle)))
 
+(use-package helm-orgcard
+  :ensure t
+  :defer t
+
+  :bind (("C-h o" . helm-orgcard)))
+
 (provide 'init-05-org)
 ;;; init-05-org.el ends here

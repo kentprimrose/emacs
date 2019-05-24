@@ -15,12 +15,13 @@
   (auto-compile-on-load-mode 1)
   (auto-compile-on-save-mode 1))
 
+;; Nice, but makes update SLOW
 ;; (use-package auto-package-update
 ;;   :ensure t
+;;   :custom
+;;   (auto-package-update-interval 1)
+;;   (auto-package-update-delete-old-versions t)
 ;;   :config
-;;   (setq
-;;    auto-package-update-interval 1
-;;    auto-package-update-delete-old-versions t)
 ;;   (auto-package-update-maybe))
 
 (set-keyboard-coding-system nil)
@@ -37,9 +38,9 @@
 ;; ========================================
 (when (memq window-system '(mac ns x))
   (use-package exec-path-from-shell
-    :ensure t
-    :config
-    (exec-path-from-shell-initialize))
+	:ensure t
+	:config
+	(exec-path-from-shell-initialize))
 
   (set-face-attribute 'default nil :family "Monaco" :height 120)
   )

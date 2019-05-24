@@ -336,19 +336,23 @@
   (add-hook 'text-mode-hook 'flyspell-mode)
   (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
   (add-hook 'python-mode-hook 'flyspell-prog-mode)
-  (add-hook 'js-mode-hook 'flyspell-prog-mode)
+  (add-hook 'js-mode-hook '-prog-mode)
 
   :custom
   (ispell-list-coommand "list")
+  (ispell-program-name "aspell")
 
-  :bind (("<f8>" . ispell-word)
+  :config
+  (use-package helm-flyspell
+	:ensure t
+	:defer t)
+
+  :bind (("<f8>" . helm-flyspell-correct)
          ("C-S-<f8>" . flyspell-mode)
          ("C-M-<f8>" . flyspell-buffer)
          ("M-<f8>" . flyspell-check-next-highlighted-word))
 
-  :if (memq window-system '(mac ns x))
-  :custom
-  (ispell-program-name "aspell"))
+  :if (memq window-system '(mac ns x)))
 
 ;; multi-term
 ;; ========================================

@@ -1,0 +1,136 @@
+;;; init-06-lang --- language mode settings
+
+;;; Commentary:
+
+;; This will be executed as part of Emacs initialization.
+;; Mode specific settings should appear here.
+
+;;; Code:
+
+;; golang
+;; ========================================
+(use-package go-mode
+  :ensure t
+  :defer t
+  :mode "\\.go\\'"
+  :interpreter "go"
+
+  :custom
+  (truncate-lines t)
+  (evil-shift-width 4)
+  (tab-width 4)
+  (indent-tabs-mode 1)
+
+  :config
+  (add-hook 'before-save-hook 'gofmt-before-save)
+
+  :bind
+  (:map go-mode-map
+        ("C-c C-r" . go-remove-unused-imports)
+        ("C-c C-e" . go-errcheck)))
+
+;; dockerfile-mode
+;; ========================================
+(use-package dockerfile-mode
+  :ensure t
+  :defer t
+  :mode "Dockerfile")
+
+;; terraform-mode
+;; ========================================
+(use-package terraform-mode
+  :ensure t
+  :defer t
+  :mode "\\.tf\\'")
+
+;; yaml-mode
+;; ========================================
+(use-package yaml-mode
+  :ensure t
+  :defer t
+  :mode "\\.yml\\'"
+
+  :custom
+  (truncate-lines t)
+  (evil-shift-width 2))
+
+;; web-mode
+;; ========================================
+(use-package web-mode
+  :ensure t
+  :defer t
+  :mode "\\.html\\'"
+  :mode "\\.htm\\'"
+  :mode "\\.jsx\\'"
+
+  :custom
+  (web-mode-markup-indent-offset 2)
+  (web-mode-css-indent-offset 2)
+  (web-mode-code-indent-offset 2)
+
+  :config
+  (progn
+    (defadvice web-mode-highlight-part (around tweak-jsx activate)
+      "Web mode highlighting."
+      (if (equal web-mode-content-type "jsx")
+          (let ((web-mode-enable-part-face nil))
+            ad-do-it)
+        ad-do-it))))
+
+;; python
+;; ========================================
+(use-package python
+  :ensure t
+  :defer t
+  :mode ("\\.py\\'" . python-mode)
+  :interpreter "python"
+
+  :config
+  (use-package elpy
+    :ensure t
+    :defer t
+
+    :config
+    (elpy-enable)
+    (setenv "WORKON_HOME" "~/Virtualenvs"))
+
+  (use-package virtualenvwrapper
+    :ensure t
+    :defer t
+
+    :custom
+    (venv-location "~/Virtualenvs"))
+
+  (use-package blacken
+    :ensure t
+    :defer t))
+
+;; javascript
+;; ========================================
+(use-package js2-mode
+  :ensure t
+  :defer t
+  :mode "\\.js\\'"
+  :interpreter "node"
+
+  :custom
+  (js2-mode-show-parse-errors nil)
+  (js2-mode-show-strict-warnings nil)
+  (js-indent-level 2)
+  (evil-shift-width 2)
+  (truncate-lines t))
+
+;; json
+;; ========================================
+(use-package json-mode
+  :ensure t
+  :defer t
+  :mode "\\.json\\'"
+
+  :custom
+  (js-indent-level 2)
+  (evil-shift-width 2)
+  (truncate-lines t))
+
+(provide 'init-06-lang)
+;;; init-06-lang.el ends here

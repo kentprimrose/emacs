@@ -162,44 +162,6 @@
 
   :bind ("C-x C-g" . magit-status))
 
-;; Ido-mode
-;; ========================================
-;; (use-package ido
-;;   :ensure t
-
-;;   :custom
-;;   (ido-enable-flex-matching t)
-;;   (ido-use-filename-at-point 'guess)
-;;   (ido-use-url-at-point 'guess)
-;;   (ido-create-new-buffer 'always)
-;;   (ido-work-directory-match-only t)
-;;   (ido-auto-merge-work-directories-length -1)
-;;   (ido-case-fold t)
-;;   (ido-use-virtual-buffers t)
-;;   (ido-file-extensions-order
-;;    '(".org" ".txt" ".py" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf"))
-;;   (ido-use-faces nil ) ; for flx-ido-mode
-
-;;   :config
-;;   (ido-mode 1)
-;;   ;; (ido-everywhere 1) ;; no longer necessary (?)
-
-;;   (use-package ido-completing-read+
-;;     :ensure t
-
-;;     :config
-;;     (ido-ubiquitous-mode 1))
-
-;; (use-package smex
-;;   :ensure t
-
-;;   :config
-;;   (smex-initialize)
-
-;;   :bind (("M-x" . smex)
-;;          ("M-X" . smex-major-mode-commands)
-;;          ("C-c C-c M-x" . execute-extended-command)))) ; old M-x
-
 ;; Helm
 ;; ========================================
 (use-package helm
@@ -216,18 +178,14 @@
   (helm-mode 1)
 
   (use-package helm-ag
-    :ensure t
-    :defer t)
+	:ensure t
+	:defer t)
 
   (use-package swiper-helm
-    :ensure t
-    :defer t
-    :bind ("M-s M-s" . swiper-helm))
+	:ensure t
+	:defer t)
 
-  :bind (("C-h a"   . helm-apropos)
-         ("C-x C-f" . helm-find-files)
-         ("C-c C-r" . helm-recentf))
-  )
+  :bind ("C-h a"   . helm-apropos))
 
 ;; Ivy
 ;; ========================================
@@ -238,41 +196,37 @@
   :custom
   (ivy-use-virtual-buffers t)
   (enable-recursive-minibuffers t)
-  ;; (ivy-count-format "")
-  ;; (ivy-display-style nil)
-  ;; (ivy-minibuffer-faces nil)
+
+  :init
+  (ivy-mode 1)
 
   :config
-  (ivy-mode 1)
-  (counsel-mode 1)
+  (use-package flx
+	:ensure t
+	:defer t
 
-  :bind (("C-s" . swiper)
-		 ("M-x" . counsel-M-x)
-		 ("C-c g" . counsel-git)
-		 ("C-c j" . counsel-git-grep)
-		 ("C-c k" . counsel-ag)
-		 )
-  )
+	:custom
+	(ivy-re-builders-alist '((t . ivy--regex-fuzzy))))
 
-;; (use-package flx
-  ;; :ensure t
-  ;; :defer t
+  (use-package counsel
+	:ensure t
+	:defer t
 
-  ;; :custom
-  ;; (ivy-re-builders-alist '((t . ivy--regex-fuzzy))))
+	:init
+	(counsel-mode 1)
 
-;; (use-package counsel
-  ;; :ensure t
-  ;; :defer t
+	:bind (("C-x f" . counsel-find-file)
+		   ("C-c r" . counsel-recentf)
+		   ("C-c g" . counsel-git)
+		   ("C-c j" . counsel-git-grep)
+		   ("C-c k" . counsel-ag)
+		   ("C-c C-c M-x" . execute-extended-command) ; old M-x
+		   ("M-x" . counsel-M-x)))
 
-  ;; :config
-  ;; (counsel-mode 1))
-
-;; (use-package swiper
-  ;; :ensure t
-  ;; :defer t
-
-  ;; :bind ("M-s M-s" . swiper))
+  (use-package swiper
+	:ensure t
+	:defer t
+	:bind ("C-s" . swiper)))
 
 ;; projectile
 ;; ========================================
@@ -284,29 +238,15 @@
   (projectile-global-mode t)
   (projectile-mode-line
    '(:eval
-     (if (file-remote-p default-directory)
-         " Projectile"
-       (format " Proj[%s]"
-               (projectile-project-name)))))
+	 (if (file-remote-p default-directory)
+		 " Projectile"
+	   (format " Proj[%s]"
+			   (projectile-project-name)))))
 
   :config
   (use-package helm-projectile
-    :ensure t
-    :config (helm-projectile-on)))
-
-;; recentf
-;; ========================================
-(use-package recentf
-  :ensure t
-  :defer t
-
-  :config
-  (recentf-mode 1)
-
-  :custom
-  (recentf-max-menu-items 10)
-
-  :bind ("C-c r" . recentf-open-files))
+	:ensure t
+	:config (helm-projectile-on)))
 
 ;; elfeed
 ;; ========================================
@@ -317,14 +257,14 @@
   :custom
   (elfeed-feeds
    '(("http://planet.emacsen.org/atom.xml" emacs emacsen)
-     ("http://batsov.com/atom.xml" emacs batsov)
-     ("https://nyoboo.com/channels/6-python-news/messages.rss" python pyweekly)
-     ("http://feeds.feedburner.com/PythonInsider" python insider)
-     ("http://planetpython.org/rss20.xml python" python planet)
-     ("http://pyfound.blogspot.com/feeds/posts/default" python pyfound)
-     ("http://pycon.blogspot.com/feeds/posts/default" python pycon)
-     ("http://www.reddit.com/r/python/.rss" python reddit)
-     ("http://www.reddit.com/r/pythontips/.rss" python reddit)))
+	 ("http://batsov.com/atom.xml" emacs batsov)
+	 ("https://nyoboo.com/channels/6-python-news/messages.rss" python pyweekly)
+	 ("http://feeds.feedburner.com/PythonInsider" python insider)
+	 ("http://planetpython.org/rss20.xml python" python planet)
+	 ("http://pyfound.blogspot.com/feeds/posts/default" python pyfound)
+	 ("http://pycon.blogspot.com/feeds/posts/default" python pycon)
+	 ("http://www.reddit.com/r/python/.rss" python reddit)
+	 ("http://www.reddit.com/r/pythontips/.rss" python reddit)))
 
   :bind ("C-x w" . elfeed))
 
@@ -337,10 +277,10 @@
 
   :init
   (defun flyspell-check-next-highlighted-word ()
-    "Custom function to spell check next highlighted word."
-    (interactive)
-    (flyspell-goto-next-error)
-    (ispell-word))
+	"Custom function to spell check next highlighted word."
+	(interactive)
+	(flyspell-goto-next-error)
+	(ispell-word))
   (add-hook 'text-mode-hook 'flyspell-mode)
   (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
   (add-hook 'python-mode-hook 'flyspell-prog-mode)
@@ -352,13 +292,13 @@
 
   :config
   (use-package helm-flyspell
-    :ensure t
-    :defer t)
+	:ensure t
+	:defer t)
 
   :bind (("<f8>" . helm-flyspell-correct)
-         ("C-S-<f8>" . flyspell-mode)
-         ("C-M-<f8>" . flyspell-buffer)
-         ("M-<f8>" . flyspell-check-next-highlighted-word))
+		 ("C-S-<f8>" . flyspell-mode)
+		 ("C-M-<f8>" . flyspell-buffer)
+		 ("M-<f8>" . flyspell-check-next-highlighted-word))
 
   :if (memq window-system '(mac ns x)))
 
@@ -378,7 +318,7 @@
   :defer t
 
   :bind (:map vdiff-mode-prefix-map
-              ("C-c" . vdiff-mode-prefix-map)))
+			  ("C-c" . vdiff-mode-prefix-map)))
 
 ;; markdown
 ;; ========================================
@@ -387,8 +327,8 @@
   :defer t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode))
+		 ("\\.md\\'" . markdown-mode)
+		 ("\\.markdown\\'" . markdown-mode))
 
   :custom
   (markdown-command "multimarkdown"))

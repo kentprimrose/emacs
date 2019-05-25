@@ -192,10 +192,11 @@
 (use-package ivy
   :ensure t
   :defer t
+  :delight
 
   :custom
   (ivy-use-virtual-buffers t)
-  (enable-recursive-minibuffers t)
+  (ivy-count-format "%d/%d ")
 
   :init
   (ivy-mode 1)
@@ -211,6 +212,7 @@
   (use-package counsel
 	:ensure t
 	:defer t
+    :delight
 
 	:init
 	(counsel-mode 1)

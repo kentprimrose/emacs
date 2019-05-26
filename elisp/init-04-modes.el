@@ -185,48 +185,14 @@
 	:ensure t
 	:defer t)
 
-  :bind ("C-h a"   . helm-apropos))
+  (use-package helm-rg
+    :ensure t
+    :defer t)
 
-;; Ivy
-;; ========================================
-(use-package ivy
-  :ensure t
-  :defer t
-
-  :custom
-  (ivy-use-virtual-buffers t)
-  (enable-recursive-minibuffers t)
-
-  :init
-  (ivy-mode 1)
-
-  :config
-  (use-package flx
-	:ensure t
-	:defer t
-
-	:custom
-	(ivy-re-builders-alist '((t . ivy--regex-fuzzy))))
-
-  (use-package counsel
-	:ensure t
-	:defer t
-
-	:init
-	(counsel-mode 1)
-
-	:bind (("C-x f" . counsel-find-file)
-		   ("C-c r" . counsel-recentf)
-		   ("C-c g" . counsel-git)
-		   ("C-c j" . counsel-git-grep)
-		   ("C-c k" . counsel-ag)
-		   ("C-c C-c M-x" . execute-extended-command) ; old M-x
-		   ("M-x" . counsel-M-x)))
-
-  (use-package swiper
-	:ensure t
-	:defer t
-	:bind ("C-s" . swiper)))
+  :bind (("M-x"     . helm-M-x)
+		 ("C-x C-f" . helm-recentf)
+		 ("C-s"     . swiper-helm)
+		 ("C-h a"   . helm-apropos)))
 
 ;; projectile
 ;; ========================================

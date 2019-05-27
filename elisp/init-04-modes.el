@@ -83,30 +83,30 @@
   (add-hook 'org-capture-mode-hook 'evil-insert-state)
 
   (use-package evil-nerd-commenter
-    :ensure t
+	:ensure t
 
-    :init
-    (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
-    (global-set-key (kbd "C-c l") 'evilnc-quick-comment-or-uncomment-to-the-line)
-    (global-set-key (kbd "C-c c") 'evilnc-copy-and-comment-lines)
-    (global-set-key (kbd "C-c p") 'evilnc-comment-or-uncomment-paragraphs)
+	:init
+	(global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
+	(global-set-key (kbd "C-c l") 'evilnc-quick-comment-or-uncomment-to-the-line)
+	(global-set-key (kbd "C-c c") 'evilnc-copy-and-comment-lines)
+	(global-set-key (kbd "C-c p") 'evilnc-comment-or-uncomment-paragraphs)
 
-    ;; Vim key bindings
-    (use-package evil-leader
-      :ensure t
+	;; Vim key bindings
+	(use-package evil-leader
+	  :ensure t
 
-      :init
-      (global-evil-leader-mode)
-      (evil-leader/set-key
-        "ci" 'evilnc-comment-or-uncomment-lines
-        "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
-        "ll" 'evilnc-quick-comment-or-uncomment-to-the-line
-        "cc" 'evilnc-copy-and-comment-lines
-        "cp" 'evilnc-comment-or-uncomment-paragraphs
-        "cr" 'comment-or-uncomment-region
-        "cv" 'evilnc-toggle-invert-comment-line-by-line
-        "."  'evilnc-copy-and-comment-operator
-        "\\" 'evilnc-comment-operator)))) ; if you prefer backslash key
+	  :init
+	  (global-evil-leader-mode)
+	  (evil-leader/set-key
+		"ci" 'evilnc-comment-or-uncomment-lines
+		"cl" 'evilnc-quick-comment-or-uncomment-to-the-line
+		"ll" 'evilnc-quick-comment-or-uncomment-to-the-line
+		"cc" 'evilnc-copy-and-comment-lines
+		"cp" 'evilnc-comment-or-uncomment-paragraphs
+		"cr" 'comment-or-uncomment-region
+		"cv" 'evilnc-toggle-invert-comment-line-by-line
+		"."  'evilnc-copy-and-comment-operator
+		"\\" 'evilnc-comment-operator)))) ; if you prefer backslash key
 
 ;; dired
 ;; ========================================
@@ -115,12 +115,12 @@
   (dired-use-ls-dired nil)
 
   :bind (("C-x C-j" . dired-jump)
-         :map dired-mode-map
-         ("j" . evil-next-line)
-         ("k" . evil-previous-line)
-         ("/" . evil-search-forward)
-         ([s-up] . dired-up-directory)
-         ([s-down] . dired-find-file)))
+		 :map dired-mode-map
+		 ("j" . evil-next-line)
+		 ("k" . evil-previous-line)
+		 ("/" . evil-search-forward)
+		 ([s-up] . dired-up-directory)
+		 ([s-down] . dired-find-file)))
 
 ;; text modes
 ;; ========================================
@@ -130,7 +130,7 @@
   (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
   :bind (("C-c f" . toggle-text-mode-auto-fill)
-         ("C-c v" . visual-line-mode)))
+		 ("C-c v" . visual-line-mode)))
 
 ;; Ag (Silver Surfer)
 ;; ========================================
@@ -147,18 +147,6 @@
   :custom
   (magit-refresh-status-buffer nil)
   (smerge-command-prefix "C-c C-v")
-
-  :config
-  (use-package magit-gitflow
-    :ensure t
-    :defer t
-    :after magit
-
-    :config
-    (turn-on-magit-gitflow)
-
-    :bind (:map magit-mode-map
-                ("C-f" . magit-gitflow-popup)))
 
   :bind ("C-x C-g" . magit-status))
 
@@ -186,13 +174,15 @@
 	:defer t)
 
   (use-package helm-rg
-    :ensure t
-    :defer t)
+	:ensure t
+	:defer t)
 
   :bind (("M-x"     . helm-M-x)
-		 ("C-x C-f" . helm-recentf)
 		 ("C-s"     . swiper-helm)
-		 ("C-h a"   . helm-apropos)))
+		 ("C-h a"   . helm-apropos)
+		 ("C-x C-f" . helm-find-files)
+		 ("C-c r"   . helm-recentf)
+		 ))
 
 ;; projectile
 ;; ========================================

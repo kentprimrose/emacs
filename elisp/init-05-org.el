@@ -14,16 +14,6 @@
   :defer t
   :mode ("\\.org\\'" . org-mode)
 
-  :bind (("C-c a" . org-agenda)
-		 ("C-c c" . org-capture)
-		 ("C-c l" . org-store-link)
-		 ("C-c b" . org-switchb)
-		 ("C-c i" . org-time-stamp-inactive)
-		 :map org-mode-map
-		 ([s-return] . org-meta-return)
-		 :map org-agenda-mode-map
-		 ("C-c C-e" . org-export-dispatch))
-  
   :config
   (turn-on-auto-fill)
 
@@ -328,11 +318,23 @@
 	   (org-use-tag-inheritance t)
 	   (org-agenda-include-diary nil))
 	  ))
-   ))
+   )
+
+  :bind (("C-c a" . org-agenda)
+		 ("C-c c" . org-capture)
+		 ("C-c l" . org-store-link)
+		 ("C-c b" . org-switchb)
+		 ("C-c i" . org-time-stamp-inactive)
+		 :map org-mode-map
+		 ([s-return] . org-meta-return)
+		 :map org-agenda-mode-map
+		 ("C-c C-e" . org-export-dispatch)
+		 ))
 
 (use-package org-journal
   :ensure t
   :defer t
+
   :custom
   (org-journal-dir "~/org/journal/")
   (org-journal-file-format "%Y%m%d\.org")
@@ -341,7 +343,8 @@
   (org-journal-time-prefix "\n** ")
 
   :bind (("C-c j" . org-journal-new-entry)
-		 ("C-c C-j" . org-journal-new-entry)))
+		 ("C-c C-j" . org-journal-new-entry)
+		 ))
 
 (use-package helm-org-rifle
   :ensure t
@@ -358,13 +361,16 @@
 (use-package org-brain
   :ensure t
   :defer t
+
   :init
   (with-eval-after-load 'evil
-    (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
+	(evil-set-initial-state 'org-brain-visualize-mode 'emacs))
+
   :custom
   (org-brain-path "~/org/brain")
   (org-id-track-globally t)
   (org-id-locations-file "~/org/.org-id-locations")
+
   :bind ("C-c C-x b" . org-brain-visualize))
 
 (provide 'init-05-org)

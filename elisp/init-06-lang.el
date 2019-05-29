@@ -24,10 +24,10 @@
   :config
   (add-hook 'before-save-hook 'gofmt-before-save)
 
-  :bind
-  (:map go-mode-map
+  :bind (:map go-mode-map
         ("C-c C-r" . go-remove-unused-imports)
-        ("C-c C-e" . go-errcheck)))
+        ("C-c C-e" . go-errcheck)
+		))
 
 ;; dockerfile-mode
 ;; ========================================
@@ -52,7 +52,8 @@
 
   :custom
   (truncate-lines t)
-  (evil-shift-width 2))
+  (evil-shift-width 2)
+  )
 
 ;; web-mode
 ;; ========================================
@@ -75,7 +76,8 @@
       (if (equal web-mode-content-type "jsx")
           (let ((web-mode-enable-part-face nil))
             ad-do-it)
-        ad-do-it))))
+        ad-do-it)
+	  )))
 
 ;; python
 ;; ========================================
@@ -103,7 +105,8 @@
 
   (use-package blacken
     :ensure t
-    :defer t))
+    :defer t)
+  )
 
 ;; javascript
 ;; ========================================
@@ -118,7 +121,8 @@
   (js2-mode-show-strict-warnings nil)
   (js-indent-level 2)
   (evil-shift-width 2)
-  (truncate-lines t))
+  (truncate-lines t)
+  )
 
 ;; json
 ;; ========================================
@@ -130,7 +134,23 @@
   :custom
   (js-indent-level 2)
   (evil-shift-width 2)
-  (truncate-lines t))
+  (truncate-lines t)
+  )
+
+;; markdown
+;; ========================================
+(use-package markdown-mode
+  :ensure t
+  :defer t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+		 ("\\.md\\'" . markdown-mode)
+		 ("\\.markdown\\'" . markdown-mode)
+		 )
+
+  :custom
+  (markdown-command "multimarkdown")
+  )
 
 (provide 'init-06-lang)
 ;;; init-06-lang.el ends here

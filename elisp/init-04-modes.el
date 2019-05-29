@@ -27,7 +27,8 @@
 
   :custom
   (company-dabbrev-downcase 0)
-  (company-idle-delay 0))
+  (company-idle-delay 0)
+  )
 
 ;; flycheck
 ;; ========================================
@@ -40,7 +41,8 @@
   (global-flycheck-mode)
 
   :custom
-  (flycheck-display-errors-delay .3))
+  (flycheck-display-errors-delay .3)
+  )
 
 ;; evil
 ;; ========================================
@@ -48,65 +50,49 @@
   :ensure t
 
   :config
-  (evil-set-initial-state 'inferior-emacs-lisp-mode 'emacs)
-  (evil-set-initial-state 'calendar-mode 'emacs)
-  (evil-set-initial-state 'nrepl-mode 'insert)
-  (evil-set-initial-state 'pylookup-mode 'emacs)
-  (evil-set-initial-state 'comint-mode 'normal)
-  (evil-set-initial-state 'shell-mode 'insert)
-  (evil-set-initial-state 'git-rebase-mode 'emacs)
-  (evil-set-initial-state 'term-mode 'emacs)
-  (evil-set-initial-state 'help-mode 'emacs)
-  (evil-set-initial-state 'grep-mode 'emacs)
-  (evil-set-initial-state 'bc-menu-mode 'emacs)
-  (evil-set-initial-state 'magit-branch-manager-mode 'emacs)
-  (evil-set-initial-state 'magit-popup-mode 'emacs)
-  (evil-set-initial-state 'magit-blame-mode 'emacs)
-  (evil-set-initial-state 'rdictcc-buffer-mode 'emacs)
-  (evil-set-initial-state 'dired-mode 'emacs)
-  (evil-set-initial-state 'wdired-mode 'normal)
-  (evil-set-initial-state 'elfeed-search-mode 'emacs)
-  (evil-set-initial-state 'elfeed-show-mode 'emacs)
-  (evil-set-initial-state 'paradox-menu-mode 'emacs)
-  (evil-set-initial-state 'git-commit-mode 'insert)
-  (evil-set-initial-state 'org-journal-mode 'insert)
-  (evil-set-initial-state 'org-capture-mode 'insert)
-
   (evil-mode 1)
+
+  (evil-set-initial-state 'inferior-emacs-lisp-mode  'emacs)
+  (evil-set-initial-state 'calendar-mode             'emacs)
+  (evil-set-initial-state 'nrepl-mode                'insert)
+  (evil-set-initial-state 'pylookup-mode             'emacs)
+  (evil-set-initial-state 'comint-mode               'normal)
+  (evil-set-initial-state 'shell-mode                'insert)
+  (evil-set-initial-state 'git-rebase-mode           'emacs)
+  (evil-set-initial-state 'term-mode                 'emacs)
+  (evil-set-initial-state 'help-mode                 'emacs)
+  (evil-set-initial-state 'grep-mode                 'emacs)
+  (evil-set-initial-state 'bc-menu-mode              'emacs)
+  (evil-set-initial-state 'magit-branch-manager-mode 'emacs)
+  (evil-set-initial-state 'magit-popup-mode          'emacs)
+  (evil-set-initial-state 'magit-blame-mode          'emacs)
+  (evil-set-initial-state 'rdictcc-buffer-mode       'emacs)
+  (evil-set-initial-state 'dired-mode                'emacs)
+  (evil-set-initial-state 'wdired-mode               'normal)
+  (evil-set-initial-state 'elfeed-search-mode        'emacs)
+  (evil-set-initial-state 'elfeed-show-mode          'emacs)
+  (evil-set-initial-state 'paradox-menu-mode         'emacs)
+  (evil-set-initial-state 'git-commit-mode           'insert)
+  (evil-set-initial-state 'org-journal-mode          'insert)
+  (evil-set-initial-state 'org-capture-mode          'insert)
+
+  (add-hook 'git-commit-mode-hook  'evil-insert-state)
+  (add-hook 'org-capture-mode-hook 'evil-insert-state)
 
   :custom
   (indent-tabs-mode nil)
-  (evil-want-C-i-jump nil ) ;; Keep tab for org-mode
+  (evil-want-C-i-jump nil) ;; Keep tab for org-mode
 
-  :init
-  (add-hook 'git-commit-mode-hook 'evil-insert-state)
-  (add-hook 'org-capture-mode-hook 'evil-insert-state)
-
+  :config
   (use-package evil-nerd-commenter
 	:ensure t
 
-	:init
-	(global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
-	(global-set-key (kbd "C-c l") 'evilnc-quick-comment-or-uncomment-to-the-line)
-	(global-set-key (kbd "C-c c") 'evilnc-copy-and-comment-lines)
-	(global-set-key (kbd "C-c p") 'evilnc-comment-or-uncomment-paragraphs)
-
-	;; Vim key bindings
-	(use-package evil-leader
-	  :ensure t
-
-	  :init
-	  (global-evil-leader-mode)
-	  (evil-leader/set-key
-		"ci" 'evilnc-comment-or-uncomment-lines
-		"cl" 'evilnc-quick-comment-or-uncomment-to-the-line
-		"ll" 'evilnc-quick-comment-or-uncomment-to-the-line
-		"cc" 'evilnc-copy-and-comment-lines
-		"cp" 'evilnc-comment-or-uncomment-paragraphs
-		"cr" 'comment-or-uncomment-region
-		"cv" 'evilnc-toggle-invert-comment-line-by-line
-		"."  'evilnc-copy-and-comment-operator
-		"\\" 'evilnc-comment-operator)))) ; if you prefer backslash key
+	:bind (("M-;"   . evilnc-comment-or-uncomment-lines)
+		   ("C-c l" . evilnc-quick-comment-or-uncomment-to-the-line)
+		   ("C-c c" . evilnc-copy-and-comment-lines)
+		   ("C-c p" . evilnc-comment-or-uncomment-paragraphs)
+		   )
+	))
 
 ;; dired
 ;; ========================================
@@ -116,21 +102,24 @@
 
   :bind (("C-x C-j" . dired-jump)
 		 :map dired-mode-map
-		 ("j" . evil-next-line)
-		 ("k" . evil-previous-line)
-		 ("/" . evil-search-forward)
-		 ([s-up] . dired-up-directory)
-		 ([s-down] . dired-find-file)))
+		 ("j"      . evil-next-line)
+		 ("k"      . evil-previous-line)
+		 ("/"      . evil-search-forward)
+		 ([s-up]   . dired-up-directory)
+		 ([s-down] . dired-find-file)
+		 ))
 
 ;; text modes
 ;; ========================================
 (setq global-visual-line-mode 1)
+
 (use-package text-mode
-  :init
+  :config
   (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
   :bind (("C-c f" . toggle-text-mode-auto-fill)
-		 ("C-c v" . visual-line-mode)))
+		 ("C-c v" . visual-line-mode)
+		 ))
 
 ;; Ag (Silver Surfer)
 ;; ========================================
@@ -157,16 +146,18 @@
   :defer t
   :delight
 
+  :config
+  (helm-mode 1)
+
   :custom
   (helm-mode-fuzzy-match t)
   (helm-autoresize-mode t)
   (helm-ff-auto-update-initial-value t)
   (helm-completion-in-region-fuzzy-match t)
+  (helm-M-x-always-save-history t)
   (helm-candidate-number-limit 100)
 
   :config
-  (helm-mode 1)
-
   (use-package helm-ag
 	:ensure t
 	:defer t)
@@ -181,7 +172,7 @@
 
   :bind (("M-x"     . helm-M-x)
 		 ("C-x b"   . helm-mini)
-		 ("C-c h"   . helm-multi-files)
+		 ("C-x h"   . helm-multi-files)
 		 ("C-s"     . swiper-helm)
 		 ("C-h a"   . helm-apropos)
 		 ("C-x C-f" . helm-find-files)
@@ -206,7 +197,8 @@
   :config
   (use-package helm-projectile
 	:ensure t
-	:config (helm-projectile-on)))
+	:config (helm-projectile-on)
+	))
 
 ;; elfeed
 ;; ========================================
@@ -224,7 +216,8 @@
 	 ("http://pyfound.blogspot.com/feeds/posts/default" python pyfound)
 	 ("http://pycon.blogspot.com/feeds/posts/default" python pycon)
 	 ("http://www.reddit.com/r/python/.rss" python reddit)
-	 ("http://www.reddit.com/r/pythontips/.rss" python reddit)))
+	 ("http://www.reddit.com/r/pythontips/.rss" python reddit)
+	 ))
 
   :bind ("C-x w" . elfeed))
 
@@ -258,7 +251,8 @@
   :bind (("<f8>" . helm-flyspell-correct)
 		 ("C-S-<f8>" . flyspell-mode)
 		 ("C-M-<f8>" . flyspell-buffer)
-		 ("M-<f8>" . flyspell-check-next-highlighted-word))
+		 ("M-<f8>" . flyspell-check-next-highlighted-word)
+		 )
 
   :if (memq window-system '(mac ns x)))
 
@@ -278,20 +272,8 @@
   :defer t
 
   :bind (:map vdiff-mode-prefix-map
-			  ("C-c" . vdiff-mode-prefix-map)))
-
-;; markdown
-;; ========================================
-(use-package markdown-mode
-  :ensure t
-  :defer t
-  :commands (markdown-mode gfm-mode)
-  :mode (("README\\.md\\'" . gfm-mode)
-		 ("\\.md\\'" . markdown-mode)
-		 ("\\.markdown\\'" . markdown-mode))
-
-  :custom
-  (markdown-command "multimarkdown"))
+			  ("C-c" . vdiff-mode-prefix-map)
+			  ))
 
 (provide 'init-04-modes)
 ;;; init-04-modes.el ends here

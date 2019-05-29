@@ -347,13 +347,25 @@
   :ensure t
   :defer t
 
-  :bind (("C-c s" . helm-org-rifle)))
+  :bind ("C-c s" . helm-org-rifle))
 
 (use-package helm-orgcard
   :ensure t
   :defer t
 
-  :bind (("C-h o" . helm-orgcard)))
+  :bind ("C-h o" . helm-orgcard))
+
+(use-package org-brain
+  :ensure t
+  :defer t
+  :init
+  (with-eval-after-load 'evil
+    (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
+  :custom
+  (org-brain-path "~/org/brain")
+  (org-id-track-globally t)
+  (org-id-locations-file "~/org/.org-id-locations")
+  :bind ("C-c C-x b" . org-brain-visualize))
 
 (provide 'init-05-org)
 ;;; init-05-org.el ends here

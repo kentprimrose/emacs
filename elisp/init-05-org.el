@@ -17,7 +17,7 @@
   :bind (("C-c a" . org-agenda)
 		 ("C-c c" . org-capture)
 		 ("C-c l" . org-store-link)
-		 ("C-c b" . org-iswitchb)
+		 ("C-c b" . org-switchb)
 		 ("C-c i" . org-time-stamp-inactive)
 		 :map org-mode-map
 		 ([s-return] . org-meta-return)

@@ -159,6 +159,7 @@
 
   :custom
   (helm-mode-fuzzy-match t)
+  (helm-autoresize-mode t)
   (helm-ff-auto-update-initial-value t)
   (helm-completion-in-region-fuzzy-match t)
   (helm-candidate-number-limit 100)

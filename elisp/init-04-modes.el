@@ -180,6 +180,7 @@
 	:defer t)
 
   :bind (("M-x"     . helm-M-x)
+		 ("C-x b"   . helm-mini)
 		 ("C-s"     . swiper-helm)
 		 ("C-h a"   . helm-apropos)
 		 ("C-x C-f" . helm-find-files)

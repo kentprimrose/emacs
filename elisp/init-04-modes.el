@@ -181,6 +181,7 @@
 
   :bind (("M-x"     . helm-M-x)
 		 ("C-x b"   . helm-mini)
+		 ("C-c h"   . helm-multi-files)
 		 ("C-s"     . swiper-helm)
 		 ("C-h a"   . helm-apropos)
 		 ("C-x C-f" . helm-find-files)

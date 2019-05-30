@@ -50,8 +50,9 @@
 	 ("1)" . "-")
 	 ))
 
-  (org-agenda-files '("~/org-local" "~/org-local/archive" "~/org-local/journal" "~/org-local/minutes" "~/org-local/notes"
-					  "~/org-shared" "~/org-shared/archive" "~/org-shared/journal" "~/org-shared/minutes" "~/org-shared/notes"))
+  (org-agenda-files '("~/org-local" "~/org-local/archive" "~/org-shared" "~/org-shared/archive"))
+  (org-agenda-text-search-extra-files '("~/org-local/journal" "~/org-local/minutes" "~/org-local/notes"
+										"~/org-shared/journal" "~/org-shared/minutes" "~/org-shared/notes"))
   (org-default-notes-file "~/org/capture.org")
   (org-archive-location "archive/%s_archive::")
 

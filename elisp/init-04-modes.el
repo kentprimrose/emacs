@@ -185,6 +185,9 @@
   :ensure t
   :delight
 
+  :config
+  (projectile-mode +1)
+
   :custom
   (projectile-global-mode t)
   (projectile-mode-line
@@ -197,7 +200,9 @@
   :config
   (use-package helm-projectile
 	:ensure t
+	:defer t
 	:config (helm-projectile-on)
+	:bind ("C-x p" . helm-projectile)
 	))
 
 ;; elfeed

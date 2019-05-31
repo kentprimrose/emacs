@@ -50,7 +50,7 @@
 	 ("1)" . "-")
 	 ))
 
-  (org-agenda-files '("~/org" "~/org/archive"))
+  (org-agenda-files '("~/org" "~/org/archive" "~/org-shared" "~/org-shared/archive"))
   (org-default-notes-file "~/org/capture.org")
   (org-archive-location "archive/%s_archive::")
 

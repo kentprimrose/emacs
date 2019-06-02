@@ -24,7 +24,10 @@
 (add-to-list 'package-archives '("marm" . "https://marmalade-repo.org/packages/") t)
 (package-initialize)
 
-;; On new install, do 'package-install for "use-package", and then restart emacs.
+;; Bootstrap use-package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 (eval-when-compile (require 'use-package))
 
 ;; benchmark (only when benchmarking)

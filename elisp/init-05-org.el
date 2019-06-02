@@ -135,9 +135,9 @@
 
   (org-agenda-remove-tags t)
   (org-agenda-prefix-format
-   '((agenda . " %T %-8:c%?-8t ")
-	 (todo   . " %T %-8:c%?-8t ")
-	 (tags   . " %T %-8:c%?-8t ")
+   '((agenda . " %-5 T%-7c%?-8t ")
+	 (todo   . " %-5 T%-7c%?-8t ")
+	 (tags   . " %-5 T%-7c%?-8t ")
 	 (timeline . " %s %t ")
 	 (search . " %i %-12:c ")))
 

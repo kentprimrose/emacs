@@ -25,6 +25,13 @@
 (package-initialize)
 
 ;; Bootstrap use-package
+(setq-default
+ ;; use-package-always-ensure t
+ ;; use-package-always-defer t
+ use-package-verbose nil
+ use-package-expand-minimally t
+ use-package-enable-imenu-support t
+ )
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))

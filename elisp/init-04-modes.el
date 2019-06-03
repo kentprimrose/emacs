@@ -97,6 +97,7 @@
 ;; dired
 ;; ========================================
 (use-package dired
+  :demand
   :custom
   (dired-use-ls-dired nil)
 
@@ -114,6 +115,7 @@
 (setq global-visual-line-mode 1)
 
 (use-package text-mode
+  :demand
   :config
   (add-hook 'text-mode-hook 'turn-on-auto-fill)
 

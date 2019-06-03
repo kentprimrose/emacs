@@ -41,6 +41,7 @@
   (org-agenda-window-setup 'current-window)
   (org-default-priority 0)
   (org-agenda-start-with-log-mode t)
+  (org-catch-invisible-edits 'show-and-error)
   (org-ellipsis "⤵")
 
   (org-blank-before-new-entry '((heading . auto)

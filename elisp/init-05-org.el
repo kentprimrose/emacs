@@ -42,6 +42,8 @@
   (org-default-priority 0)
   (org-agenda-start-with-log-mode t)
   (org-catch-invisible-edits 'show-and-error)
+  (org-cycle-separator-lines 0)
+  (org-list-indent-offset 0)
   (org-ellipsis "⤵")
 
   (org-blank-before-new-entry '((heading . auto)
@@ -49,10 +51,8 @@
   (org-M-RET-may-split-line '((default . nil)))
 
   (org-list-demote-modify-bullet
-   '(("+"  . "-")
-	 ("*"  . "-")
-	 ("1." . "-")
-	 ("1)" . "-")
+   '(("-"  . "+") ("*"  . "+") ("+"  . "-")
+	 ("1." . "-") ("1)" . "-")
 	 ))
 
   (org-agenda-files '("~/org" "~/org/archive" "~/org-shared" "~/org-shared/archive"))
@@ -233,9 +233,8 @@
 	   ))
 
 	 ("r" "Require attention"
-	  ((alltodo ""
+	  ((tags-todo "-@wrk-@hom-@out-@net-@cmp-@pho-@eml"
 				((org-agenda-overriding-header "Context:")
-				 (org-agenda-skip-function '(org-agenda-skip-entry-if 'regexp "\\:@"))
 				 (org-use-tag-inheritance t)))
 	   (tags "REFILE+LEVEL>1"
 			 ((org-agenda-overriding-header "Refile:")

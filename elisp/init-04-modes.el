@@ -232,14 +232,10 @@
   (add-hook 'js-mode-hook '-prog-mode)
 
   :custom
-  (ispell-list-coommand "list")
+  (ispell-list-coommand "--list")
   (ispell-program-name "aspell")
 
-  :config
-  (use-package helm-flyspell
-	:defer t)
-
-  :bind (("<f8>" . helm-flyspell-correct)
+  :bind (("<f8>" . ispell-word)
 		 ("C-S-<f8>" . flyspell-mode)
 		 ("C-M-<f8>" . flyspell-buffer)
 		 ("M-<f8>" . flyspell-check-next-highlighted-word)

@@ -196,7 +196,8 @@
 			  ))
 	   ))
 
-	 ("w" "Weekly Review"
+	 ("r" . "Review")
+	 ("rw" "Weekly Review"
 	  ((agenda "" ((org-agenda-overriding-header "Agenda:")
 				   (org-agenda-span 'week)
 				   (org-agenda-start-on-weekday 0)
@@ -205,6 +206,29 @@
 				   (org-use-tag-inheritance t)
 				   ))
 	   ))
+	 ("rm" "Monthly Review"
+	  ((agenda "" ((org-agenda-overriding-header "Agenda:")
+				   (org-agenda-span 'month)
+				   (org-agenda-include-diary nil)
+				   (org-agenda-todo-ignore-deadlines nil)
+				   (org-deadline-warning-days 28)
+				   (org-use-tag-inheritance t)
+				   ))
+	   ))
+	 ("rr" "Require attention"
+	  ((tags-todo "-@wrk-@hom-@out-@net-@cmp-@pho-@eml"
+				  ((org-agenda-overriding-header "Context:")
+				   (org-use-tag-inheritance t)))
+	   (tags "REFILE+LEVEL>1"
+			 ((org-agenda-overriding-header "Refile:")
+			  (org-use-tag-inheritance t)))
+	   (stuck ""
+			  ((org-agenda-overriding-header "Stuck:")
+			   (org-use-tag-inheritance t)))
+	   (tags (concat "-PROJ+TODO={DONE\\\|CNCL}" "|"
+					 "+PROJ+TODO={DONE\\\|CNCL}+LEVEL<=2")
+			 ((org-agenda-overriding-header "Archive:")))))
+
 
 	 ("p" "Planning"
 	  ((tags-todo "-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO"
@@ -231,20 +255,6 @@
 			  (org-use-tag-inheritance t)
 			  ))
 	   ))
-
-	 ("r" "Require attention"
-	  ((tags-todo "-@wrk-@hom-@out-@net-@cmp-@pho-@eml"
-				((org-agenda-overriding-header "Context:")
-				 (org-use-tag-inheritance t)))
-	   (tags "REFILE+LEVEL>1"
-			 ((org-agenda-overriding-header "Refile:")
-			  (org-use-tag-inheritance t)))
-	   (stuck ""
-			  ((org-agenda-overriding-header "Stuck:")
-			   (org-use-tag-inheritance t)))
-	   (tags (concat "-PROJ+TODO={DONE\\\|CNCL}" "|"
-					 "+PROJ+TODO={DONE\\\|CNCL}+LEVEL<=2")
-			 ((org-agenda-overriding-header "Archive:")))))
 
 	 ("o" . "Old Reports")
 	 ("od" "Daily Review"

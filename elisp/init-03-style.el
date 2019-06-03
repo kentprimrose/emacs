@@ -38,11 +38,13 @@
 ;;   (load-theme 'overcast t))
 
 (use-package color-theme-sanityinc-tomorrow
+  :demand
   :ensure t
   :config
   (load-theme 'sanityinc-tomorrow-bright t))
 
 ;; (use-package alect-themes
+;;   :demand
 ;;   :ensure t
 ;;   :config
 ;;   (alect-set-color 'dark 'bg-1 "gray10")
@@ -52,12 +54,14 @@
 ;;   (load-theme 'alect-dark t))
 
 ;; (use-package dimmer
+;;   :demand
 ;;   :ensure t
 ;;   :config
 ;;   (dimmer-mode)
 ;;   (setq dimmer-fraction 0.40))
 
 (use-package smart-mode-line
+  :demand
   :ensure t
   :custom
   (sml/no-confirm-load-theme t)

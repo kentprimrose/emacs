@@ -7,86 +7,28 @@
 
 ;;; Code:
 
-;; Control mode lines
-;; ========================================
-(use-package delight
-  :ensure t)
-
-;; Ignore case everywhere
-;; ========================================
-(setq completion-ignore-case t)
-
-;; company
-;; ========================================
-(use-package company
-  :ensure t
-  :delight
-
-  :config
-  (global-company-mode)
-
-  :custom
-  (company-dabbrev-downcase 0)
-  (company-idle-delay 0)
-  )
-
-;; flycheck
-;; ========================================
-(use-package flycheck
-  :ensure t
-  :delight
-  :defer 2
-
-  :init
-  (global-flycheck-mode)
-
-  :custom
-  (flycheck-display-errors-delay .3)
-  )
-
 ;; evil
 ;; ========================================
 (use-package evil
-  :ensure t
+  :demand
 
   :config
   (evil-mode 1)
 
-  (evil-set-initial-state 'inferior-emacs-lisp-mode  'emacs)
-  (evil-set-initial-state 'calendar-mode             'emacs)
-  (evil-set-initial-state 'nrepl-mode                'insert)
-  (evil-set-initial-state 'pylookup-mode             'emacs)
-  (evil-set-initial-state 'comint-mode               'normal)
-  (evil-set-initial-state 'shell-mode                'insert)
-  (evil-set-initial-state 'git-rebase-mode           'emacs)
-  (evil-set-initial-state 'term-mode                 'emacs)
-  (evil-set-initial-state 'help-mode                 'emacs)
-  (evil-set-initial-state 'grep-mode                 'emacs)
-  (evil-set-initial-state 'bc-menu-mode              'emacs)
-  (evil-set-initial-state 'magit-branch-manager-mode 'emacs)
-  (evil-set-initial-state 'magit-popup-mode          'emacs)
-  (evil-set-initial-state 'magit-blame-mode          'emacs)
-  (evil-set-initial-state 'rdictcc-buffer-mode       'emacs)
-  (evil-set-initial-state 'dired-mode                'emacs)
-  (evil-set-initial-state 'wdired-mode               'normal)
-  (evil-set-initial-state 'elfeed-search-mode        'emacs)
-  (evil-set-initial-state 'elfeed-show-mode          'emacs)
-  (evil-set-initial-state 'paradox-menu-mode         'emacs)
-  (evil-set-initial-state 'git-commit-mode           'insert)
-  (evil-set-initial-state 'org-journal-mode          'insert)
-  (evil-set-initial-state 'org-capture-mode          'insert)
+  (evil-set-initial-state 'comint-mode   'normal)
+  (evil-set-initial-state 'calendar-mode 'emacs)
+  (evil-set-initial-state 'shell-mode    'insert)
+  (evil-set-initial-state 'term-mode     'emacs)
+  (evil-set-initial-state 'help-mode     'emacs)
+  (evil-set-initial-state 'grep-mode     'emacs)
 
-  (add-hook 'git-commit-mode-hook  'evil-insert-state)
-  (add-hook 'org-capture-mode-hook 'evil-insert-state)
+  (add-hook 'git-commit-mode-hook 'evil-insert-state)
 
   :custom
   (indent-tabs-mode nil)
-  (evil-want-C-i-jump nil) ;; Keep tab for org-mode
 
   :config
   (use-package evil-nerd-commenter
-	:ensure t
-
 	:bind (("M-;"   . evilnc-comment-or-uncomment-lines)
 		   ("C-c l" . evilnc-quick-comment-or-uncomment-to-the-line)
 		   ("C-c c" . evilnc-copy-and-comment-lines)
@@ -97,9 +39,15 @@
 ;; dired
 ;; ========================================
 (use-package dired
+  :ensure nil
   :demand
+
   :custom
   (dired-use-ls-dired nil)
+
+  :config
+  (evil-set-initial-state 'dired-mode  'emacs)
+  (evil-set-initial-state 'wdired-mode 'normal)
 
   :bind (("C-x C-j" . dired-jump)
 		 :map dired-mode-map
@@ -115,7 +63,9 @@
 (setq global-visual-line-mode 1)
 
 (use-package text-mode
+  :ensure nil
   :demand
+
   :config
   (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
@@ -123,28 +73,52 @@
 		 ("C-c v" . visual-line-mode)
 		 ))
 
+;; Control mode lines
+;; ========================================
+(use-package delight
+  :defer t
+  )
+
+;; company
+;; ========================================
+(use-package company
+  :defer t
+  :delight
+
+  :config
+  (global-company-mode)
+
+  :custom
+  (company-dabbrev-downcase 0)
+  (company-idle-delay 0)
+  )
+
 ;; Ag (Silver Surfer)
 ;; ========================================
 (use-package ag
-  :ensure t
   :defer t)
 
 ;; Magit
 ;; ========================================
 (use-package magit
-  :ensure t
   :defer t
 
   :custom
   (magit-refresh-status-buffer nil)
   (smerge-command-prefix "C-c C-v")
 
+  :config
+  (evil-set-initial-state 'magit-branch-manager-mode 'emacs)
+  (evil-set-initial-state 'magit-popup-mode          'emacs)
+  (evil-set-initial-state 'magit-blame-mode          'emacs)
+  (evil-set-initial-state 'git-commit-mode           'insert)
+  (evil-set-initial-state 'git-rebase-mode           'emacs)
+
   :bind ("C-x C-g" . magit-status))
 
 ;; Helm
 ;; ========================================
 (use-package helm
-  :ensure t
   :defer t
   :delight
 
@@ -161,15 +135,12 @@
 
   :config
   (use-package helm-ag
-	:ensure t
 	:defer t)
 
   (use-package swiper-helm
-	:ensure t
 	:defer t)
 
   (use-package helm-rg
-	:ensure t
 	:defer t)
 
   :bind (("M-x"     . helm-M-x)
@@ -184,7 +155,7 @@
 ;; projectile
 ;; ========================================
 (use-package projectile
-  :ensure t
+  :defer t
   :delight
 
   :config
@@ -201,7 +172,6 @@
 
   :config
   (use-package helm-projectile
-	:ensure t
 	:defer t
 	:config (helm-projectile-on)
 	:bind ("C-x p" . helm-projectile)
@@ -210,7 +180,6 @@
 ;; elfeed
 ;; ========================================
 (use-package elfeed
-  :ensure t
   :defer t
 
   :custom
@@ -226,12 +195,28 @@
 	 ("http://www.reddit.com/r/pythontips/.rss" python reddit)
 	 ))
 
+  :config
+  (evil-set-initial-state 'elfeed-search-mode 'emacs)
+  (evil-set-initial-state 'elfeed-show-mode   'emacs)
+
   :bind ("C-x w" . elfeed))
+
+;; flycheck
+;; ========================================
+(use-package flycheck
+  :defer t
+  :delight
+
+  :init
+  (global-flycheck-mode)
+
+  :custom
+  (flycheck-display-errors-delay .3)
+  )
 
 ;; flyspell
 ;; ========================================
 (use-package flyspell
-  :ensure t
   :defer t
   :delight
 
@@ -252,7 +237,6 @@
 
   :config
   (use-package helm-flyspell
-	:ensure t
 	:defer t)
 
   :bind (("<f8>" . helm-flyspell-correct)
@@ -263,19 +247,9 @@
 
   :if (memq window-system '(mac ns x)))
 
-;; multi-term
-;; ========================================
-(use-package multi-term
-  :ensure t
-  :defer t
-
-  :custom
-  (multi-term-program "/bin/zsh"))
-
 ;; vdiff
 ;; ========================================
 (use-package vdiff
-  :ensure t
   :defer t
 
   :bind (:map vdiff-mode-prefix-map

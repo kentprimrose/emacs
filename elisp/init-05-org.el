@@ -16,9 +16,13 @@
 
   :config
   (turn-on-auto-fill)
+  (evil-set-initial-state 'org-journal-mode 'insert)
+  (evil-set-initial-state 'org-capture-mode 'insert)
+  (add-hook 'org-capture-mode-hook 'evil-insert-state)
 
   ;; General Setup
   :custom
+  (evil-want-C-i-jump nil) ;; Keep tab for org-mode
   (vc-follow-symlinks t) ;; needed for work access to personal org
   (org-startup-indented t)
   (org-startup-align-all-tables t)

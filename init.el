@@ -44,9 +44,9 @@
 
 ;; Bootstrap use-package
 (setq-default
- ;; use-package-always-ensure t
+ use-package-always-ensure t
  ;; use-package-always-defer t
- use-package-verbose nil
+ use-package-verbose t
  use-package-expand-minimally t
  use-package-enable-imenu-support t
  )

@@ -7,6 +7,10 @@
 
 ;;; Code:
 
+;; Ignore case everywhere
+;; ========================================
+(setq completion-ignore-case t)
+
 ;; Shortcuts
 ;; =====================================================================
 (global-set-key (kbd "C-x C-b") 'ibuffer)

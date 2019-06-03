@@ -7,6 +7,24 @@
 
 ;;; Code:
 
+;; Speed up startup
+(setq
+ package-enable-at-startup nil
+ message-log-max 16384
+ gc-cons-threshold 402653184
+ gc-cons-percentage 0.6
+ auto-window-vscroll nil
+ )
+(add-hook
+ 'after-init-hook
+ `(lambda ()
+	(setq
+	 gc-cons-threshold 800000
+	 gc-cons-percentage 0.1
+	 )
+	(garbage-collect)) t)
+
+;; Serve client processes
 (server-start)
 
 ;; Do this first to avoid annoying flash.

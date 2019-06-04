@@ -137,16 +137,13 @@
   (use-package helm-ag
 	:defer t)
 
-  (use-package swiper-helm
-	:defer t)
-
   (use-package helm-rg
 	:defer t)
 
   :bind (("M-x"     . helm-M-x)
 		 ("C-x b"   . helm-mini)
 		 ("C-x h"   . helm-multi-files)
-		 ("C-s"     . swiper-helm)
+		 ("C-s"     . helm-occur)
 		 ("C-h a"   . helm-apropos)
 		 ("C-x C-f" . helm-find-files)
 		 ("C-c r"   . helm-recentf)

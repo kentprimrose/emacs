@@ -119,7 +119,7 @@
 ;; Helm
 ;; ========================================
 (use-package helm
-  :defer t
+  :demand
   :delight
 
   :config

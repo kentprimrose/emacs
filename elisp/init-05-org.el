@@ -188,15 +188,11 @@
 				   (org-use-tag-inheritance t)
 				   ))
 	   (tags-todo "PRIORITY=\"A\""
-				  ((org-agenda-overriding-header "Top Priority Tasks:")
+				  ((org-agenda-overriding-header "Top Priority Tasks ===============================================")
 				   ))
 	   (tags-todo "PRIORITY=\"B\""
-				  ((org-agenda-overriding-header "Lower Priority Tasks:")
+				  ((org-agenda-overriding-header "Lower Priority Tasks =============================================")
 				   ))
-	   (tags "PROJ+LEVEL=2"
-			 ((org-agenda-overriding-header "Active Projects:")
-			  (org-use-tag-inheritance t)
-			  ))
 	   ))
 
 	 ("r" . "Review")
@@ -235,26 +231,23 @@
 
 	 ("p" "Planning"
 	  ((tags-todo "-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO"
-				  ((org-agenda-overriding-header "Open Tasks:")
+				  ((org-agenda-overriding-header "Open Tasks:=======================================================")
 				   ))
 	   (tags-todo "PRIORITY=\"A\""
-				  ((org-agenda-overriding-header "Top Priority Tasks:")
+				  ((org-agenda-overriding-header "Top Priority Tasks:===============================================")
 				   ))
 	   (tags-todo "PRIORITY=\"B\""
-				  ((org-agenda-overriding-header "Lower Priority Tasks:")
+				  ((org-agenda-overriding-header "Lower Priority Tasks:=============================================")
 				   ))
 	   (tags-todo "PRIORITY=\"C\""
-				  ((org-agenda-overriding-header "Low Priority Tasks:")
+				  ((org-agenda-overriding-header "Low Priority Tasks:===============================================")
 				   ))
-	   (tags "PROJ+LEVEL=2"
-			 ((org-agenda-overriding-header "Active Projects:")
+	   (tags "+PROJ+LEVEL>1"
+			 ((org-agenda-overriding-header "Active Projects:==================================================")
 			  (org-use-tag-inheritance t)
 			  ))
-	   (stuck "" ((org-agenda-overriding-header "Stuck:")
-				  (org-use-tag-inheritance t)
-				  ))
 	   (tags "IDEA+LEVEL=2-TODO={DONE}-TODO={CNCL}"
-			 ((org-agenda-overriding-header "Someday/Maybe:")
+			 ((org-agenda-overriding-header "Someday/Maybe:====================================================")
 			  (org-use-tag-inheritance t)
 			  ))
 	   ))

@@ -108,11 +108,14 @@
   (smerge-command-prefix "C-c C-v")
 
   :config
-  (evil-set-initial-state 'magit-branch-manager-mode 'emacs)
-  (evil-set-initial-state 'magit-popup-mode          'emacs)
-  (evil-set-initial-state 'magit-blame-mode          'emacs)
-  (evil-set-initial-state 'git-commit-mode           'insert)
-  (evil-set-initial-state 'git-rebase-mode           'emacs)
+  ;; (evil-set-initial-state 'magit-branch-manager-mode 'emacs)
+  ;; (evil-set-initial-state 'magit-popup-mode          'emacs)
+  ;; (evil-set-initial-state 'magit-blame-mode          'emacs)
+  ;; (evil-set-initial-state 'git-commit-mode           'insert)
+  ;; (evil-set-initial-state 'git-rebase-mode           'emacs)
+
+  (use-package evil-magit
+	:defer t)
 
   :bind ("C-x C-g" . magit-status))
 

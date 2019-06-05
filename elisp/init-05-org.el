@@ -67,22 +67,22 @@
    '(
 	 ("t" "Todo" entry
 	  (file+headline org-default-notes-file "Tasks")
-	  "* TODO %^{Description} %^g\nCREATED: %U %?")
+	  "* TODO %^{Description}\n  CREATED: %U %?")
 	 ("s" "Step" entry
 	  (file+headline org-default-notes-file "Tasks")
-	  "* STEP %^{Description} %^g\nCREATED: %U %?")
+	  "* STEP %^{Description}\n  CREATED: %U %?")
 	 ("p" "Project" entry
 	  (file+headline org-default-notes-file "Projects")
-	  "* %^{Description} [\] :PROJ:\nCREATED: %U %?")
+	  "* %^{Description} [\] :PROJ:\n  CREATED: %U %?")
 	 ("a" "Appointment" entry
 	  (file+headline org-default-notes-file "Appointments")
-	  "* %^{Description} @%^{Location} %^g\n%^{When}T CREATED: %U %?")
+	  "* %^{Description} @%^{Location}\n  %^{When}T CREATED: %U %?")
 	 ("n" "Note" entry
 	  (file+headline org-default-notes-file "Notes")
-	  "* %^{Heading}\nCREATED: %U\n%i %?")
+	  "* %^{Heading}\n  CREATED: %U\n  %i %?")
 	 ("i" "Idea" entry
 	  (file+headline org-default-notes-file "Ideas")
-	  "* %^{Heading} :IDEA:\nCREATED: %U\n%i %?")
+	  "* %^{Heading} :IDEA:\n  CREATED: %U\n  %i %?")
 	 ))
 
   ;; GTD Contexts

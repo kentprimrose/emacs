@@ -37,10 +37,13 @@
   (org-reverse-note-order t)
   (org-log-state-notes-into-drawer t)
   (org-tags-column -80)
+  (org-default-priority 0)
   (org-agenda-tags-column -80)
   (org-agenda-window-setup 'current-window)
-  (org-default-priority 0)
+  (org-agenda-compact-blocks t)
   (org-agenda-start-with-log-mode t)
+  (org-agenda-inhibit-startup t)
+  (org-agenda-ignore-drawer-properties '(effort appt category)) ;; not used
   (org-catch-invisible-edits 'show-and-error)
   (org-cycle-separator-lines 0)
   (org-list-indent-offset 0)
@@ -98,7 +101,7 @@
 	 ))
 
   ;; Refile Setup
-  (org-use-tag-inheritance t)
+  ;; (org-use-tag-inheritance t) ;; needed?
   (org-refile-use-outline-path 'file)
   (org-outline-path-complete-in-steps nil)
   (org-refile-allow-creating-parent-nodes 'confirm)

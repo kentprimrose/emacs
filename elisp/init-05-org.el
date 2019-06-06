@@ -73,7 +73,7 @@
 	  "* STEP %^{Description}\n  CREATED: %U %?")
 	 ("p" "Project" entry
 	  (file+headline org-default-notes-file "Projects")
-	  "* %^{Description} [\] :PROJ:\n  CREATED: %U %?")
+	  "* %^{Description} [//] :PROJ:\n  CREATED: %U %?")
 	 ("a" "Appointment" entry
 	  (file+headline org-default-notes-file "Appointments")
 	  "* %^{Description} @%^{Location}\n  %^{When}T CREATED: %U %?")
@@ -128,6 +128,7 @@
   (org-agenda-span 7)
   (org-deadline-warning-days 14)
   (org-agenda-start-with-follow-mode nil)
+  (org-agenda-follow-indirect t)
   (org-agenda-dim-blocked-tasks t)
   (org-agenda-show-all-dates t)
   (org-agenda-skip-deadline-if-done t)

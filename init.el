@@ -36,10 +36,10 @@
 
 ;; Who ya gonna call?
 (require 'package)
-(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+;; (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
 (add-to-list 'package-archives '("melp" . "https://melpa-stable.milkbox.net/packages/") t)
-(add-to-list 'package-archives '("marm" . "https://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+;; (add-to-list 'package-archives '("marm" . "https://marmalade-repo.org/packages/") t)
 (package-initialize)
 
 ;; Bootstrap use-package

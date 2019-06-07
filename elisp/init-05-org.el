@@ -240,7 +240,7 @@
 	   (tags-todo "PRIORITY=\"C\""
 				  ((org-agenda-overriding-header "Low Priority Tasks:===============================================")
 				   ))
-	   (tags "+PROJ+LEVEL>1"
+	   (tags "+PROJ+LEVEL=2"
 			 ((org-agenda-overriding-header "Active Projects:==================================================")
 			  (org-use-tag-inheritance t)
 			  ))

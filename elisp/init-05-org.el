@@ -338,6 +338,7 @@
 		 ("C-c i" . org-time-stamp-inactive)
 		 :map org-mode-map
 		 ([s-return] . org-meta-return)
+		 ([return] . org-return-indent)
 		 :map org-agenda-mode-map
 		 ("C-c C-e" . org-export-dispatch)
 		 ))

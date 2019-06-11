@@ -355,6 +355,9 @@
   (org-journal-date-prefix "#+STARTUP: overview\n#+FILETAGS: JRNL\n#+TITLE: ")
   (org-journal-time-prefix "\n** ")
 
+  ;; :config
+  ;; (add-to-list 'org-agenda-files org-journal-dir) ;; potentially slow
+
   :bind (("C-c j" . org-journal-new-entry)
 		 ("C-c C-j" . org-journal-new-entry)
 		 ))

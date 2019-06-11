@@ -19,6 +19,7 @@
   (evil-set-initial-state 'org-journal-mode 'insert)
   (evil-set-initial-state 'org-capture-mode 'insert)
   (add-hook 'org-capture-mode-hook 'evil-insert-state)
+  (add-hook 'org-log-buffer-setup-hook 'evil-insert-state)
 
   ;; General Setup
   :custom
@@ -94,6 +95,7 @@
 	 ("@cmp"  . ?c)
 	 ("@pho"  . ?p)
 	 ("@eml"  . ?m)
+	 ("@del"  . ?d)
 	 (:endgroup . nil)
 	 ))
 
@@ -162,6 +164,7 @@
 	 ("gc" "Computer"       tags-todo "@cmp" ((org-agenda-overriding-header "Computer:")))
 	 ("gp" "Phone"          tags-todo "@pho" ((org-agenda-overriding-header "Phone:")))
 	 ("gm" "Email"          tags-todo "@eml" ((org-agenda-overriding-header "Email:")))
+	 ("gd" "Delegated"      tags-todo "@del" ((org-agenda-overriding-header "Delegated:")))
 	 ("gi" "Idea"           tags "IDEA+LEVEL=2" ((org-agenda-overriding-header "Idea:")))
 	 ("ga" "All contexts" ((tags-todo "@wrk" ((org-agenda-overriding-header "Work:")))
 						   (tags-todo "@hom" ((org-agenda-overriding-header "Home:")))
@@ -170,6 +173,7 @@
 						   (tags-todo "@cmp" ((org-agenda-overriding-header "Computer:")))
 						   (tags-todo "@pho" ((org-agenda-overriding-header "Phone:")))
 						   (tags-todo "@eml" ((org-agenda-overriding-header "Email:")))
+						   (tags-todo "@del" ((org-agenda-overriding-header "Delegated:")))
 						   (tags "IDEA+LEVEL=2" ((org-agenda-overriding-header "Idea:")))
 						   ))
 
@@ -213,7 +217,7 @@
 				   ))
 	   ))
 	 ("rr" "Require attention"
-	  ((tags-todo "-@wrk-@hom-@out-@net-@cmp-@pho-@eml"
+	  ((tags-todo "-@wrk-@hom-@out-@net-@cmp-@pho-@eml-@del"
 				  ((org-agenda-overriding-header "Context:")
 				   (org-use-tag-inheritance t)))
 	   (tags "REFILE+LEVEL>1"

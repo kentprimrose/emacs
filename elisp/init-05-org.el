@@ -349,7 +349,7 @@
   :defer t
 
   :custom
-  (org-journal-dir "~/org/journal/")
+  (org-journal-dir "~/org-shared/journal/")
   (org-journal-file-format "%Y%m%d\.org")
   (org-journal-date-format "%Y/%m/%d - %A")
   (org-journal-date-prefix "#+STARTUP: overview\n#+FILETAGS: JRNL\n#+TITLE: ")

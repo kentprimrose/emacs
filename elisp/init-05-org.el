@@ -74,7 +74,7 @@
 	  "* %^{Description} @%^{Location}\n  %^{When}T CREATED: %U %?")
 	 ("p" "Project" entry
 	  (file+headline org-default-notes-file "Projects")
-	  "* [PROJ] %^{Description} [//]\n  CREATED: %U %?")
+	  "* %^{Description} [//] :PROJ:\n  CREATED: %U %?")
 	 ("n" "Note" entry
 	  (file+headline org-default-notes-file "Notes")
 	  "* [NOTE] %^{Heading}\n  CREATED: %U %?")
@@ -96,11 +96,12 @@
 	 ("@pho"  . ?p)
 	 ("@eml"  . ?m)
 	 ("@del"  . ?d)
+	 ("PROJ"  . ?j)
 	 (:endgroup . nil)
 	 ))
 
   ;; Refile Setup
-  ;; (org-use-tag-inheritance t) ;; needed?
+  ;; (org-use-tag-inheritance t) ;; doesn't work for :PROJ:
   (org-refile-use-outline-path 'file)
   (org-outline-path-complete-in-steps nil)
   (org-refile-allow-creating-parent-nodes 'confirm)
@@ -165,6 +166,7 @@
 	 ("gp" "Phone"          tags-todo "@pho" ((org-agenda-overriding-header "Phone:")))
 	 ("gm" "Email"          tags-todo "@eml" ((org-agenda-overriding-header "Email:")))
 	 ("gd" "Delegated"      tags-todo "@del" ((org-agenda-overriding-header "Delegated:")))
+	 ("gj" "Projects"       tags-todo "PROJ" ((org-agenda-overriding-header "Projects:")))
 	 ("gi" "Idea"           tags "IDEA+LEVEL=2" ((org-agenda-overriding-header "Idea:")))
 	 ("ga" "All contexts" ((tags-todo "@wrk" ((org-agenda-overriding-header "Work:")))
 						   (tags-todo "@hom" ((org-agenda-overriding-header "Home:")))
@@ -174,6 +176,7 @@
 						   (tags-todo "@pho" ((org-agenda-overriding-header "Phone:")))
 						   (tags-todo "@eml" ((org-agenda-overriding-header "Email:")))
 						   (tags-todo "@del" ((org-agenda-overriding-header "Delegated:")))
+						   (tags-todo "PROJ" ((org-agenda-overriding-header "Projects:")))
 						   (tags "IDEA+LEVEL=2" ((org-agenda-overriding-header "Idea:")))
 						   ))
 
@@ -232,7 +235,7 @@
 
 
 	 ("p" "Planning"
-	  ((tags-todo "-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO"
+	  ((tags-todo "-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
 				  ((org-agenda-overriding-header "Open Tasks:=======================================================")
 				   ))
 	   (tags-todo "PRIORITY=\"A\""

@@ -74,13 +74,13 @@
 	  "* %^{Description} @%^{Location}\n  %^{When}T CREATED: %U %?")
 	 ("p" "Project" entry
 	  (file+headline org-default-notes-file "Projects")
-	  "* %^{Description} [//] :PROJ:\n  CREATED: %U %?")
+	  "* %^{Description} [/] :PROJ:\n  CREATED: %U %?")
 	 ("n" "Note" entry
 	  (file+headline org-default-notes-file "Notes")
-	  "* [NOTE] %^{Heading}\n  CREATED: %U %?")
+	  "* %^{Description}\n  CREATED: %U %?")
 	 ("i" "Idea" entry
 	  (file+headline org-default-notes-file "Ideas")
-	  "* [IDEA] %^{Heading}\n  CREATED: %U %?")
+	  "* %^{Description}\n  CREATED: %U %?")
 	 ))
 
   ;; GTD Contexts
@@ -106,11 +106,12 @@
   (org-outline-path-complete-in-steps nil)
   (org-refile-allow-creating-parent-nodes 'confirm)
   (org-refile-targets '((org-agenda-files :maxlevel . 1)
-						(org-agenda-files :tag . "PROJ")))
+						(org-agenda-files :tag . "PROJ")
+						(org-agenda-files :tag . "DELG")))
 
   ;; Workflow Setup
   (org-todo-keywords
-   '((sequence "TODO(t)" "WAIT(w@/!)" "DELG(g@/!)" "|" "DONE(d)" "CNCL(x@/!)")
+   '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d)" "CNCL(x@/!)")
 	 (sequence "STEP(s)" "NEXT(n)" "|" "DONE(d)" "CNCL(x@/!)")
 	 ))
 
@@ -119,7 +120,6 @@
 	 ("STEP" :foreground "LightBlue"      :weight bold)
 	 ("NEXT" :foreground "Blue"           :weight bold)
 	 ("WAIT" :foreground "Yellow"         :weight bold)
-	 ("DELG" :foreground "LightSalmon"    :weight bold)
 	 ("DONE" :foreground "ForestGreen"    :weight bold)
 	 ("CNCL" :foreground "Red"            :weight bold)
 	 ))
@@ -247,7 +247,7 @@
 	   (tags-todo "PRIORITY=\"C\""
 				  ((org-agenda-overriding-header "Low Priority Tasks: ===============================================")
 				   ))
-	   (tags "+PROJ+LEVEL=2"
+	   (tags "-ARCHIVE+PROJ+LEVEL=2"
 			 ((org-agenda-overriding-header "Active Projects: ==================================================")
 			  (org-use-tag-inheritance t)
 			  ))
@@ -301,12 +301,12 @@
 	   (org-agenda-skip-function
 		'(org-agenda-skip-entry-if 'todo '("DONE" "CNCL")))
 	   ))
-	 ("xx" "Next Actions" tags "+TODO={TODO\\\|NEXT\\\|DELG\\\|WAIT}"
+	 ("xx" "Next Actions" tags "+TODO={TODO\\\|NEXT\\\|WAIT}"
 	  ((org-agenda-overriding-header "Next Actions:")
 	   (org-use-tag-inheritance nil)
 	   (org-agenda-prefix-format "  %-7:c %s")
 	   ))
-	 ("xw" "Waiting" tags "+TODO={DELG\\\|WAIT}"
+	 ("xw" "Waiting" tags "+TODO={WAIT}"
 	  ((org-agenda-overriding-header "Waiting Tasks:")
 	   (org-use-tag-inheritance nil)
 	   ))

@@ -20,6 +20,8 @@
   (evil-set-initial-state 'org-capture-mode 'insert)
   (add-hook 'org-capture-mode-hook 'evil-insert-state)
   (add-hook 'org-log-buffer-setup-hook 'evil-insert-state)
+  (with-eval-after-load 'org
+	(add-to-list 'org-modules 'org-habit t))
 
   ;; General Setup
   :custom
@@ -132,8 +134,9 @@
   (org-agenda-dim-blocked-tasks t)
   (org-agenda-show-all-dates t)
   (org-agenda-skip-deadline-if-done t)
-  (org-agenda-skip-scheduled-if-done t)
+  ;; (org-agenda-skip-scheduled-if-done t)
   (org-agenda-skip-scheduled-if-deadline-is-shown t)
+  (org-habit-show-habits-only-for-today nil)
   (org-agenda-start-on-weekday nil)
   (org-agenda-use-time-grid nil)
   (org-sort-agenda-noeffort-is-high t)
@@ -235,8 +238,11 @@
 
 
 	 ("p" "Planning"
-	  ((tags-todo "-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
+	  ((tags-todo "-STYLE=\"habit\"-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
 				  ((org-agenda-overriding-header "Open Tasks: =======================================================")
+				   ))
+	   (tags "STYLE=\"habit\""
+				  ((org-agenda-overriding-header "Habits: ===========================================================")
 				   ))
 	   (tags-todo "PRIORITY=\"A\""
 				  ((org-agenda-overriding-header "Top Priority Tasks: ===============================================")

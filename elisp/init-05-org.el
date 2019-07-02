@@ -195,6 +195,9 @@
 				   (org-agenda-use-time-grid t)
 				   (org-use-tag-inheritance t)
 				   ))
+	   (tags-todo "-STYLE=\"habit\"-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
+				  ((org-agenda-overriding-header "Open Tasks: =======================================================")
+				   ))
 	   (tags-todo "PRIORITY=\"A\""
 				  ((org-agenda-overriding-header "Top Priority Tasks: ===============================================")
 				   ))
@@ -242,8 +245,8 @@
 				  ((org-agenda-overriding-header "Open Tasks: =======================================================")
 				   ))
 	   (tags "STYLE=\"habit\""
-				  ((org-agenda-overriding-header "Habits: ===========================================================")
-				   ))
+			 ((org-agenda-overriding-header "Habits: ===========================================================")
+			  ))
 	   (tags-todo "PRIORITY=\"A\""
 				  ((org-agenda-overriding-header "Top Priority Tasks: ===============================================")
 				   ))

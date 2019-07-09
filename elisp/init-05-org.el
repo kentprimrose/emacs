@@ -184,8 +184,7 @@
 						   ))
 
 	 ("d" "Daily Agenda"
-	  ((agenda "" ((org-agenda-overriding-header "Today's Schedule:")
-				   (org-agenda-span 'day)
+	  ((agenda "" ((org-agenda-span 'day)
 				   (org-agenda-ndays 1)
 				   (org-agenda-start-on-weekday nil)
 				   (org-agenda-start-day "+0d")

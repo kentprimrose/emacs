@@ -194,14 +194,19 @@
 				   (org-agenda-use-time-grid t)
 				   (org-use-tag-inheritance t)
 				   ))
-	   (tags-todo "-STYLE=\"habit\"-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
+	   (tags-todo "-PROJ-STYLE=\"habit\"-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
 				  ((org-agenda-overriding-header "Open Tasks: =======================================================")
+				   (org-use-tag-inheritance t)
 				   ))
 	   (tags-todo "PRIORITY=\"A\""
 				  ((org-agenda-overriding-header "Top Priority Tasks: ===============================================")
 				   ))
 	   (tags-todo "PRIORITY=\"B\""
 				  ((org-agenda-overriding-header "Lower Priority Tasks: =============================================")
+				   ))
+	   (tags-todo "PROJ"
+				  ((org-agenda-overriding-header "Projects: =========================================================")
+				   (org-use-tag-inheritance t)
 				   ))
 	   ))
 
@@ -240,11 +245,12 @@
 
 
 	 ("p" "Planning"
-	  ((tags-todo "-STYLE=\"habit\"-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
+	  ((tags-todo "-PROJ-STYLE=\"habit\"-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
 				  ((org-agenda-overriding-header "Open Tasks: =======================================================")
 				   ))
-	   (tags "STYLE=\"habit\""
-			 ((org-agenda-overriding-header "Habits: ===========================================================")
+	   (tags "-ARCHIVE+PROJ+LEVEL=2"
+			 ((org-agenda-overriding-header "Active Projects: ==================================================")
+			  (org-use-tag-inheritance t)
 			  ))
 	   (tags-todo "PRIORITY=\"A\""
 				  ((org-agenda-overriding-header "Top Priority Tasks: ===============================================")
@@ -255,13 +261,12 @@
 	   (tags-todo "PRIORITY=\"C\""
 				  ((org-agenda-overriding-header "Low Priority Tasks: ===============================================")
 				   ))
-	   (tags "-ARCHIVE+PROJ+LEVEL=2"
-			 ((org-agenda-overriding-header "Active Projects: ==================================================")
-			  (org-use-tag-inheritance t)
-			  ))
 	   (tags "IDEA+LEVEL=2-TODO={DONE}-TODO={CNCL}"
 			 ((org-agenda-overriding-header "Someday/Maybe: ====================================================")
 			  (org-use-tag-inheritance t)
+			  ))
+	   (tags "STYLE=\"habit\""
+			 ((org-agenda-overriding-header "Habits: ===========================================================")
 			  ))
 	   ))
 

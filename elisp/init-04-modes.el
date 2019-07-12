@@ -246,5 +246,9 @@
 			  ("C-c" . vdiff-mode-prefix-map)
 			  ))
 
+;; tramp
+;; ========================================
+(setq tramp-default-method "ssh")
+
 (provide 'init-04-modes)
 ;;; init-04-modes.el ends here

@@ -1,4 +1,4 @@
-;; -*- emacs-lisp -*- <19/07/14 13:50:03 /Users/kentprimrose/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <19/07/14 14:54:28 /Users/kentprimrose/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; You can delete it, forcing Tramp to reapply the checks.
 
@@ -19,4 +19,5 @@
   ("perl-cwd-realpath" t)
   ("perl" "\\perl")
   ("case-insensitive" nil)
-  ("readlink" "\\readlink")))
+  ("readlink" "\\readlink")
+  ("git" "\\git")))

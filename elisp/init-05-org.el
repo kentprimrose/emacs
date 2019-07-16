@@ -210,6 +210,12 @@
 				   ))
 	   ))
 
+	 ("h" "Habits"
+	  ((tags "STYLE=\"habit\""
+			 ((org-agenda-overriding-header "Habits: ===========================================================")
+			  ))
+	   ))
+
 	 ("r" . "Review")
 	 ("rw" "Weekly Review"
 	  ((agenda "" ((org-agenda-overriding-header "Agenda:")

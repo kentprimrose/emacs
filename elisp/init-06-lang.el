@@ -116,12 +116,18 @@
   :mode "\\.js\\'"
   :interpreter "node"
 
+  :config
+  (use-package add-node-modules-path
+	:ensure t
+	:defer t)
+
   :custom
   (js2-mode-show-parse-errors nil)
   (js2-mode-show-strict-warnings nil)
   (js-indent-level 2)
   (evil-shift-width 2)
   (truncate-lines t)
+  (add-node-modules-path)
   )
 
 ;; json
@@ -151,6 +157,13 @@
   :custom
   (markdown-command "multimarkdown")
   )
+
+;; php-mode
+;; ========================================
+(use-package php-mode
+  :ensure t
+  :defer t
+  :mode "\\.php\\'")
 
 (provide 'init-06-lang)
 ;;; init-06-lang.el ends here

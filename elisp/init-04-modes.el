@@ -250,5 +250,13 @@
 ;; ========================================
 (setq tramp-default-method "ssh")
 
+;; restclient
+;; ========================================
+(use-package restclient
+  :ensure t
+  :defer t
+  :mode "\\.rest\\'"
+  )
+
 (provide 'init-04-modes)
 ;;; init-04-modes.el ends here

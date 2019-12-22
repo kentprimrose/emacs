@@ -21,6 +21,7 @@ projectile-bookmarks.eld
 smex-items
 /eshell/history
 /eshell/lastdir
-custom.el
+
+/custom.el
 
 \#*\#

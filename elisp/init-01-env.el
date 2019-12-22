@@ -48,8 +48,6 @@
 ;; Linux (X) only settings
 ;; ========================================
 (when (memq window-system '(x))
-  (custom-set-faces
-   '(default ((t (:family "Liberation Mono" :foundry "1ASC" :slant normal :weight normal :height 90 :width normal)))))
   )
 
 (provide 'init-01-env)

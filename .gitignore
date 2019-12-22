@@ -3,6 +3,10 @@
 /.python-environments
 /url
 /transient
+/tramp
+/var
+/image-dired
+/session.*
 
 ido.last
 network-security.data
@@ -10,11 +14,13 @@ recentf
 bookmarks
 
 *.dat
+*.elc
 .last-package-update-day
 .org-id-locations
 projectile-bookmarks.eld
 smex-items
 /eshell/history
 /eshell/lastdir
+custom.el
 
 \#*\#

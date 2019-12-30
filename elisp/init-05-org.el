@@ -61,8 +61,8 @@
 	 ("1." . "-") ("1)" . "-")
 	 ))
 
-  (org-agenda-files '("~/org" "~/org/archive" "~/org-shared" "~/org-shared/archive"))
-  (org-default-notes-file "~/org/capture.org")
+  (org-agenda-files '("~/org-local" "~/org-local/archive" "~/org-shared" "~/org-shared/archive"))
+  (org-default-notes-file "~/org-local/capture.org")
   (org-archive-location "archive/%s_archive::")
 
   ;; Capture Setup
@@ -142,7 +142,7 @@
   (org-sort-agenda-noeffort-is-high t)
   (org-agenda-include-diary t)
   (org-stuck-projects '("PROJ+LEVEL=2/-DONE" ("NEXT" "TODO")))
-  (diary-file "~/org/diary")
+  (diary-file "~/org-local/diary")
   (org-agenda-diary-file 'diary-file)
 
   (org-agenda-remove-tags t)
@@ -402,9 +402,9 @@
 	(evil-set-initial-state 'org-brain-visualize-mode 'emacs))
 
   :custom
-  (org-brain-path "~/org/brain")
+  (org-brain-path "~/org-local/brain")
   (org-id-track-globally t)
-  (org-id-locations-file "~/org/.org-id-locations")
+  (org-id-locations-file "~/org-local/.org-id-locations")
 
   :bind ("C-c C-x b" . org-brain-visualize))
 

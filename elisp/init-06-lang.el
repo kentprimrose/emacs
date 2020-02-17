@@ -89,23 +89,23 @@
 
   :config
   (use-package elpy
-    :ensure t
-    :defer t
-
-    :config
-    (elpy-enable)
-    (setenv "WORKON_HOME" "~/Virtualenvs"))
+	:ensure t
+	:defer t
+	
+	:config
+	(elpy-enable)
+	(setenv "WORKON_HOME" "~/Virtualenvs"))
 
   (use-package virtualenvwrapper
-    :ensure t
-    :defer t
+	:ensure t
+	:defer t
 
-    :custom
-    (venv-location "~/Virtualenvs"))
+	:custom
+	(venv-location "~/Virtualenvs"))
 
   (use-package blacken
-    :ensure t
-    :defer t)
+	:ensure t
+	:defer t)
   )
 
 ;; javascript

@@ -106,6 +106,10 @@
   (use-package blacken
     :ensure t
     :defer t)
+
+  (use-package pylint
+	:ensure t
+	:defer t)
   )
 
 ;; javascript

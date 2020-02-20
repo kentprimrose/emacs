@@ -89,25 +89,28 @@
 
   :config
   (use-package elpy
-    :ensure t
-    :defer t
-
-    :config
-    (elpy-enable)
-    (setenv "WORKON_HOME" "~/Virtualenvs"))
+	:ensure t
+	:defer t
+	
+	:config
+	(elpy-enable)
+	(setenv "WORKON_HOME" "~/Virtualenvs"))
 
   (use-package virtualenvwrapper
-    :ensure t
-    :defer t
+	:ensure t
+	:defer t
 
-    :custom
-    (venv-location "~/Virtualenvs"))
+	:custom
+	(venv-location "~/Virtualenvs"))
 
   (use-package blacken
+<<<<<<< HEAD
     :ensure t
     :defer t)
 
   (use-package pylint
+=======
+>>>>>>> 452eba9c2d712096cf62d2078be94cc547e7c54b
 	:ensure t
 	:defer t)
   )

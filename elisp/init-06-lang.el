@@ -104,13 +104,10 @@
 	(venv-location "~/Virtualenvs"))
 
   (use-package blacken
-<<<<<<< HEAD
     :ensure t
     :defer t)
 
   (use-package pylint
-=======
->>>>>>> 452eba9c2d712096cf62d2078be94cc547e7c54b
 	:ensure t
 	:defer t)
   )

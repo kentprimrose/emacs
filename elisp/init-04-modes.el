@@ -154,6 +154,14 @@
 
   :config
   (projectile-mode +1)
+  (setq projectile-enable-caching t)
+  (setq projectile-indexing-method 'alien)
+
+  (setq projectile-globally-ignored-file-suffixes
+		'("#" "~" ".swp" ".o" ".so" ".exe" ".dll" ".elc" ".pyc" ".jar" "*.class"))
+  (setq projectile-globally-ignored-directories
+		'(".git" "node_modules" "__pycache__" ".vs"))
+  (setq projectile-globally-ignored-files '("TAGS" "tags" ".DS_Store"))
 
   :custom
   (projectile-global-mode t)

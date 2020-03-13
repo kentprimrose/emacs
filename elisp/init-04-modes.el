@@ -153,31 +153,37 @@
   :delight
 
   :config
-  (projectile-mode +1)
-  (setq projectile-enable-caching t)
-  (setq projectile-indexing-method 'alien)
+  ;; (setq projectile-enable-caching t)
+  ;; (setq projectile-indexing-method 'alien)
 
   (setq projectile-globally-ignored-file-suffixes
 		'("#" "~" ".swp" ".o" ".so" ".exe" ".dll" ".elc" ".pyc" ".jar" "*.class"))
   (setq projectile-globally-ignored-directories
 		'(".git" "node_modules" "__pycache__" ".vs"))
   (setq projectile-globally-ignored-files '("TAGS" "tags" ".DS_Store"))
+  (projectile-mode +1)
 
-  :custom
-  (projectile-global-mode t)
-  (projectile-mode-line
+  ;;   :custom
+  (setq-default
+   projectile-global-mode t
+   projectile-mode-line
    '(:eval
-	 (if (file-remote-p default-directory)
-		 " Projectile"
-	   (format " Proj[%s]"
-			   (projectile-project-name)))))
+     (if (file-remote-p default-directory)
+         " Projectile"
+       (format " Proj[%s]"
+               (projectile-project-name)))))
 
-  :config
+  ;;   :config
   (use-package helm-projectile
-	:defer t
-	:config (helm-projectile-on)
-	:bind ("C-x p" . helm-projectile)
-	))
+    :defer t
+    :config (helm-projectile-on)
+    :bind ("C-x p" . helm-projectile)
+    )
+
+  :bind (:map projectile-mode-map
+              ("C-c p" . projectile-command-map)
+              )
+  )
 
 ;; elfeed
 ;; ========================================
@@ -187,15 +193,15 @@
   :custom
   (elfeed-feeds
    '(("http://planet.emacsen.org/atom.xml" emacs emacsen)
-	 ("http://batsov.com/atom.xml" emacs batsov)
-	 ("https://nyoboo.com/channels/6-python-news/messages.rss" python pyweekly)
-	 ("http://feeds.feedburner.com/PythonInsider" python insider)
-	 ("http://planetpython.org/rss20.xml python" python planet)
-	 ("http://pyfound.blogspot.com/feeds/posts/default" python pyfound)
-	 ("http://pycon.blogspot.com/feeds/posts/default" python pycon)
-	 ("http://www.reddit.com/r/python/.rss" python reddit)
-	 ("http://www.reddit.com/r/pythontips/.rss" python reddit)
-	 ))
+     ("http://batsov.com/atom.xml" emacs batsov)
+     ("https://nyoboo.com/channels/6-python-news/messages.rss" python pyweekly)
+     ("http://feeds.feedburner.com/PythonInsider" python insider)
+     ("http://planetpython.org/rss20.xml python" python planet)
+     ("http://pyfound.blogspot.com/feeds/posts/default" python pyfound)
+     ("http://pycon.blogspot.com/feeds/posts/default" python pycon)
+     ("http://www.reddit.com/r/python/.rss" python reddit)
+     ("http://www.reddit.com/r/pythontips/.rss" python reddit)
+     ))
 
   :config
   (evil-set-initial-state 'elfeed-search-mode 'emacs)
@@ -224,10 +230,10 @@
 
   :init
   (defun flyspell-check-next-highlighted-word ()
-	"Custom function to spell check next highlighted word."
-	(interactive)
-	(flyspell-goto-next-error)
-	(ispell-word))
+    "Custom function to spell check next highlighted word."
+    (interactive)
+    (flyspell-goto-next-error)
+    (ispell-word))
   (add-hook 'text-mode-hook 'flyspell-mode)
   (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
   (add-hook 'python-mode-hook 'flyspell-prog-mode)
@@ -238,10 +244,10 @@
   (ispell-program-name "aspell")
 
   :bind (("<f8>" . ispell-word)
-		 ("C-S-<f8>" . flyspell-mode)
-		 ("C-M-<f8>" . flyspell-buffer)
-		 ("M-<f8>" . flyspell-check-next-highlighted-word)
-		 )
+         ("C-S-<f8>" . flyspell-mode)
+         ("C-M-<f8>" . flyspell-buffer)
+         ("M-<f8>" . flyspell-check-next-highlighted-word)
+         )
 
   :if (memq window-system '(mac ns x)))
 
@@ -251,8 +257,8 @@
   :defer t
 
   :bind (:map vdiff-mode-prefix-map
-			  ("C-c" . vdiff-mode-prefix-map)
-			  ))
+              ("C-c" . vdiff-mode-prefix-map)
+              ))
 
 ;; tramp
 ;; ========================================

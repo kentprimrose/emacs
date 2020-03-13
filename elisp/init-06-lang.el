@@ -81,37 +81,6 @@
 
 ;; python
 ;; ========================================
-;;(use-package python
-;;  :ensure t
-;;  :defer t
-;;  :mode ("\\.py\\'" . python-mode)
-;;  :interpreter "python"
-;;
-;;  :config
-;;  (use-package elpy
-;;	:ensure t
-;;	:defer t
-;;	
-;;	:config
-;;	(elpy-enable)
-;;	(setenv "WORKON_HOME" "~/Virtualenvs"))
-;;
-;;  (use-package virtualenvwrapper
-;;	:ensure t
-;;	:defer t
-;;
-;;	:custom
-;;	(venv-location "~/Virtualenvs"))
-;;
-;;  (use-package blacken
-;;    :ensure t
-;;    :defer t)
-;;
-;;  (use-package pylint
-;;	:ensure t
-;;	:defer t)
-;;  )
-
 (use-package elpy
   :ensure t
   :init

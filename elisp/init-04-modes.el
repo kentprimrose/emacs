@@ -157,13 +157,12 @@
   ;; (setq projectile-indexing-method 'alien)
 
   (setq projectile-globally-ignored-file-suffixes
-		'("#" "~" ".swp" ".o" ".so" ".exe" ".dll" ".elc" ".pyc" ".jar" "*.class"))
+        '("#" "~" ".swp" ".o" ".so" ".exe" ".dll" ".elc" ".pyc" ".jar" "*.class"))
   (setq projectile-globally-ignored-directories
-		'(".git" "node_modules" "__pycache__" ".vs"))
+        '(".git" "node_modules" "__pycache__" ".vs"))
   (setq projectile-globally-ignored-files '("TAGS" "tags" ".DS_Store"))
   (projectile-mode +1)
 
-  ;;   :custom
   (setq-default
    projectile-global-mode t
    projectile-mode-line
@@ -173,16 +172,16 @@
        (format " Proj[%s]"
                (projectile-project-name)))))
 
-  ;;   :config
   (use-package helm-projectile
     :defer t
     :config (helm-projectile-on)
     :bind ("C-x p" . helm-projectile)
     )
 
-  :bind (:map projectile-mode-map
-              ("C-c p" . projectile-command-map)
-              )
+  :bind (("M-p f" . projectile-find-file)
+         ("M-p d" . projectile-find-dir)
+         ("M-p t" . projectile-find-tag)
+         ("M-p r" . projectile-ripgrep))
   )
 
 ;; elfeed

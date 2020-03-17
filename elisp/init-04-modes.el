@@ -138,6 +138,7 @@
 	:defer t)
 
   :bind (("M-x"     . helm-M-x)
+		 ("s-x"     . helm-M-x)
 		 ("C-x b"   . helm-mini)
 		 ("C-x h"   . helm-multi-files)
 		 ("C-s"     . helm-occur)

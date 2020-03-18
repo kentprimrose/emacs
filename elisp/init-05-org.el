@@ -214,8 +214,6 @@
                    ))
        ))
 
-	 ("b" "Brain" ((org-brain-visualize)))
-	 
      ("h" "Habits"
       ((tags "STYLE=\"habit\""
              ((org-agenda-overriding-header "Habits: ===========================================================")

@@ -84,7 +84,9 @@
 (use-package elpy
   :ensure t
   :init
-  (elpy-enable))
+  (elpy-enable)
+  (setq elpy-rpc-virtualenv-path 'current)
+  )
 
 ;; javascript
 ;; ========================================

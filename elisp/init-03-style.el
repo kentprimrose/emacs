@@ -37,11 +37,17 @@
 ;;   :config
 ;;   (load-theme 'overcast t))
 
-(use-package color-theme-sanityinc-tomorrow
+;; (use-package color-theme-sanityinc-tomorrow
+;;   :demand
+;;   :ensure t
+;;   :config
+;;   (load-theme 'sanityinc-tomorrow-bright t))
+
+(use-package modus-vivendi-theme
   :demand
   :ensure t
   :config
-  (load-theme 'sanityinc-tomorrow-bright t))
+  (load-theme 'modus-vivendi))
 
 ;; (use-package alect-themes
 ;;   :demand

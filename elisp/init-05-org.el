@@ -361,7 +361,10 @@
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
          ("C-c l" . org-store-link)
-         ("C-c b" . org-switchb)
+         ("C-c u" . org-switchb)
+         ("C-c b" . org-brain-visualize)
+         ("C-c g" . org-brain-goto)
+         ("C-c s" . helm-org-rifle)
          ("C-c i" . org-time-stamp-inactive)
          :map org-mode-map
          ([s-return] . org-meta-return)
@@ -397,21 +400,19 @@
 
   :init
   (with-eval-after-load 'evil
-    (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
+	(evil-set-initial-state 'org-brain-visualize-mode 'emacs))
 
   :custom
   (org-brain-path "~/org-shared/brain")
   (org-id-track-globally t)
   (org-id-locations-file "~/org-shared/.org-id-locations")
-  (org-brain-visualize-default-choices 'all)
-
-  :bind ("C-c C-b" . org-brain-visualize))
+  (org-brain-visualize-default-choices 'files)
+  (org-brain-include-file-entries t)
+  (org-brain-file-entries-use-title t))
 
 (use-package helm-org-rifle
   :ensure t
-  :defer t
-
-  :bind ("C-c s" . helm-org-rifle))
+  :defer t)
 
 (provide 'init-05-org)
 ;;; init-05-org.el ends here

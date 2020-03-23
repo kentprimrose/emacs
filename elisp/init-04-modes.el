@@ -10,7 +10,7 @@
 ;; evil
 ;; ========================================
 (use-package evil
-  :demand
+  :ensure t
 
   :config
   (evil-mode 1)
@@ -29,6 +29,8 @@
 
   :config
   (use-package evil-nerd-commenter
+	:ensure t
+	
 	:bind (("M-;"   . evilnc-comment-or-uncomment-lines)
 		   ("C-c l" . evilnc-quick-comment-or-uncomment-to-the-line)
 		   ("C-c c" . evilnc-copy-and-comment-lines)
@@ -36,9 +38,10 @@
 
 ;; dired
 ;; ========================================
+;; No real package - just using :config and :bind
+
 (use-package dired
   :ensure nil
-  :demand
 
   :custom
   (dired-use-ls-dired nil)
@@ -57,11 +60,12 @@
 
 ;; text modes
 ;; ========================================
+;; No real package - just using :config and :bind
+
 (setq global-visual-line-mode 1)
 
 (use-package text-mode
   :ensure nil
-  :demand
 
   :config
   (add-hook 'text-mode-hook 'turn-on-auto-fill)
@@ -72,11 +76,13 @@
 ;; Control mode lines
 ;; ========================================
 (use-package delight
+  :ensure t
   :defer t)
 
 ;; company
 ;; ========================================
 (use-package company
+  :ensure t
   :defer t
   :delight
 
@@ -90,12 +96,13 @@
 ;; Ag (Silver Surfer)
 ;; ========================================
 (use-package ag
+  :ensure t
   :defer t)
 
 ;; Magit
 ;; ========================================
 (use-package magit
-  :defer t
+  :ensure t
 
   :custom
   (magit-refresh-status-buffer nil)
@@ -103,6 +110,7 @@
 
   :config
   (use-package evil-magit
+	:ensure t
 	:defer t)
 
   :bind ("C-x C-g" . magit-status))
@@ -110,7 +118,7 @@
 ;; Helm
 ;; ========================================
 (use-package helm
-  :demand
+  :ensure t
   :delight
 
   :config
@@ -126,9 +134,11 @@
 
   :config
   (use-package helm-ag
+	:ensure t
 	:defer t)
 
   (use-package helm-rg
+	:ensure t
 	:defer t)
 
   :bind (("M-x"     . helm-M-x)
@@ -143,7 +153,7 @@
 ;; projectile
 ;; ========================================
 (use-package projectile
-  :defer t
+  :ensure t
   :delight
 
   :config
@@ -167,7 +177,9 @@
                (projectile-project-name)))))
 
   (use-package helm-projectile
+	:ensure t
     :defer t
+
     :config (helm-projectile-on)
     :bind ("C-x p" . helm-projectile))
 
@@ -179,7 +191,7 @@
 ;; elfeed
 ;; ========================================
 (use-package elfeed
-  :defer t
+  :ensure t
 
   :custom
   (elfeed-feeds
@@ -202,6 +214,7 @@
 ;; flycheck
 ;; ========================================
 (use-package flycheck
+  :ensure t
   :defer t
   :delight
 
@@ -214,6 +227,7 @@
 ;; flyspell
 ;; ========================================
 (use-package flyspell
+  :ensure t
   :defer t
   :delight
 
@@ -242,7 +256,7 @@
 ;; vdiff
 ;; ========================================
 (use-package vdiff
-  :defer t
+  :ensure t
 
   :bind (:map vdiff-mode-prefix-map
 			  ("C-c" . vdiff-mode-prefix-map)))

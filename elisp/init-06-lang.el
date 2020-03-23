@@ -26,8 +26,7 @@
 
   :bind (:map go-mode-map
         ("C-c C-r" . go-remove-unused-imports)
-        ("C-c C-e" . go-errcheck)
-		))
+        ("C-c C-e" . go-errcheck)))
 
 ;; dockerfile-mode
 ;; ========================================
@@ -76,8 +75,7 @@
       (if (equal web-mode-content-type "jsx")
           (let ((web-mode-enable-part-face nil))
             ad-do-it)
-        ad-do-it)
-	  )))
+        ad-do-it))))
 
 ;; python
 ;; ========================================
@@ -85,8 +83,7 @@
   :ensure t
   :init
   (elpy-enable)
-  (setq elpy-rpc-virtualenv-path 'current)
-  )
+  (setq elpy-rpc-virtualenv-path 'current))
 
 ;; javascript
 ;; ========================================
@@ -107,8 +104,7 @@
   (js-indent-level 2)
   (evil-shift-width 2)
   (truncate-lines t)
-  (add-node-modules-path)
-  )
+  (add-node-modules-path))
 
 ;; json
 ;; ========================================
@@ -120,8 +116,7 @@
   :custom
   (js-indent-level 2)
   (evil-shift-width 2)
-  (truncate-lines t)
-  )
+  (truncate-lines t))
 
 ;; markdown
 ;; ========================================
@@ -131,12 +126,10 @@
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
 		 ("\\.md\\'" . markdown-mode)
-		 ("\\.markdown\\'" . markdown-mode)
-		 )
+		 ("\\.markdown\\'" . markdown-mode))
 
   :custom
-  (markdown-command "multimarkdown")
-  )
+  (markdown-command "multimarkdown"))
 
 ;; php-mode
 ;; ========================================

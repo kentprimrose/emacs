@@ -11,16 +11,14 @@
  sentence-end-double-space nil
  inhibit-splash-screen t
  initial-scratch-message nil
- use-dialog-box nil
- )
+ use-dialog-box nil)
 
 (setq-default
  truncate-lines t
  truncate-partial-width-windows t
  visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow)
  message-elide-ellipsis "⤵"
- org-ellipsis "⤵"
- )
+ org-ellipsis "⤵")
 
 (add-to-list 'default-frame-alist '(width . 84))
 
@@ -43,12 +41,6 @@
 ;;   :config
 ;;   (load-theme 'sanityinc-tomorrow-bright t))
 
-(use-package modus-vivendi-theme
-  :demand
-  :ensure t
-  :config
-  (load-theme 'modus-vivendi))
-
 ;; (use-package alect-themes
 ;;   :demand
 ;;   :ensure t
@@ -65,6 +57,12 @@
 ;;   :config
 ;;   (dimmer-mode)
 ;;   (setq dimmer-fraction 0.40))
+
+(use-package modus-vivendi-theme
+  :demand
+  :ensure t
+  :config
+  (load-theme 'modus-vivendi))
 
 (use-package smart-mode-line
   :demand

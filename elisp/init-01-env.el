@@ -45,10 +45,5 @@
   (set-face-attribute 'default nil :family "Monaco" :height 120)
   )
 
-;; Linux (X) only settings
-;; ========================================
-(when (memq window-system '(x))
-  )
-
 (provide 'init-01-env)
 ;;; init-01-env.el ends here

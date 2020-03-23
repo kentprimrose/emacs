@@ -62,7 +62,7 @@
 	 ))
 
   (org-agenda-files '("~/org-local" "~/org-local/archive"
-					  "~/org-shared" "~/org-shared/archive" "~/org-shared/brain"))
+                      "~/org-shared" "~/org-shared/archive" "~/org-shared/zettelkasten"))
   (org-default-notes-file "~/org-local/capture.org")
   (org-archive-location "archive/%s_archive::")
 
@@ -84,9 +84,6 @@
      ("i" "Idea" entry
       (file+headline org-default-notes-file "Ideas")
       "* %^{Description}\n  CREATED: %U %?")
-     ("b" "Brain" plain
-      (function org-brain-goto-end)
-      "* %U %i%?" :empty-lines 1)
      ))
 
   ;; GTD Contexts
@@ -362,10 +359,9 @@
          ("C-c c" . org-capture)
          ("C-c l" . org-store-link)
          ("C-c u" . org-switchb)
-         ("C-c b" . org-brain-visualize)
-         ("C-c g" . org-brain-goto)
          ("C-c s" . helm-org-rifle)
          ("C-c i" . org-time-stamp-inactive)
+		 ("C-x p i" . org-cliplink)
          :map org-mode-map
          ([s-return] . org-meta-return)
          ([return] . org-return-indent)
@@ -394,6 +390,7 @@
 
   :bind ("C-h o" . helm-orgcard))
 
+;; Not sure I'm going to use this, but keeping config for now.
 (use-package org-brain
   :ensure t
   :defer t
@@ -413,6 +410,51 @@
 (use-package helm-org-rifle
   :ensure t
   :defer t)
+
+(use-package org-cliplink
+  :ensure t
+  :defer t)
+
+(use-package org-ref
+  :ensure t
+  :defer t
+
+  :custom
+  (reftex-default-bibliography '("~/org-shared/bibliography/references.bib"))
+  (org-ref-bibliography-notes "~/org-shared/bibliography/notes.org")
+  (org-ref-default-bibliography "~/org-shared/bibliography/references.bib")
+  (org-ref-pdf-directory "~/org-shared/bibliography/bibtex-pdfs/"))
+
+(use-package deft
+  :ensure t
+  :defer t
+
+  :commands
+  (deft)
+
+  :bind
+  ("<f8>" . deft)
+
+  :custom
+  (deft-extensions '("txt" "tex" "org"))
+  (deft-directory "~/org-shared/zettelkasten/")
+  (deft-recursive t)
+  (deft-default-extsnsion "org")
+  )
+
+(use-package org-roam
+  :ensure t
+  :defer t
+
+  :custom
+  (org-roam-directory "/path/to/org-files/")
+
+  :bind (:map org-roam-mode-map
+              (("C-c n l" . org-roam)
+               ("C-c n f" . org-roam-find-file)
+               ("C-c n g" . org-roam-show-graph))
+              :map org-mode-map
+              (("C-c n i" . org-roam-insert))))
 
 (provide 'init-05-org)
 ;;; init-05-org.el ends here

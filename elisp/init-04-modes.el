@@ -32,9 +32,7 @@
 	:bind (("M-;"   . evilnc-comment-or-uncomment-lines)
 		   ("C-c l" . evilnc-quick-comment-or-uncomment-to-the-line)
 		   ("C-c c" . evilnc-copy-and-comment-lines)
-		   ("C-c p" . evilnc-comment-or-uncomment-paragraphs)
-		   )
-	))
+		   ("C-c p" . evilnc-comment-or-uncomment-paragraphs))))
 
 ;; dired
 ;; ========================================
@@ -55,8 +53,7 @@
 		 ("k"      . evil-previous-line)
 		 ("/"      . evil-search-forward)
 		 ([s-up]   . dired-up-directory)
-		 ([s-down] . dired-find-file)
-		 ))
+		 ([s-down] . dired-find-file)))
 
 ;; text modes
 ;; ========================================
@@ -70,14 +67,12 @@
   (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
   :bind (("C-c f" . toggle-text-mode-auto-fill)
-		 ("C-c v" . visual-line-mode)
-		 ))
+		 ("C-c v" . visual-line-mode)))
 
 ;; Control mode lines
 ;; ========================================
 (use-package delight
-  :defer t
-  )
+  :defer t)
 
 ;; company
 ;; ========================================
@@ -90,8 +85,7 @@
 
   :custom
   (company-dabbrev-downcase 0)
-  (company-idle-delay 0)
-  )
+  (company-idle-delay 0))
 
 ;; Ag (Silver Surfer)
 ;; ========================================
@@ -144,8 +138,7 @@
 		 ("C-s"     . helm-occur)
 		 ("C-h a"   . helm-apropos)
 		 ("C-x C-f" . helm-find-files)
-		 ("C-c r"   . helm-recentf)
-		 ))
+		 ("C-c r"   . helm-recentf)))
 
 ;; projectile
 ;; ========================================
@@ -176,14 +169,12 @@
   (use-package helm-projectile
     :defer t
     :config (helm-projectile-on)
-    :bind ("C-x p" . helm-projectile)
-    )
+    :bind ("C-x p" . helm-projectile))
 
   :bind (("M-p f" . projectile-find-file)
          ("M-p d" . projectile-find-dir)
          ("M-p t" . projectile-find-tag)
-         ("M-p r" . projectile-ripgrep))
-  )
+         ("M-p r" . projectile-ripgrep)))
 
 ;; elfeed
 ;; ========================================
@@ -200,8 +191,7 @@
      ("http://pyfound.blogspot.com/feeds/posts/default" python pyfound)
      ("http://pycon.blogspot.com/feeds/posts/default" python pycon)
      ("http://www.reddit.com/r/python/.rss" python reddit)
-     ("http://www.reddit.com/r/pythontips/.rss" python reddit)
-     ))
+     ("http://www.reddit.com/r/pythontips/.rss" python reddit)))
 
   :config
   (evil-set-initial-state 'elfeed-search-mode 'emacs)
@@ -219,8 +209,7 @@
   (global-flycheck-mode)
 
   :custom
-  (flycheck-display-errors-delay .3)
-  )
+  (flycheck-display-errors-delay .3))
 
 ;; flyspell
 ;; ========================================
@@ -246,8 +235,7 @@
   :bind (("<f8>" . ispell-word)
          ("C-S-<f8>" . flyspell-mode)
          ("C-M-<f8>" . flyspell-buffer)
-         ("M-<f8>" . flyspell-check-next-highlighted-word)
-         )
+         ("M-<f8>" . flyspell-check-next-highlighted-word))
 
   :if (memq window-system '(mac ns x)))
 
@@ -257,8 +245,7 @@
   :defer t
 
   :bind (:map vdiff-mode-prefix-map
-              ("C-c" . vdiff-mode-prefix-map)
-              ))
+			  ("C-c" . vdiff-mode-prefix-map)))
 
 ;; tramp
 ;; ========================================
@@ -269,8 +256,7 @@
 (use-package restclient
   :ensure t
   :defer t
-  :mode "\\.rest\\'"
-  )
+  :mode "\\.rest\\'")
 
 (provide 'init-04-modes)
 ;;; init-04-modes.el ends here

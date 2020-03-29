@@ -25,8 +25,8 @@
   (add-hook 'before-save-hook 'gofmt-before-save)
 
   :bind (:map go-mode-map
-        ("C-c C-r" . go-remove-unused-imports)
-        ("C-c C-e" . go-errcheck)))
+          ("C-c C-r" . go-remove-unused-imports)
+          ("C-c C-e" . go-errcheck)))
 
 ;; dockerfile-mode
 ;; ========================================
@@ -95,8 +95,8 @@
 
   :config
   (use-package add-node-modules-path
-	:ensure t
-	:defer t)
+    :ensure t
+    :defer t)
 
   :custom
   (js2-mode-show-parse-errors nil)
@@ -125,8 +125,8 @@
   :defer t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
-		 ("\\.md\\'" . markdown-mode)
-		 ("\\.markdown\\'" . markdown-mode))
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
 
   :custom
   (markdown-command "multimarkdown"))

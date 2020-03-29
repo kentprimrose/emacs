@@ -29,12 +29,12 @@
 
   :config
   (use-package evil-nerd-commenter
-	:ensure t
-	
-	:bind (("M-;"   . evilnc-comment-or-uncomment-lines)
-		   ("C-c l" . evilnc-quick-comment-or-uncomment-to-the-line)
-		   ("C-c c" . evilnc-copy-and-comment-lines)
-		   ("C-c p" . evilnc-comment-or-uncomment-paragraphs))))
+    :ensure t
+
+    :bind (("M-;"   . evilnc-comment-or-uncomment-lines)
+           ("C-c l" . evilnc-quick-comment-or-uncomment-to-the-line)
+           ("C-c c" . evilnc-copy-and-comment-lines)
+           ("C-c p" . evilnc-comment-or-uncomment-paragraphs))))
 
 ;; dired
 ;; ========================================
@@ -51,12 +51,12 @@
   (evil-set-initial-state 'wdired-mode 'normal)
 
   :bind (("C-x C-j" . dired-jump)
-		 :map dired-mode-map
-		 ("j"      . evil-next-line)
-		 ("k"      . evil-previous-line)
-		 ("/"      . evil-search-forward)
-		 ([s-up]   . dired-up-directory)
-		 ([s-down] . dired-find-file)))
+         :map dired-mode-map
+         ("j"      . evil-next-line)
+         ("k"      . evil-previous-line)
+         ("/"      . evil-search-forward)
+         ([s-up]   . dired-up-directory)
+         ([s-down] . dired-find-file)))
 
 ;; text modes
 ;; ========================================
@@ -71,7 +71,7 @@
   (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
   :bind (("C-c f" . toggle-text-mode-auto-fill)
-		 ("C-c v" . visual-line-mode)))
+         ("C-c v" . visual-line-mode)))
 
 ;; Control mode lines
 ;; ========================================
@@ -110,8 +110,8 @@
 
   :config
   (use-package evil-magit
-	:ensure t
-	:defer t)
+    :ensure t
+    :defer t)
 
   :bind ("C-x C-g" . magit-status))
 
@@ -134,21 +134,21 @@
 
   :config
   (use-package helm-ag
-	:ensure t
-	:defer t)
+    :ensure t
+    :defer t)
 
   (use-package helm-rg
-	:ensure t
-	:defer t)
+    :ensure t
+    :defer t)
 
   :bind (("M-x"     . helm-M-x)
-		 ("s-x"     . helm-M-x)
-		 ("C-x b"   . helm-mini)
-		 ("C-x h"   . helm-multi-files)
-		 ("C-s"     . helm-occur)
-		 ("C-h a"   . helm-apropos)
-		 ("C-x C-f" . helm-find-files)
-		 ("C-c r"   . helm-recentf)))
+         ("s-x"     . helm-M-x)
+         ("C-x b"   . helm-mini)
+         ("C-x h"   . helm-multi-files)
+         ("C-s"     . helm-occur)
+         ("C-h a"   . helm-apropos)
+         ("C-x C-f" . helm-find-files)
+         ("C-c r"   . helm-recentf)))
 
 ;; projectile
 ;; ========================================
@@ -177,7 +177,7 @@
                (projectile-project-name)))))
 
   (use-package helm-projectile
-	:ensure t
+    :ensure t
     :defer t
 
     :config (helm-projectile-on)
@@ -259,7 +259,7 @@
   :ensure t
 
   :bind (:map vdiff-mode-prefix-map
-			  ("C-c" . vdiff-mode-prefix-map)))
+          ("C-c" . vdiff-mode-prefix-map)))
 
 ;; tramp
 ;; ========================================

@@ -144,7 +144,7 @@
          ("<f2> u"  . 'counsel-unicode-char)
          ("<f2> j"  . 'counsel-set-variable)
 
-         ("C-c c" . 'counsel-compile)
+         ;; ("C-c c" . 'counsel-compile)
          ("C-c g" . 'counsel-git)
          ("C-c j" . 'counsel-git-grep)
          ("C-c L" . 'counsel-git-log)
@@ -201,8 +201,8 @@
                (projectile-project-name)))))
 
   :bind (("M-p p" . projectile-commander)
-		 ("M-p M-p" . projectile-commander)
-		 ("M-p f" . projectile-find-file)
+         ("M-p M-p" . projectile-commander)
+         ("M-p f" . projectile-find-file)
          ("M-p d" . projectile-find-dir)
          ("M-p t" . projectile-find-tag)
          ("M-p r" . projectile-ripgrep)))

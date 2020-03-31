@@ -133,6 +133,7 @@
   :ensure t
 
   :bind (("M-x"     . 'counsel-M-x)
+         ("s-x"     . 'counsel-M-x)
          ("C-x C-f" . 'counsel-find-file)
          ("M-y"     . 'counsel-yank-pop)
          ("<f1> f"  . 'counsel-describe-function)
@@ -162,6 +163,15 @@
          ("C-c F"   . 'counsel-org-file)
 
          ("C-h a" . 'counsel-apropos)))
+
+(use-package ivy-rich
+  :ensure t
+
+  :config
+  (ivy-rich-mode 1))
+
+(use-package smex  ;; for M-x memory
+  :ensure t)
 
 ;; projectIle
 ;; ========================================

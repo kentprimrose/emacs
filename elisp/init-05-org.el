@@ -359,7 +359,6 @@
 		 ("C-c c" . org-capture)
 		 ("C-c l" . org-store-link)
 		 ("C-c u" . org-switchb)
-		 ("C-c s" . helm-org-rifle)
 		 ("C-c i" . org-time-stamp-inactive)
 		 ("C-x p i" . org-cliplink)
 		 :map org-mode-map
@@ -382,15 +381,6 @@
   :bind (("C-c j" . org-journal-new-entry)
 		 ("C-c C-j" . org-journal-new-entry)
 		 ))
-
-(use-package helm-orgcard
-  :ensure t
-
-  :bind ("C-h o" . helm-orgcard))
-
-(use-package helm-org-rifle
-  :ensure t
-  :defer t)
 
 (use-package org-cliplink
   :ensure t

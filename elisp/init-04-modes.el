@@ -29,12 +29,12 @@
 
   :config
   (use-package evil-nerd-commenter
-    :ensure t
+	:ensure t
 
-    :bind (("M-;"   . evilnc-comment-or-uncomment-lines)
-           ("C-c l" . evilnc-quick-comment-or-uncomment-to-the-line)
-           ("C-c c" . evilnc-copy-and-comment-lines)
-           ("C-c p" . evilnc-comment-or-uncomment-paragraphs))))
+	:bind (("M-;"   . evilnc-comment-or-uncomment-lines)
+		   ("C-c l" . evilnc-quick-comment-or-uncomment-to-the-line)
+		   ("C-c c" . evilnc-copy-and-comment-lines)
+		   ("C-c p" . evilnc-comment-or-uncomment-paragraphs))))
 
 ;; dired
 ;; ========================================
@@ -51,12 +51,12 @@
   (evil-set-initial-state 'wdired-mode 'normal)
 
   :bind (("C-x C-j" . dired-jump)
-         :map dired-mode-map
-         ("j"      . evil-next-line)
-         ("k"      . evil-previous-line)
-         ("/"      . evil-search-forward)
-         ([s-up]   . dired-up-directory)
-         ([s-down] . dired-find-file)))
+		 :map dired-mode-map
+		 ("j"      . evil-next-line)
+		 ("k"      . evil-previous-line)
+		 ("/"      . evil-search-forward)
+		 ([s-up]   . dired-up-directory)
+		 ([s-down] . dired-find-file)))
 
 ;; text modes
 ;; ========================================
@@ -71,7 +71,7 @@
   (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
   :bind (("C-c f" . toggle-text-mode-auto-fill)
-         ("C-c v" . visual-line-mode)))
+		 ("C-c v" . visual-line-mode)))
 
 ;; Control mode lines
 ;; ========================================
@@ -110,45 +110,66 @@
 
   :config
   (use-package evil-magit
-    :ensure t
-    :defer t)
+	:ensure t
+	:defer t)
 
   :bind ("C-x C-g" . magit-status))
 
-;; Helm
+;; ivy
 ;; ========================================
-(use-package helm
+(use-package ivy
   :ensure t
-  :delight
-
+  
   :config
-  (helm-mode 1)
+  (ivy-mode 1)
 
   :custom
-  (helm-mode-fuzzy-match t)
-  (helm-autoresize-mode t)
-  (helm-ff-auto-update-initial-value t)
-  (helm-completion-in-region-fuzzy-match t)
-  (helm-M-x-always-save-history t)
-  (helm-candidate-number-limit 100)
+  (ivy-use-virtual-buffers t)
+  (ivy-count-format "(%d/%d)")
 
-  :config
-  (use-package helm-ag
-    :ensure t
-    :defer t)
+  :bind (("C-x b"   . 'ivy-switch-buffer)
+		 ("C-c v"   . 'ivy-push-view)
+		 ("C-c V"   . 'ivy-pop-view)
+		 ("C-c C-r" . 'ivy-resume)))
 
-  (use-package helm-rg
-    :ensure t
-    :defer t)
+(use-package swiper
+  :ensure t
 
-  :bind (("M-x"     . helm-M-x)
-         ("s-x"     . helm-M-x)
-         ("C-x b"   . helm-mini)
-         ("C-x h"   . helm-multi-files)
-         ("C-s"     . helm-occur)
-         ("C-h a"   . helm-apropos)
-         ("C-x C-f" . helm-find-files)
-         ("C-c r"   . helm-recentf)))
+  :bind (("C-s"     . 'swiper-isearch)))
+
+(use-package counsel
+  :ensure t
+
+  :bind (("M-x"     . 'counsel-M-x)
+		 ("C-x C-f" . 'counsel-find-file)
+		 ("M-y"     . 'counsel-yank-pop)
+		 ("<f1> f"  . 'counsel-describe-function)
+		 ("<f1> v"  . 'counsel-describe-variable)
+		 ("<f1> l"  . 'counsel-find-library)
+		 ("<f2> i"  . 'counsel-info-lookup-symbol)
+		 ("<f2> u"  . 'counsel-unicode-char)
+		 ("<f2> j"  . 'counsel-set-variable)
+
+		 ("C-c c" . 'counsel-compile)
+		 ("C-c g" . 'counsel-git)
+		 ("C-c j" . 'counsel-git-grep)
+		 ("C-c L" . 'counsel-git-log)
+		 ("C-c k" . 'counsel-rg)
+		 ("C-c m" . 'counsel-linux-app)
+		 ("C-c n" . 'counsel-fzf)
+		 ("C-x l" . 'counsel-locate)
+		 ("C-c J" . 'counsel-file-jump)
+		 ("C-S-o" . 'counsel-rhythmbox)
+		 ("C-c w" . 'counsel-wmctrl)
+
+		 ("C-c b"   . 'counsel-bookmark)
+		 ("C-c d"   . 'counsel-descbinds)
+		 ("C-c g"   . 'counsel-git)
+		 ("C-c o"   . 'counsel-outline)
+		 ("C-c t"   . 'counsel-load-theme)
+		 ("C-c F"   . 'counsel-org-file)
+
+		 ("C-h a" . 'counsel-apropos)))
 
 ;; projectile
 ;; ========================================
@@ -161,9 +182,9 @@
   ;; (setq projectile-indexing-method 'alien)
 
   (setq projectile-globally-ignored-file-suffixes
-        '("#" "~" ".swp" ".o" ".so" ".exe" ".dll" ".elc" ".pyc" ".jar" "*.class"))
+		'("#" "~" ".swp" ".o" ".so" ".exe" ".dll" ".elc" ".pyc" ".jar" "*.class"))
   (setq projectile-globally-ignored-directories
-        '(".git" "node_modules" "__pycache__" ".vs"))
+		'(".git" "node_modules" "__pycache__" ".vs"))
   (setq projectile-globally-ignored-files '("TAGS" "tags" ".DS_Store"))
   (projectile-mode +1)
 
@@ -171,22 +192,22 @@
    projectile-global-mode t
    projectile-mode-line
    '(:eval
-     (if (file-remote-p default-directory)
-         " Projectile"
-       (format " Proj[%s]"
-               (projectile-project-name)))))
+	 (if (file-remote-p default-directory)
+		 " Projectile"
+	   (format " Proj[%s]"
+			   (projectile-project-name)))))
 
-  (use-package helm-projectile
-    :ensure t
-    :defer t
+  (use-package counsel-projectile
+	:ensure t
+	:defer t
 
-    :config (helm-projectile-on)
-    :bind ("C-x p" . helm-projectile))
+	:config (counsel-projectile-mode)
+	:bind ("M-p p" . projectile-command-map))
 
   :bind (("M-p f" . projectile-find-file)
-         ("M-p d" . projectile-find-dir)
-         ("M-p t" . projectile-find-tag)
-         ("M-p r" . projectile-ripgrep)))
+		 ("M-p d" . projectile-find-dir)
+		 ("M-p t" . projectile-find-tag)
+		 ("M-p r" . projectile-ripgrep)))
 
 ;; elfeed
 ;; ========================================
@@ -196,14 +217,14 @@
   :custom
   (elfeed-feeds
    '(("http://planet.emacsen.org/atom.xml" emacs emacsen)
-     ("http://batsov.com/atom.xml" emacs batsov)
-     ("https://nyoboo.com/channels/6-python-news/messages.rss" python pyweekly)
-     ("http://feeds.feedburner.com/PythonInsider" python insider)
-     ("http://planetpython.org/rss20.xml python" python planet)
-     ("http://pyfound.blogspot.com/feeds/posts/default" python pyfound)
-     ("http://pycon.blogspot.com/feeds/posts/default" python pycon)
-     ("http://www.reddit.com/r/python/.rss" python reddit)
-     ("http://www.reddit.com/r/pythontips/.rss" python reddit)))
+	 ("http://batsov.com/atom.xml" emacs batsov)
+	 ("https://nyoboo.com/channels/6-python-news/messages.rss" python pyweekly)
+	 ("http://feeds.feedburner.com/PythonInsider" python insider)
+	 ("http://planetpython.org/rss20.xml python" python planet)
+	 ("http://pyfound.blogspot.com/feeds/posts/default" python pyfound)
+	 ("http://pycon.blogspot.com/feeds/posts/default" python pycon)
+	 ("http://www.reddit.com/r/python/.rss" python reddit)
+	 ("http://www.reddit.com/r/pythontips/.rss" python reddit)))
 
   :config
   (evil-set-initial-state 'elfeed-search-mode 'emacs)
@@ -233,10 +254,10 @@
 
   :init
   (defun flyspell-check-next-highlighted-word ()
-    "Custom function to spell check next highlighted word."
-    (interactive)
-    (flyspell-goto-next-error)
-    (ispell-word))
+	"Custom function to spell check next highlighted word."
+	(interactive)
+	(flyspell-goto-next-error)
+	(ispell-word))
   (add-hook 'text-mode-hook 'flyspell-mode)
   (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
   (add-hook 'python-mode-hook 'flyspell-prog-mode)
@@ -247,9 +268,9 @@
   (ispell-program-name "aspell")
 
   :bind (("<f8>" . ispell-word)
-         ("C-S-<f8>" . flyspell-mode)
-         ("C-M-<f8>" . flyspell-buffer)
-         ("M-<f8>" . flyspell-check-next-highlighted-word))
+		 ("C-S-<f8>" . flyspell-mode)
+		 ("C-M-<f8>" . flyspell-buffer)
+		 ("M-<f8>" . flyspell-check-next-highlighted-word))
 
   :if (memq window-system '(mac ns x)))
 
@@ -259,7 +280,7 @@
   :ensure t
 
   :bind (:map vdiff-mode-prefix-map
-          ("C-c" . vdiff-mode-prefix-map)))
+			  ("C-c" . vdiff-mode-prefix-map)))
 
 ;; tramp
 ;; ========================================

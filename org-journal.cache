@@ -1,0 +1,2 @@
+#s(hash-table size 65 test equal rehash-size 1.5 rehash-threshold 0.8125 data ("/home/kent/org-shared/journal/20200330.org" (3 30 2020)))
+#s(hash-table size 65 test equal rehash-size 1.5 rehash-threshold 0.8125 data ("/home/kent/org-shared/journal/20200330.org" (24194 45351 657939 35000)))

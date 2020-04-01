@@ -57,8 +57,7 @@
 
   (org-list-demote-modify-bullet
    '(("-"  . "+") ("*"  . "+") ("+"  . "-")
-	 ("1." . "-") ("1)" . "-")
-	 ))
+	 ("1." . "-") ("1)" . "-")))
 
   (org-agenda-files '("~/org-local" "~/org-local/archive"
 					  "~/org-shared" "~/org-shared/archive"
@@ -68,8 +67,7 @@
 
   ;; Capture Setup
   (org-capture-templates
-   '(
-	 ("t" "Todo" entry
+   '(("t" "Todo" entry
 	  (file+headline org-default-notes-file "Tasks")
 	  "* TODO %^{Description}\n  CREATED: %U %?")
 	 ("a" "Appointment" entry
@@ -83,8 +81,7 @@
 	  "* %^{Description}\n  CREATED: %U %?")
 	 ("i" "Idea" entry
 	  (file+headline org-default-notes-file "Ideas")
-	  "* %^{Description}\n  CREATED: %U %?")
-	 ))
+	  "* %^{Description}\n  CREATED: %U %?")))
 
   ;; GTD Contexts
   (org-use-fast-tag-selection t)
@@ -100,8 +97,7 @@
 	 ("@eml"  . ?m)
 	 ("@del"  . ?d)
 	 ("PROJ"  . ?j)
-	 (:endgroup . nil)
-	 ))
+	 (:endgroup . nil)))
 
   ;; Refile Setup
   ;; (org-use-tag-inheritance t) ;; doesn't work for :PROJ:
@@ -115,8 +111,7 @@
   ;; Workflow Setup
   (org-todo-keywords
    '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d)" "CNCL(x@/!)")
-	 (sequence "STEP(s)" "NEXT(n)" "|" "DONE(d)" "CNCL(x@/!)")
-	 ))
+	 (sequence "STEP(s)" "NEXT(n)" "|" "DONE(d)" "CNCL(x@/!)")))
 
   (org-todo-keyword-faces
    '(("TODO" :foreground "Green"          :weight bold)
@@ -124,8 +119,7 @@
 	 ("NEXT" :foreground "Blue"           :weight bold)
 	 ("WAIT" :foreground "Yellow"         :weight bold)
 	 ("DONE" :foreground "ForestGreen"    :weight bold)
-	 ("CNCL" :foreground "Red"            :weight bold)
-	 ))
+	 ("CNCL" :foreground "Red"            :weight bold)))
 
   ;; Agenda Setup.
   (org-agenda-span 7)
@@ -181,8 +175,7 @@
 						   (tags-todo "@eml" ((org-agenda-overriding-header "Email:")))
 						   (tags-todo "@del" ((org-agenda-overriding-header "Delegated:")))
 						   (tags-todo "PROJ" ((org-agenda-overriding-header "Projects:")))
-						   (tags "IDEA+LEVEL=2" ((org-agenda-overriding-header "Idea:")))
-						   ))
+						   (tags "IDEA+LEVEL=2" ((org-agenda-overriding-header "Idea:")))))
 
 	 ("d" "Daily Agenda"
 	  ((agenda "" ((org-agenda-span 'day)
@@ -197,24 +190,19 @@
 				   ))
 	   (tags-todo "-PROJ-STYLE=\"habit\"-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
 				  ((org-agenda-overriding-header "Open Tasks: =======================================================")
-				   (org-use-tag-inheritance t)
-				   ))
+				   (org-use-tag-inheritance t)))
 	   (tags-todo "PRIORITY=\"A\""
-				  ((org-agenda-overriding-header "Top Priority Tasks: ===============================================")
-				   ))
+				  ((org-agenda-overriding-header "Top Priority Tasks: ===============================================")))
 	   (tags-todo "PRIORITY=\"B\""
-				  ((org-agenda-overriding-header "Lower Priority Tasks: =============================================")
-				   ))
+				  ((org-agenda-overriding-header "Lower Priority Tasks: =============================================")))
 	   (tags-todo "PROJ"
 				  ((org-agenda-overriding-header "Projects: =========================================================")
-				   (org-use-tag-inheritance t)
-				   ))
+				   (org-use-tag-inheritance t)))
 	   ))
 
 	 ("h" "Habits"
 	  ((tags "STYLE=\"habit\""
-			 ((org-agenda-overriding-header "Habits: ===========================================================")
-			  ))
+			 ((org-agenda-overriding-header "Habits: ===========================================================")))
 	   ))
 
 	 ("r" . "Review")
@@ -224,18 +212,14 @@
 				   (org-agenda-start-on-weekday 0)
 				   (org-agenda-todo-ignore-deadlines nil)
 				   (org-deadline-warning-days 7)
-				   (org-use-tag-inheritance t)
-				   ))
-	   ))
+				   (org-use-tag-inheritance t)))))
 	 ("rm" "Monthly Review"
 	  ((agenda "" ((org-agenda-overriding-header "Agenda:")
 				   (org-agenda-span 'month)
 				   (org-agenda-include-diary nil)
 				   (org-agenda-todo-ignore-deadlines nil)
 				   (org-deadline-warning-days 28)
-				   (org-use-tag-inheritance t)
-				   ))
-	   ))
+				   (org-use-tag-inheritance t)))))
 	 ("rr" "Require attention"
 	  ((tags-todo "-@wrk-@hom-@out-@net-@cmp-@pho-@eml-@del"
 				  ((org-agenda-overriding-header "Context:")
@@ -253,28 +237,21 @@
 
 	 ("p" "Planning"
 	  ((tags-todo "-PROJ-STYLE=\"habit\"-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
-				  ((org-agenda-overriding-header "Open Tasks: =======================================================")
-				   ))
+				  ((org-agenda-overriding-header "Open Tasks: =======================================================")))
 	   (tags "-ARCHIVE+PROJ+LEVEL=2"
 			 ((org-agenda-overriding-header "Active Projects: ==================================================")
-			  (org-use-tag-inheritance t)
-			  ))
+			  (org-use-tag-inheritance t)))
 	   (tags-todo "PRIORITY=\"A\""
-				  ((org-agenda-overriding-header "Top Priority Tasks: ===============================================")
-				   ))
+				  ((org-agenda-overriding-header "Top Priority Tasks: ===============================================")))
 	   (tags-todo "PRIORITY=\"B\""
-				  ((org-agenda-overriding-header "Lower Priority Tasks: =============================================")
-				   ))
+				  ((org-agenda-overriding-header "Lower Priority Tasks: =============================================")))
 	   (tags-todo "PRIORITY=\"C\""
-				  ((org-agenda-overriding-header "Low Priority Tasks: ===============================================")
-				   ))
+				  ((org-agenda-overriding-header "Low Priority Tasks: ===============================================")))
 	   (tags "IDEA+LEVEL=2-TODO={DONE}-TODO={CNCL}"
 			 ((org-agenda-overriding-header "Someday/Maybe: ====================================================")
-			  (org-use-tag-inheritance t)
-			  ))
+			  (org-use-tag-inheritance t)))
 	   (tags "STYLE=\"habit\""
-			 ((org-agenda-overriding-header "Habits: ===========================================================")
-			  ))
+			 ((org-agenda-overriding-header "Habits: ===========================================================")))
 	   ))
 
 	 ("o" . "Old Reports")
@@ -284,57 +261,46 @@
 				   (org-agenda-ndays 1)
 				   (org-deadline-warning-days 7)
 				   (org-agenda-skip-deadline-if-done t)
-				   (org-use-tag-inheritance t)
-				   ))
+				   (org-use-tag-inheritance t)))
 	   (stuck "" ((org-agenda-overriding-header "Stuck:")
-				  (org-use-tag-inheritance t)
-				  ))
+				  (org-use-tag-inheritance t)))
 	   (tags "IDEA+LEVEL=2-TODO={DONE}-TODO={CNCL}"
 			 ((org-agenda-overriding-header "Someday/Maybe:")
-			  (org-use-tag-inheritance t)
-			  ))
-	   ))
+			  (org-use-tag-inheritance t)))))
 	 ("ow" "Weekly Review" agenda ""
 	  ((org-agenda-overriding-header "Week in Review")
 	   (org-agenda-span 'week)
 	   (org-agenda-start-on-weekday 0)
 	   (org-agenda-show-all-dates t)
 	   (org-agenda-start-with-log-mode t)
-	   (org-agenda-archives-mode t)
-	   ))
+	   (org-agenda-archives-mode t)))
 
 	 ("x" . "Special Reports")
 	 ("xn" "Now Due" agenda ""
 	  ((org-agenda-overriding-header "Now Due:")
 	   (org-agenda-ndays 1)
 	   (org-deadline-warning-days 0)
-	   (org-use-tag-inheritance t)
-	   ))
+	   (org-use-tag-inheritance t)))
 	 ("xp" "Projects" tags "PROJ+LEVEL=2"
 	  ((org-agenda-overriding-header "Projects:")
 	   (org-use-tag-inheritance t)
-	   (org-agenda-prefix-format "  %-4:c %s")
-	   ))
+	   (org-agenda-prefix-format "  %-4:c %s")))
 	 ("xa" "All Open Actions" alltodo ""
 	  ((org-agenda-overriding-header "Open Actions:")
 	   (org-use-tag-inheritance t)
 	   (org-agenda-skip-function
-		'(org-agenda-skip-entry-if 'todo '("DONE" "CNCL")))
-	   ))
+		'(org-agenda-skip-entry-if 'todo '("DONE" "CNCL")))))
 	 ("xx" "Next Actions" tags "+TODO={TODO\\\|NEXT\\\|WAIT}"
 	  ((org-agenda-overriding-header "Next Actions:")
 	   (org-use-tag-inheritance nil)
-	   (org-agenda-prefix-format "  %-7:c %s")
-	   ))
+	   (org-agenda-prefix-format "  %-7:c %s")))
 	 ("xw" "Waiting" tags "+TODO={WAIT}"
 	  ((org-agenda-overriding-header "Waiting Tasks:")
-	   (org-use-tag-inheritance nil)
-	   ))
+	   (org-use-tag-inheritance nil)))
 	 ("x?" "Maybe" tags "IDEA+LEVEL=2-TODO={DONE}-TODO={CNCL}"
 	  ((org-agenda-overriding-header "Someday/Maybe:")
 	   (org-use-tag-inheritance nil)
-	   (org-agenda-prefix-format "  %-7:c %s")
-	   ))
+	   (org-agenda-prefix-format "  %-7:c %s")))
 	 ("xs" "Scheduled" agenda ""
 	  ((org-agenda-overriding-header "Scheduled Tasks:")
 	   (org-agenda-entry-types '(:scheduled))
@@ -342,8 +308,7 @@
 	   (org-deadline-warning-days 0)
 	   (org-agenda-skip-scheduled-if-done t)
 	   (org-use-tag-inheritance t)
-	   (org-agenda-include-diary nil)
-	   ))
+	   (org-agenda-include-diary nil)))
 	 ("xd" "Deadlines" agenda ""
 	  ((org-agenda-overriding-header "Deadlines:")
 	   (org-agenda-entry-types '(:deadline))
@@ -351,9 +316,7 @@
 	   (org-deadline-warning-days 0)
 	   (org-agenda-skip-deadline-if-done t)
 	   (org-use-tag-inheritance t)
-	   (org-agenda-include-diary nil))
-	  ))
-   )
+	   (org-agenda-include-diary nil)))))
 
   :bind (("C-c a" . org-agenda)
 		 ("C-c c" . org-capture)
@@ -368,8 +331,7 @@
 		 ("w" . org-agenda-refile)
 		 ("j" . org-agenda-next-line)
 		 ("k" . org-agenda-previous-line)
-		 ("C-c C-e" . org-export-dispatch)
-		 ))
+		 ("C-c C-e" . org-export-dispatch)))
 
 (use-package org-journal
   :ensure t
@@ -382,8 +344,7 @@
   (org-journal-time-prefix "\n** ")
 
   :bind (("C-c j" . org-journal-new-entry)
-		 ("C-c C-j" . org-journal-new-entry)
-		 ))
+		 ("C-c C-j" . org-journal-new-entry)))
 
 (use-package org-cliplink
   :ensure t

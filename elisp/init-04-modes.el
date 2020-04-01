@@ -31,10 +31,11 @@
   (use-package evil-nerd-commenter
     :ensure t
 
-    :bind (("M-;"   . evilnc-comment-or-uncomment-lines)
-           ("C-c l" . evilnc-quick-comment-or-uncomment-to-the-line)
-           ("C-c c" . evilnc-copy-and-comment-lines)
-           ("C-c p" . evilnc-comment-or-uncomment-paragraphs))))
+    :bind
+	(("M-;"   . evilnc-comment-or-uncomment-lines)
+	 ("C-c l" . evilnc-quick-comment-or-uncomment-to-the-line)
+	 ("C-c c" . evilnc-copy-and-comment-lines)
+	 ("C-c p" . evilnc-comment-or-uncomment-paragraphs))))
 
 ;; dired
 ;; ========================================
@@ -48,13 +49,14 @@
   (evil-set-initial-state 'dired-mode  'emacs)
   (evil-set-initial-state 'wdired-mode 'normal)
 
-  :bind (("C-x C-j" . dired-jump)
-         :map dired-mode-map
-         ("j"      . evil-next-line)
-         ("k"      . evil-previous-line)
-         ("/"      . evil-search-forward)
-         ([s-up]   . dired-up-directory)
-         ([s-down] . dired-find-file)))
+  :bind
+  (("C-x C-j" . dired-jump)
+   :map dired-mode-map
+   ("j"      . evil-next-line)
+   ("k"      . evil-previous-line)
+   ("/"      . evil-search-forward)
+   ([s-up]   . dired-up-directory)
+   ([s-down] . dired-find-file)))
 
 ;; text modes
 ;; ========================================
@@ -66,8 +68,9 @@
   :config
   (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
-  :bind (("C-c f" . toggle-text-mode-auto-fill)
-         ("C-c v" . visual-line-mode)))
+  :bind
+  (("C-c f" . toggle-text-mode-auto-fill)
+   ("C-c v" . visual-line-mode)))
 
 ;; Control mode lines
 ;; ========================================
@@ -86,14 +89,6 @@
   :custom
   (company-dabbrev-downcase 0)
   (company-idle-delay 0))
-
-;; Ripgrep
-;; ========================================
-(use-package rg
-  :ensure t
-
-  :config
-  (rg-enable-default-bindings))
 
 ;; Magit
 ;; ========================================
@@ -123,10 +118,11 @@
   (ivy-use-virtual-buffers t)
   (ivy-count-format "(%d/%d)")
 
-  :bind (("C-x b"   . 'ivy-switch-buffer)
-         ("C-c v"   . 'ivy-push-view)
-         ("C-c V"   . 'ivy-pop-view)
-         ("C-c C-r" . 'ivy-resume)))
+  :bind
+  (("C-x b"   . 'ivy-switch-buffer)
+   ("C-c v"   . 'ivy-push-view)
+   ("C-c V"   . 'ivy-pop-view)
+   ("C-c C-r" . 'ivy-resume)))
 
 (use-package swiper
   :ensure t
@@ -136,37 +132,38 @@
 (use-package counsel
   :ensure t
 
-  :bind (("M-x"     . 'counsel-M-x)
-         ("s-x"     . 'counsel-M-x)
-         ("C-x C-f" . 'counsel-find-file)
-         ("M-y"     . 'counsel-yank-pop)
-         ("<f1> f"  . 'counsel-describe-function)
-         ("<f1> v"  . 'counsel-describe-variable)
-         ("<f1> l"  . 'counsel-find-library)
-         ("<f2> i"  . 'counsel-info-lookup-symbol)
-         ("<f2> u"  . 'counsel-unicode-char)
-         ("<f2> j"  . 'counsel-set-variable)
+  :bind
+  (("M-x"     . 'counsel-M-x)
+   ("s-x"     . 'counsel-M-x)
+   ("C-x C-f" . 'counsel-find-file)
+   ("M-y"     . 'counsel-yank-pop)
+   ("<f1> f"  . 'counsel-describe-function)
+   ("<f1> v"  . 'counsel-describe-variable)
+   ("<f1> l"  . 'counsel-find-library)
+   ("<f2> i"  . 'counsel-info-lookup-symbol)
+   ("<f2> u"  . 'counsel-unicode-char)
+   ("<f2> j"  . 'counsel-set-variable)
 
-         ;; ("C-c c" . 'counsel-compile)
-         ("C-c g" . 'counsel-git)
-         ("C-c j" . 'counsel-git-grep)
-         ("C-c L" . 'counsel-git-log)
-         ("C-c k" . 'counsel-rg)
-         ("C-c m" . 'counsel-linux-app)
-         ("C-c n" . 'counsel-fzf)
-         ("C-x l" . 'counsel-locate)
-         ("C-c J" . 'counsel-file-jump)
-         ("C-S-o" . 'counsel-rhythmbox)
-         ("C-c w" . 'counsel-wmctrl)
+   ;; ("C-c c" . 'counsel-compile)
+   ("C-c g" . 'counsel-git)
+   ("C-c j" . 'counsel-git-grep)
+   ("C-c L" . 'counsel-git-log)
+   ("C-c k" . 'counsel-rg)
+   ("C-c m" . 'counsel-linux-app)
+   ("C-c n" . 'counsel-fzf)
+   ("C-x l" . 'counsel-locate)
+   ("C-c J" . 'counsel-file-jump)
+   ("C-S-o" . 'counsel-rhythmbox)
+   ("C-c w" . 'counsel-wmctrl)
 
-         ("C-c b"   . 'counsel-bookmark)
-         ("C-c d"   . 'counsel-descbinds)
-         ("C-c g"   . 'counsel-git)
-         ("C-c o"   . 'counsel-outline)
-         ("C-c t"   . 'counsel-load-theme)
-         ("C-c F"   . 'counsel-org-file)
+   ("C-c b"   . 'counsel-bookmark)
+   ("C-c d"   . 'counsel-descbinds)
+   ("C-c g"   . 'counsel-git)
+   ("C-c o"   . 'counsel-outline)
+   ("C-c t"   . 'counsel-load-theme)
+   ("C-c F"   . 'counsel-org-file)
 
-         ("C-h a" . 'counsel-apropos)))
+   ("C-h a" . 'counsel-apropos)))
 
 (use-package ivy-rich
   :ensure t
@@ -176,6 +173,27 @@
 
 (use-package smex  ;; for M-x memory
   :ensure t)
+
+;; ;; helm
+;; ;; ========================================
+;; (use-package helm
+;;   :ensure t
+;;   :delight
+;; 
+;;   :init
+;;   (helm-mode 1)
+;; 
+;;   :bind
+;;   (("M-x"     . 'helm-M-x)
+;;    ("s-x"     . 'helm-M-x)
+;;    ("C-x C-f" . 'helm-find-files)
+;;    ("C-x C-d" . 'helm-browse-project)
+;;    ("C-x b"   . 'helm-mini)
+;;    ("C-h a"   . 'helm-apropos)
+;;    ("C-h i"   . 'helm-info)
+;;    ("C-s"     . 'helm-occur)
+;;    ("C-c a"   . 'helm-do-grep-ag)
+;;    ("C-c g"   . 'helm-grep-do-git-grep)))
 
 ;; projectIle
 ;; ========================================
@@ -203,12 +221,13 @@
        (format " Proj[%s]"
                (projectile-project-name)))))
 
-  :bind (("M-p p" . projectile-commander)
-         ("M-p M-p" . projectile-commander)
-         ("M-p f" . projectile-find-file)
-         ("M-p d" . projectile-find-dir)
-         ("M-p t" . projectile-find-tag)
-         ("M-p r" . projectile-ripgrep)))
+  :bind
+  (("M-p p" . projectile-commander)
+   ("M-p M-p" . projectile-commander)
+   ("M-p f" . projectile-find-file)
+   ("M-p d" . projectile-find-dir)
+   ("M-p t" . projectile-find-tag)
+   ("M-p r" . projectile-ripgrep)))
 
 ;; elfeed
 ;; ========================================
@@ -266,10 +285,11 @@
   (ispell-list-coommand "--list")
   (ispell-program-name "aspell")
 
-  :bind (("<f8>" . ispell-word)
-         ("C-S-<f8>" . flyspell-mode)
-         ("C-M-<f8>" . flyspell-buffer)
-         ("M-<f8>" . flyspell-check-next-highlighted-word))
+  :bind
+  (("<f8>" . ispell-word)
+   ("C-S-<f8>" . flyspell-mode)
+   ("C-M-<f8>" . flyspell-buffer)
+   ("M-<f8>" . flyspell-check-next-highlighted-word))
 
   :if (memq window-system '(mac ns x)))
 
@@ -278,8 +298,9 @@
 (use-package vdiff
   :ensure t
 
-  :bind (:map vdiff-mode-prefix-map
-              ("C-c" . vdiff-mode-prefix-map)))
+  :bind
+  (:map vdiff-mode-prefix-map
+		("C-c" . vdiff-mode-prefix-map)))
 
 ;; restclient
 ;; ========================================

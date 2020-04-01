@@ -7,14 +7,17 @@
 
 ;;; Code:
 
-(defun zettel-file (path)
-  (let ((name (read-string "Name: ")))
-	(expand-file-name
-	 (format "%s-%s.org" format-time-string "%Y-%m-%d") name) path))
+(defun my/new-brain-file (desc)
+  "Return a brain file name with current time and DESC."
+  (find-file (format "~/org-shared/brain/%s %s.org"
+		  (format-time-string "%Y%m%d-%H%M%S")
+		  desc)))
 
-(defun my/brain-file-by-date ()
-  "Create a brain file with current time as name."
-  (find-file (format-time-string "~/org-shared/brain/%Y%m%d-%H%M%S.org")))
+(defun my/new-brain-file-name (desc)
+  "Return a brain file name with current time and DESC."
+  (format "~/org-shared/brain/%s %s.org"
+		  (format-time-string "%Y%m%d-%H%M%S")
+		  desc))
 
 ;; Org
 ;; =====================================================================
@@ -76,7 +79,7 @@
 
   ;; Capture Setup
   (org-capture-templates
-   '(("t" "Todo" entry
+   `(("t" "Todo" entry
 	  (file+headline org-default-notes-file "Tasks")
 	  "* TODO %^{Description}\n  CREATED: %U %?")
 	 ("a" "Appointment" entry
@@ -92,14 +95,14 @@
 	  (file+headline org-default-notes-file "Ideas")
 	  "* %^{Description}\n  CREATED: %U %?")
 ;; 	 ("b" "Brain" plain
-;; 	  (file (expand-file-name
-;; 			 (format-time-string "%Y%m%d-%H%M%S.org")
-;; 			 "~/org-shared/brain/"))
+;; 	  (file (my/new-brain-file-name "param"))
 ;; 	  "* %^{Description}\n  CREATED: %U %?")
-;;  	 ("b" "Brain" plain (file "/tmp/test.org")
-;;  	  "* %^{Description}\n  CREATED: %U %?")
- 	 ("b" "Brain" plain (function my/brain-file-by-date)
- 	  "* %^{Description}\n  CREATED: %U %?")
+;; 	 ("b" "Brain" plain
+;; 	  (file ,(format-time-string "~/org-shared/brain/%Y%m%d-%H%M%S.org"))
+;; 	  "* %^{Description}\n  CREATED: %U %?")
+	 ("b" "Brain" plain
+	  (file ,(my/new-brain-file-name "param"))
+	  "* %^{Description}\n  CREATED: %U %?")
 	 ))
 
   ;; GTD Contexts
@@ -388,6 +391,7 @@
   (deft-extensions '("txt" "tex" "org"))
   (deft-directory "~/org-shared/brain/")
   (deft-use-filter-string-for-filename t)
+  (deft-incremental-search t)
 
   :bind
   ("<f8>" . deft))

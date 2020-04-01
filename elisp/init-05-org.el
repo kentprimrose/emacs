@@ -61,7 +61,7 @@
 
   (org-agenda-files '("~/org-local" "~/org-local/archive"
 					  "~/org-shared" "~/org-shared/archive"
-					  "~/org-shared/brain/org"))
+					  "~/org-shared/brain"))
   (org-default-notes-file "~/org-local/capture.org")
   (org-archive-location "archive/%s_archive::")
 
@@ -367,27 +367,27 @@
   (deft-recursive t)
   (deft-default-extsnsion "org")
   (deft-extensions '("txt" "tex" "org"))
-  (deft-directory "~/org-shared/brain/org/")
+  (deft-directory "~/org-shared/brain/")
   (deft-use-filter-string-for-filename t)
 
   :bind
   ("<f8>" . deft))
 
-(use-package org-roam
-  :ensure t
-
-  :custom
-  (org-roam-directory "~/org-shared/brain/org/")
-
-  :config
-  (org-roam-mode +1)
-
-  :bind (:map org-roam-mode-map
-			  (("C-c n l" . org-roam)
-			   ("C-c n f" . org-roam-find-file)
-			   ("C-c n g" . org-roam-show-graph))
-			  :map org-mode-map
-			  (("C-c n i" . org-roam-insert))))
+;; (use-package org-roam
+;;   :ensure t
+;; 
+;;   :custom
+;;   (org-roam-directory "~/org-shared/org/")
+;; 
+;;   :config
+;;   (org-roam-mode +1)
+;; 
+;;   :bind (:map org-roam-mode-map
+;; 			  (("C-c n l" . org-roam)
+;; 			   ("C-c n f" . org-roam-find-file)
+;; 			   ("C-c n g" . org-roam-show-graph))
+;; 			  :map org-mode-map
+;; 			  (("C-c n i" . org-roam-insert))))
 
 (provide 'init-05-org)
 ;;; init-05-org.el ends here

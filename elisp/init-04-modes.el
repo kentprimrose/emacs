@@ -89,8 +89,11 @@
 
 ;; Ripgrep
 ;; ========================================
-(use-package ripgrep
-  :ensure t)
+(use-package rg
+  :ensure t
+
+  :config
+  (rg-enable-default-bindings))
 
 ;; Magit
 ;; ========================================

@@ -7,23 +7,27 @@
 
 ;;; Code:
 
-(defun my/new-brain-file (desc)
-  "Return a brain file name with current time and DESC."
-  (find-file (format "~/org-shared/brain/%s %s.org"
-		  (format-time-string "%Y%m%d-%H%M%S")
-		  desc)))
-
-(defun my/new-brain-file-name-old (desc)
-  "Return a brain file name with current time and DESC."
-  (format "~/org-shared/brain/%s %s.org"
-		  (format-time-string "%Y%m%d-%H%M%S")
-		  desc))
-
-(defun my/new-brain-file-name ()
-  "Return a brain file name with current time prefix."
-  (format "~/org-shared/brain/%s %s.org"
-		  (format-time-string "%Y%m%d-%H%M%S")
-		  (read-string "File name: ")))
+(defun my/create-brain-file ()
+  "Create a new brain file."
+  (interactive)
+  (let
+	  ((TITLE (read-string "Title: "))
+	   (TAGS  (read-string "Tags: ")))
+	(find-file (format "~/org-shared/brain/%s %s.org"
+					   (format-time-string "%Y%m%d-%H%M%S")
+					   TITLE))
+	(insert "#+TITLE: " TITLE "\n"
+			"#+FILETAGS: " TAGS "\n"
+			"\n"
+			"\n"
+			"\n"
+			"* Links\n"
+			"** Parents\n"
+			"** Children\n"
+			"** References\n"
+			"** Other")
+	(goto-char (point-min))
+	(forward-line 3)))
 
 ;; Org
 ;; =====================================================================
@@ -100,14 +104,8 @@
 	 ("i" "Idea" entry
 	  (file+headline org-default-notes-file "Ideas")
 	  "* %^{Description}\n  CREATED: %U %?")
-;; 	 ("b" "Brain" plain
-;; 	  (file (my/new-brain-file-name "param"))
-;; 	  "* %^{Description}\n  CREATED: %U %?")
-;; 	 ("b" "Brain" plain
-;; 	  (file ,(format-time-string "~/org-shared/brain/%Y%m%d-%H%M%S.org"))
-;; 	  "* %^{Description}\n  CREATED: %U %?")
 ;;	 ("b" "Brain" plain
-;;	  (file ,(my/new-brain-file-name))
+;;	  (file ,(my/new-brain-file-name (read-string "File name: ")))
 ;;	  "#+TITLE: %^{Title}\n#+FILETAGS: \n\n* Links\n** Parents\n** Children\n** References\n** Other")
 	 ))
 
@@ -116,15 +114,15 @@
   (org-fast-tag-selection-single-key t)
   (org-tag-alist
    `((:startgroup . nil)
-	 ("@wrk"  . ?w)
-	 ("@hom"  . ?h)
-	 ("@out"  . ?o)
-	 ("@net"  . ?n)
-	 ("@cmp"  . ?c)
-	 ("@pho"  . ?p)
-	 ("@eml"  . ?m)
-	 ("@del"  . ?d)
-	 ("PROJ"  . ?j)
+	 ("@wrk" . ?w)
+	 ("@hom" . ?h)
+	 ("@out" . ?o)
+	 ("@net" . ?n)
+	 ("@cmp" . ?c)
+	 ("@pho" . ?p)
+	 ("@eml" . ?m)
+	 ("@del" . ?d)
+	 ("PROJ" . ?j)
 	 (:endgroup . nil)))
 
   ;; Refile Setup

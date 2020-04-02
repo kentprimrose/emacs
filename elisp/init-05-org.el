@@ -400,7 +400,6 @@
 					   (format-time-string "%Y%m%d-%H%M%S")
 					   (replace-regexp-in-string " " "_" (downcase TITLE))))
 	(insert "#+TITLE: " (capitalize TITLE) "\n"
-			"#+FILETAGS: " (downcase TAGS) "\n"
 			"\n"
 			"\n"
 			"\n"
@@ -409,7 +408,9 @@
 			"- Children\n"
 			"- References\n"
 			"- Other")
-	(goto-char (point-min)) (forward-line 3)))
+	(goto-char (point-min)) (forward-line 2)
+	(insert "* " (capitalize TITLE))
+	(insert " :" (replace-regexp-in-string "\s-*" ":" (downcase TAGS)) ":\n")))
 
 (global-set-key (kbd "C-c C-b") 'my/create-brain-file)
 

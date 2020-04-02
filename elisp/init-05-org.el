@@ -7,28 +7,6 @@
 
 ;;; Code:
 
-(defun my/create-brain-file ()
-  "Create a new brain file."
-  (interactive)
-  (let
-	  ((TITLE (read-string "Title: "))
-	   (TAGS  (read-string "Tags: ")))
-	(find-file (format "~/org-shared/brain/%s %s.org"
-					   (format-time-string "%Y%m%d-%H%M%S")
-					   TITLE))
-	(insert "#+TITLE: " TITLE "\n"
-			"#+FILETAGS: " TAGS "\n"
-			"\n"
-			"\n"
-			"\n"
-			"* Links\n"
-			"** Parents\n"
-			"** Children\n"
-			"** References\n"
-			"** Other")
-	(goto-char (point-min))
-	(forward-line 3)))
-
 ;; Org
 ;; =====================================================================
 (use-package org
@@ -104,9 +82,6 @@
 	 ("i" "Idea" entry
 	  (file+headline org-default-notes-file "Ideas")
 	  "* %^{Description}\n  CREATED: %U %?")
-;;	 ("b" "Brain" plain
-;;	  (file ,(my/new-brain-file-name (read-string "File name: ")))
-;;	  "#+TITLE: %^{Title}\n#+FILETAGS: \n\n* Links\n** Parents\n** Children\n** References\n** Other")
 	 ))
 
   ;; GTD Contexts
@@ -259,7 +234,6 @@
 	   (tags (concat "-PROJ+TODO={DONE\\\|CNCL}" "|"
 					 "+PROJ+TODO={DONE\\\|CNCL}+LEVEL<=2")
 			 ((org-agenda-overriding-header "Archive:")))))
-
 
 	 ("p" "Planning"
 	  ((tags-todo "-PROJ-STYLE=\"habit\"-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
@@ -415,6 +389,29 @@
 ;; 			   ("C-c n g" . org-roam-show-graph))
 ;; 			  :map org-mode-map
 ;; 			  (("C-c n i" . org-roam-insert))))
+
+(defun my/create-brain-file ()
+  "Create a new brain file, prompting for TITLE and TAGS."
+  (interactive)
+  (let
+	  ((TITLE (read-string "Title: "))
+	   (TAGS  (read-string "Tags: ")))
+	(find-file (format "~/org-shared/brain/%s_%s.org"
+					   (format-time-string "%Y%m%d-%H%M%S")
+					   (replace-regexp-in-string " " "_" (downcase TITLE))))
+	(insert "#+TITLE: " TITLE "\n"
+			"#+FILETAGS: " (downcase TAGS) "\n"
+			"\n"
+			"\n"
+			"\n"
+			"* Links\n"
+			"** Parents\n"
+			"** Children\n"
+			"** References\n"
+			"** Other")
+	(goto-char (point-min)) (forward-line 3)))
+
+(global-set-key (kbd "C-c C-b") 'my/create-brain-file)
 
 (provide 'init-05-org)
 ;;; init-05-org.el ends here

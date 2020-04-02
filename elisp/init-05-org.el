@@ -399,16 +399,16 @@
 	(find-file (format "~/org-shared/brain/%s_%s.org"
 					   (format-time-string "%Y%m%d-%H%M%S")
 					   (replace-regexp-in-string " " "_" (downcase TITLE))))
-	(insert "#+TITLE: " TITLE "\n"
+	(insert "#+TITLE: " (capitalize TITLE) "\n"
 			"#+FILETAGS: " (downcase TAGS) "\n"
 			"\n"
 			"\n"
 			"\n"
 			"* Links\n"
-			"** Parents\n"
-			"** Children\n"
-			"** References\n"
-			"** Other")
+			"- Parents\n"
+			"- Children\n"
+			"- References\n"
+			"- Other")
 	(goto-char (point-min)) (forward-line 3)))
 
 (global-set-key (kbd "C-c C-b") 'my/create-brain-file)

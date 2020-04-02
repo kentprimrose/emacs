@@ -13,11 +13,17 @@
 		  (format-time-string "%Y%m%d-%H%M%S")
 		  desc)))
 
-(defun my/new-brain-file-name (desc)
+(defun my/new-brain-file-name-old (desc)
   "Return a brain file name with current time and DESC."
   (format "~/org-shared/brain/%s %s.org"
 		  (format-time-string "%Y%m%d-%H%M%S")
 		  desc))
+
+(defun my/new-brain-file-name ()
+  "Return a brain file name with current time prefix."
+  (format "~/org-shared/brain/%s %s.org"
+		  (format-time-string "%Y%m%d-%H%M%S")
+		  (read-string "File name: ")))
 
 ;; Org
 ;; =====================================================================
@@ -57,21 +63,21 @@
   (org-agenda-compact-blocks t)
   (org-agenda-start-with-log-mode t)
   (org-agenda-inhibit-startup t)
-  (org-agenda-ignore-drawer-properties '(effort appt category)) ;; not used
+  (org-agenda-ignore-drawer-properties `(effort appt category)) ;; not used
   (org-catch-invisible-edits 'show-and-error)
   (org-cycle-separator-lines 0)
   (org-list-indent-offset 0)
   (org-ellipsis "⤵")
 
-  (org-blank-before-new-entry '((heading . auto)
+  (org-blank-before-new-entry `((heading . auto)
 								(plain-list-item . auto)))
-  (org-M-RET-may-split-line '((default . nil)))
+  (org-M-RET-may-split-line `((default . nil)))
 
   (org-list-demote-modify-bullet
-   '(("-"  . "+") ("*"  . "+") ("+"  . "-")
+   `(("-"  . "+") ("*"  . "+") ("+"  . "-")
 	 ("1." . "-") ("1)" . "-")))
 
-  (org-agenda-files '("~/org-local" "~/org-local/archive"
+  (org-agenda-files `("~/org-local" "~/org-local/archive"
 					  "~/org-shared" "~/org-shared/archive"
 					  "~/org-shared/brain"))
   (org-default-notes-file "~/org-local/capture.org")
@@ -100,16 +106,16 @@
 ;; 	 ("b" "Brain" plain
 ;; 	  (file ,(format-time-string "~/org-shared/brain/%Y%m%d-%H%M%S.org"))
 ;; 	  "* %^{Description}\n  CREATED: %U %?")
-	 ("b" "Brain" plain
-	  (file ,(my/new-brain-file-name "param"))
-	  "* %^{Description}\n  CREATED: %U %?")
+;;	 ("b" "Brain" plain
+;;	  (file ,(my/new-brain-file-name))
+;;	  "#+TITLE: %^{Title}\n#+FILETAGS: \n\n* Links\n** Parents\n** Children\n** References\n** Other")
 	 ))
 
   ;; GTD Contexts
   (org-use-fast-tag-selection t)
   (org-fast-tag-selection-single-key t)
   (org-tag-alist
-   '((:startgroup . nil)
+   `((:startgroup . nil)
 	 ("@wrk"  . ?w)
 	 ("@hom"  . ?h)
 	 ("@out"  . ?o)
@@ -126,17 +132,17 @@
   (org-refile-use-outline-path 'file)
   (org-outline-path-complete-in-steps nil)
   (org-refile-allow-creating-parent-nodes 'confirm)
-  (org-refile-targets '((org-agenda-files :maxlevel . 1)
+  (org-refile-targets `((org-agenda-files :maxlevel . 1)
 						(org-agenda-files :tag . "PROJ")
 						(org-agenda-files :tag . "DELG")))
 
   ;; Workflow Setup
   (org-todo-keywords
-   '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d)" "CNCL(x@/!)")
+   `((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d)" "CNCL(x@/!)")
 	 (sequence "STEP(s)" "NEXT(n)" "|" "DONE(d)" "CNCL(x@/!)")))
 
   (org-todo-keyword-faces
-   '(("TODO" :foreground "Green"          :weight bold)
+   `(("TODO" :foreground "Green"          :weight bold)
 	 ("STEP" :foreground "LightBlue"      :weight bold)
 	 ("NEXT" :foreground "Blue"           :weight bold)
 	 ("WAIT" :foreground "Yellow"         :weight bold)
@@ -158,26 +164,26 @@
   (org-agenda-use-time-grid nil)
   (org-sort-agenda-noeffort-is-high t)
   (org-agenda-include-diary t)
-  (org-stuck-projects '("PROJ+LEVEL=2/-DONE" ("NEXT" "TODO")))
+  (org-stuck-projects `("PROJ+LEVEL=2/-DONE" ("NEXT" "TODO")))
   (diary-file "~/org-local/diary")
   (org-agenda-diary-file 'diary-file)
 
   (org-agenda-remove-tags t)
   (org-agenda-prefix-format
-   '((agenda . " %-5 T%-7c%?-8t ")
+   `((agenda . " %-5 T%-7c%?-8t ")
 	 (todo   . " %-5 T%-7c%?-8t ")
 	 (tags   . " %-5 T%-7c%?-8t ")
 	 (timeline . " %s %t ")
 	 (search . " %i %-12:c ")))
 
   (org-agenda-sorting-strategy
-   '((agenda habit-down time-up priority-down category-keep tag-down)
+   `((agenda habit-down time-up priority-down category-keep tag-down)
 	 (todo priority-down category-keep)
 	 (tags priority-down category-keep)
 	 (search category-keep)))
 
   (org-agenda-custom-commands
-   '(("g" . "GTD contexts")
+   `(("g" . "GTD contexts")
 	 ("gw" "Work"           tags-todo "@wrk" ((org-agenda-overriding-header "Work:")))
 	 ("gh" "Home"           tags-todo "@hom" ((org-agenda-overriding-header "Home:")))
 	 ("go" "Out"            tags-todo "@out" ((org-agenda-overriding-header "Out:")))
@@ -279,7 +285,7 @@
 	 ("o" . "Old Reports")
 	 ("od" "Daily Review"
 	  ((agenda "" ((org-agenda-overriding-header "Due:")
-				   (org-agenda-entry-types '(:scheduled :deadline :timestamp :sexp))
+				   (org-agenda-entry-types `(:scheduled :deadline :timestamp :sexp))
 				   (org-agenda-ndays 1)
 				   (org-deadline-warning-days 7)
 				   (org-agenda-skip-deadline-if-done t)
@@ -311,7 +317,7 @@
 	  ((org-agenda-overriding-header "Open Actions:")
 	   (org-use-tag-inheritance t)
 	   (org-agenda-skip-function
-		'(org-agenda-skip-entry-if 'todo '("DONE" "CNCL")))))
+		`(org-agenda-skip-entry-if 'todo `("DONE" "CNCL")))))
 	 ("xx" "Next Actions" tags "+TODO={TODO\\\|NEXT\\\|WAIT}"
 	  ((org-agenda-overriding-header "Next Actions:")
 	   (org-use-tag-inheritance nil)
@@ -325,7 +331,7 @@
 	   (org-agenda-prefix-format "  %-7:c %s")))
 	 ("xs" "Scheduled" agenda ""
 	  ((org-agenda-overriding-header "Scheduled Tasks:")
-	   (org-agenda-entry-types '(:scheduled))
+	   (org-agenda-entry-types `(:scheduled))
 	   (org-agenda-ndays 30)
 	   (org-deadline-warning-days 0)
 	   (org-agenda-skip-scheduled-if-done t)
@@ -333,7 +339,7 @@
 	   (org-agenda-include-diary nil)))
 	 ("xd" "Deadlines" agenda ""
 	  ((org-agenda-overriding-header "Deadlines:")
-	   (org-agenda-entry-types '(:deadline))
+	   (org-agenda-entry-types `(:deadline))
 	   (org-agenda-ndays 30)
 	   (org-deadline-warning-days 0)
 	   (org-agenda-skip-deadline-if-done t)
@@ -377,7 +383,7 @@
   :defer t
 
   :custom
-  (reftex-default-bibliography '("~/org-shared/bibliography/references.bib"))
+  (reftex-default-bibliography `("~/org-shared/bibliography/references.bib"))
   (org-ref-bibliography-notes "~/org-shared/bibliography/notes.org")
   (org-ref-default-bibliography "~/org-shared/bibliography/references.bib")
   (org-ref-pdf-directory "~/org-shared/bibliography/bibtex-pdfs/"))
@@ -388,7 +394,7 @@
   :custom
   (deft-recursive t)
   (deft-default-extsnsion "org")
-  (deft-extensions '("txt" "tex" "org"))
+  (deft-extensions `("txt" "tex" "org"))
   (deft-directory "~/org-shared/brain/")
   (deft-use-filter-string-for-filename t)
   (deft-incremental-search t)

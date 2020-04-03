@@ -40,12 +40,6 @@
   (org-log-state-notes-into-drawer t)
   (org-tags-column -80)
   (org-default-priority 0)
-  (org-agenda-tags-column -80)
-  (org-agenda-window-setup 'current-window)
-  (org-agenda-compact-blocks t)
-  (org-agenda-start-with-log-mode t)
-  (org-agenda-inhibit-startup t)
-  (org-agenda-ignore-drawer-properties `(effort appt category)) ;; not used
   (org-catch-invisible-edits 'show-and-error)
   (org-cycle-separator-lines 0)
   (org-list-indent-offset 0)
@@ -124,24 +118,34 @@
 
   ;; Agenda Setup.
   (org-agenda-span 7)
-  (org-deadline-warning-days 14)
   (org-agenda-start-with-follow-mode nil)
   (org-agenda-follow-indirect t)
   (org-agenda-dim-blocked-tasks t)
   (org-agenda-show-all-dates t)
   (org-agenda-skip-deadline-if-done t)
-  ;; (org-agenda-skip-scheduled-if-done t)
   (org-agenda-skip-scheduled-if-deadline-is-shown t)
-  (org-habit-show-habits-only-for-today nil)
   (org-agenda-start-on-weekday nil)
   (org-agenda-use-time-grid nil)
-  (org-sort-agenda-noeffort-is-high t)
   (org-agenda-include-diary t)
+  (org-agenda-tags-column -80)
+  (org-agenda-window-setup 'current-window)
+  (org-agenda-inhibit-startup t)
+  (org-agenda-ignore-drawer-properties `(effort appt category)) ;; not used
+  (org-agenda-block-separator nil)
+  (org-agenda-compact-blocks t)
+  (org-agenda-start-with-log-mode t)
+  (org-agenda-start-day nil)
+  (org-agenda-start-on-weekday nil)
+  (org-agenda-diary-file 'diary-file)
+  (org-agenda-remove-tags t)
+
+  (org-deadline-warning-days 14)
+  (org-habit-show-habits-only-for-today nil)
+  (org-sort-agenda-noeffort-is-high t)
+
   (org-stuck-projects `("PROJ+LEVEL=2/-DONE" ("NEXT" "TODO")))
   (diary-file "~/org-local/diary")
-  (org-agenda-diary-file 'diary-file)
 
-  (org-agenda-remove-tags t)
   (org-agenda-prefix-format
    `((agenda . " %-5 T%-7c%?-8t ")
 	 (todo   . " %-5 T%-7c%?-8t ")
@@ -374,22 +378,8 @@
   :bind
   ("<f8>" . deft))
 
-;; (use-package org-roam
-;;   :ensure t
-;; 
-;;   :custom
-;;   (org-roam-directory "~/org-shared/org/")
-;; 
-;;   :config
-;;   (org-roam-mode +1)
-;; 
-;;   :bind (:map org-roam-mode-map
-;; 			  (("C-c n l" . org-roam)
-;; 			   ("C-c n f" . org-roam-find-file)
-;; 			   ("C-c n g" . org-roam-show-graph))
-;; 			  :map org-mode-map
-;; 			  (("C-c n i" . org-roam-insert))))
-
+;; Here's my brain!
+;; ============================================================
 (defun my/create-brain-file ()
   "Create a new brain file, prompting for TITLE and TAGS."
   (interactive)

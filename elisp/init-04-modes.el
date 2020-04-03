@@ -58,9 +58,6 @@
    ([s-up]   . dired-up-directory)
    ([s-down] . dired-find-file)))
 
-(use-package dired+
-  :after dired)
-
 ;; text modes
 ;; ========================================
 (setq global-visual-line-mode 1)

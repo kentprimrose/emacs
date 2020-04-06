@@ -59,9 +59,15 @@
   (org-default-notes-file "~/org-local/capture.org")
   (org-archive-location "archive/%s_archive::")
 
+  (org-journal-dir "~/org-shared/journal/")
+  (org-journal-file-format "%Y%m%d\.org")
+  (org-journal-date-format "%Y/%m/%d - %A")
+  (org-journal-date-prefix "#+STARTUP: overview\n#+FILETAGS: JRNL\n#+TITLE: ")
+  (org-journal-time-prefix "\n** ")
+
   ;; Capture Setup
   (org-capture-templates
-   `(("t" "Todo" entry
+   '(("t" "Todo" entry
 	  (file+headline org-default-notes-file "Tasks")
 	  "* TODO %^{Description}\n  CREATED: %U %?")
 	 ("a" "Appointment" entry
@@ -322,8 +328,11 @@
 	   (org-use-tag-inheritance t)
 	   (org-agenda-include-diary nil)))))
 
+  :init (require 'org-journal)
+
   :bind (("C-c a" . org-agenda)
 		 ("C-c c" . org-capture)
+		 ("C-c j" . org-journal-new-entry)
 		 ("C-c l" . org-store-link)
 		 ("C-c u" . org-switchb)
 		 ("C-c i" . org-time-stamp-inactive)
@@ -336,19 +345,6 @@
 		 ("j" . org-agenda-next-line)
 		 ("k" . org-agenda-previous-line)
 		 ("C-c C-e" . org-export-dispatch)))
-
-(use-package org-journal
-  :ensure t
-
-  :custom
-  (org-journal-dir "~/org-shared/journal/")
-  (org-journal-file-format "%Y%m%d\.org")
-  (org-journal-date-format "%Y/%m/%d - %A")
-  (org-journal-date-prefix "#+STARTUP: overview\n#+FILETAGS: JRNL\n#+TITLE: ")
-  (org-journal-time-prefix "\n** ")
-
-  :bind (("C-c j" . org-journal-new-entry)
-		 ("C-c C-j" . org-journal-new-entry)))
 
 (use-package org-cliplink
   :ensure t
@@ -377,35 +373,6 @@
 
   :bind
   ("<f8>" . deft))
-
-;; Super Agenda
-;; ============================================================
-(use-package org-super-agenda
-  :ensure t
-  :after (org)
-
-  :config
-  (push `("c" "Super view"
-		  ((agenda "" ((org-agenda-overriding-header "")
-					   (org-super-agenda-groups
-						'((:name "Today"
-								 :time-grid t
-								 :date today
-								 :order 1)))))
-		   (alltodo "" ((org-agenda-overriding-header "")
-						(org-super-agenda-groups
-						 '((:log t)
-						   (:name "To refile" :file-path "refile\\.org")
-						   (:name "Next to do" :todo "NEXT" :order 1)
-						   (:name "Important" :priority "A" :order 6)
-						   (:name "Today's tasks" :file-path "journal/")
-						   (:name "Due Today" :deadline today :order 2)
-						   (:name "Scheduled Soon" :scheduled future :order 8)
-						   (:name "Overdue" :deadline past :order 7)
-						   (:name "Meetings" :and (:todo "MEET" :scheduled future) :order 10)
-						   (:discard (:not (:todo "TODO")))))))))
-		org-agenda-custom-commands)
-  )
 
 ;; Here's my brain!
 ;; ============================================================

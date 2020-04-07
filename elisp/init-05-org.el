@@ -56,7 +56,7 @@
   (org-agenda-files `("~/org-local" "~/org-local/archive"
 					  "~/org-shared" "~/org-shared/archive"
 					  "~/org-shared/brain"))
-  (org-default-notes-file "~/org-local/capture.org")
+  (org-default-notes-file "~/org-shared/capture.org")
   (org-archive-location "archive/%s_archive::")
 
   (org-journal-dir "~/org-shared/journal/")
@@ -150,7 +150,7 @@
   (org-sort-agenda-noeffort-is-high t)
 
   (org-stuck-projects `("PROJ+LEVEL=2/-DONE" ("NEXT" "TODO")))
-  (diary-file "~/org-local/diary")
+  (diary-file "~/org-shared/diary")
 
   (org-agenda-prefix-format
    `((agenda . " %-5 T%-7c%?-8t ")

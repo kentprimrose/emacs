@@ -398,7 +398,8 @@
 	(insert "* " (capitalize TITLE))
 	(insert " :" (replace-regexp-in-string "\s-*" ":" (downcase TAGS)) ":\n")))
 
-(global-set-key (kbd "C-c C-b") 'my/create-brain-file)
+(global-set-key (kbd "C-c g") 'my/create-brain-file)
+(global-set-key (kbd "C-c C-g") 'my/create-brain-file)
 
 (provide 'init-05-org)
 ;;; init-05-org.el ends here

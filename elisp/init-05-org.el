@@ -153,11 +153,11 @@
   (diary-file "~/org-shared/diary")
 
   (org-agenda-prefix-format
-   `((agenda . " %-5 T%-7c%?-8t ")
-	 (todo   . " %-5 T%-7c%?-8t ")
-	 (tags   . " %-5 T%-7c%?-8t ")
+   `((agenda   . " %-5 T%-7c%?-8t ")
+	 (todo     . " %-5 T%-7c%?-8t ")
+	 (tags     . " %-5 T%-7c%?-8t ")
 	 (timeline . " %s %t ")
-	 (search . " %i %-12:c ")))
+	 (search   . " %i %-12:c ")))
 
   (org-agenda-sorting-strategy
    `((agenda habit-down time-up priority-down category-keep tag-down)

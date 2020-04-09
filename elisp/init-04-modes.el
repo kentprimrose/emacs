@@ -110,46 +110,44 @@
   
   :config
   (ivy-mode 1)
-  (local-unset-key "S-SPC")
 
   :custom
   (ivy-use-virtual-buffers t)
   (ivy-count-format "(%d/%d)")
 
   :bind
-  (("C-x b"   . 'ivy-switch-buffer)
-   ;; ("C-c v"   . 'ivy-push-view)
-   ;; ("C-c V"   . 'ivy-pop-view)
-   ;; ("C-c C-r" . 'ivy-resume)
-   ("M-S-SPC" . 'ivy-restrict-to-matches)))
+  (("C-x b"   . ivy-switch-buffer)
+   :map ivy-minibuffer-map
+   ("S-SPC"   . " ")
+   ("M-S-SPC" . ivy-restrict-to-matches)))
 
 (use-package swiper
   :ensure t
 
-  :bind (("C-s" . 'swiper-isearch)))
+  :bind (("C-s" . swiper-isearch)))
 
 (use-package counsel
   :ensure t
 
   :bind
-  (("M-x"     . 'counsel-M-x)
-   ("s-x"     . 'counsel-M-x)
-   ("C-x C-f" . 'counsel-find-file)
-   ("M-y"     . 'counsel-yank-pop)
+  (("M-x"     . counsel-M-x)
+   ("s-x"     . counsel-M-x)
+   ("C-x C-f" . counsel-find-file)
+   ("M-y"     . counsel-yank-pop)
 
-   ("C-c C-c g" . 'counsel-git)
-   ("C-c C-c j" . 'counsel-git-grep)
-   ("C-c C-c k" . 'counsel-rg)
-   ("C-c C-c m" . 'counsel-linux-app)
-   ("C-c C-c l" . 'counsel-locate)
-   ("C-c C-c b" . 'counsel-bookmark)
-   ("C-c C-c d" . 'counsel-descbinds)
-   ("C-c C-c g" . 'counsel-git)
-   ("C-c C-c o" . 'counsel-outline)
-   ("C-c C-c t" . 'counsel-load-theme)
-   ("C-c C-c F" . 'counsel-org-file)
+   ("C-c C-c g" . counsel-git)
+   ("C-c C-c j" . counsel-git-grep)
+   ("C-c C-c k" . counsel-rg)
+   ("C-c C-c m" . counsel-linux-app)
+   ("C-c C-c l" . counsel-locate)
+   ("C-c C-c b" . counsel-bookmark)
+   ("C-c C-c d" . counsel-descbinds)
+   ("C-c C-c g" . counsel-git)
+   ("C-c C-c o" . counsel-outline)
+   ("C-c C-c t" . counsel-load-theme)
+   ("C-c C-c F" . counsel-org-file)
 
-   ("C-h a" . 'counsel-apropos)))
+   ("C-h a" . counsel-apropos)))
 
 (use-package ivy-rich
   :ensure t

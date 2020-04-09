@@ -365,6 +365,7 @@
 		 :map org-mode-map
 		 ([s-return] . org-meta-return)
 		 ([return] . org-return-indent)
+
 		 :map org-agenda-mode-map
 		 ("w" . org-agenda-refile)
 		 ("j" . org-agenda-next-line)

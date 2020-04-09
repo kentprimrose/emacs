@@ -235,6 +235,25 @@
 				   (org-use-tag-inheritance t)))
 	   ))
 
+	 ("p" "Planning"
+	  ((tags-todo "-PROJ-STYLE=\"habit\"-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
+				  ((org-agenda-overriding-header "Open Tasks: =======================================================")))
+	   (tags-todo "PRIORITY=\"A\""
+				  ((org-agenda-overriding-header "Top Priority Tasks: ===============================================")))
+	   (tags-todo "PRIORITY=\"B\""
+				  ((org-agenda-overriding-header "Lower Priority Tasks: =============================================")))
+	   (tags-todo "PRIORITY=\"C\""
+				  ((org-agenda-overriding-header "Low Priority Tasks: ===============================================")))
+	   (tags "-ARCHIVE+PROJ+LEVEL=2"
+			 ((org-agenda-overriding-header "Active Projects: ==================================================")
+			  (org-use-tag-inheritance t)))
+	   (tags "IDEA+LEVEL=2-TODO={DONE}-TODO={CNCL}"
+			 ((org-agenda-overriding-header "Someday/Maybe: ====================================================")
+			  (org-use-tag-inheritance t)))
+	   (tags "STYLE=\"habit\""
+			 ((org-agenda-overriding-header "Habits: ===========================================================")))
+	   ))
+
 	 ("h" "Habits"
 	  ((tags "STYLE=\"habit\""
 			 ((org-agenda-overriding-header "Habits: ===========================================================")))
@@ -259,7 +278,7 @@
 	  ((tags-todo "-@wrk-@hom-@out-@net-@cmp-@pho-@eml-@del"
 				  ((org-agenda-overriding-header "Context:")
 				   (org-use-tag-inheritance t)))
-	   (tags "REFILE+LEVEL>1"
+	   (tags "MOVE+LEVEL>1"
 			 ((org-agenda-overriding-header "Refile:")
 			  (org-use-tag-inheritance t)))
 	   (stuck ""
@@ -268,25 +287,6 @@
 	   (tags (concat "-PROJ+TODO={DONE\\\|CNCL}" "|"
 					 "+PROJ+TODO={DONE\\\|CNCL}+LEVEL<=2")
 			 ((org-agenda-overriding-header "Archive:")))))
-
-	 ("p" "Planning"
-	  ((tags-todo "-PROJ-STYLE=\"habit\"-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
-				  ((org-agenda-overriding-header "Open Tasks: =======================================================")))
-	   (tags-todo "PRIORITY=\"A\""
-				  ((org-agenda-overriding-header "Top Priority Tasks: ===============================================")))
-	   (tags-todo "PRIORITY=\"B\""
-				  ((org-agenda-overriding-header "Lower Priority Tasks: =============================================")))
-	   (tags-todo "PRIORITY=\"C\""
-				  ((org-agenda-overriding-header "Low Priority Tasks: ===============================================")))
-	   (tags "-ARCHIVE+PROJ+LEVEL=2"
-			 ((org-agenda-overriding-header "Active Projects: ==================================================")
-			  (org-use-tag-inheritance t)))
-	   (tags "IDEA+LEVEL=2-TODO={DONE}-TODO={CNCL}"
-			 ((org-agenda-overriding-header "Someday/Maybe: ====================================================")
-			  (org-use-tag-inheritance t)))
-	   (tags "STYLE=\"habit\""
-			 ((org-agenda-overriding-header "Habits: ===========================================================")))
-	   ))
 
 	 ("o" . "Old Reports")
 	 ("od" "Daily Review"
@@ -358,6 +358,9 @@
 		 ("C-c c" . org-capture)
 		 ("C-c i" . org-time-stamp-inactive)
 		 ("C-c p" . org-cliplink)
+
+		 ("C-c C-l s" . org-store-link)
+		 ("C-c C-l i" . org-insert-link)
 
 		 ("C-c C-d b" . my/create-brain-file)
 		 ("C-c C-d j" . org-journal-new-entry)

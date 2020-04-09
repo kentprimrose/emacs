@@ -261,18 +261,24 @@
 
 	 ("r" . "Review")
 	 ("rw" "Weekly Review"
-	  ((agenda "" ((org-agenda-overriding-header "Agenda:")
+	  ((agenda "" ((org-agenda-overriding-header "Weekly Review:")
 				   (org-agenda-span 'week)
 				   (org-agenda-start-on-weekday 0)
 				   (org-agenda-todo-ignore-deadlines nil)
 				   (org-deadline-warning-days 7)
 				   (org-use-tag-inheritance t)))))
 	 ("rm" "Monthly Review"
-	  ((agenda "" ((org-agenda-overriding-header "Agenda:")
+	  ((agenda "" ((org-agenda-overriding-header "Monthly Review:")
 				   (org-agenda-span 'month)
 				   (org-agenda-include-diary nil)
 				   (org-agenda-todo-ignore-deadlines nil)
 				   (org-deadline-warning-days 28)
+				   (org-use-tag-inheritance t)))))
+	 ("rh" "Habits Review"
+	  ((agenda "" ((org-agenda-overriding-header "Habits Review:")
+				   (org-agenda-span 'week)
+				   (org-agenda-include-diary nil)
+				   (org-agenda-log-mode-items '(state))
 				   (org-use-tag-inheritance t)))))
 	 ("rr" "Require attention"
 	  ((tags-todo "-@wrk-@hom-@out-@net-@cmp-@pho-@eml-@del"

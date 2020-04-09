@@ -7,6 +7,30 @@
 
 ;;; Code:
 
+;; Templates
+;; ============================================================
+(defun my/create-brain-file ()
+  "Create a new brain file, prompting for TITLE and TAGS."
+  (interactive)
+  (let
+	  ((TITLE (read-string "Title: "))
+	   (TAGS  (read-string "Tags: ")))
+	(find-file (format "~/org-shared/brain/%s_%s.org"
+					   (format-time-string "%Y%m%d-%H%M%S")
+					   (replace-regexp-in-string " " "_" (downcase TITLE))))
+	(insert "#+TITLE: " (capitalize TITLE) "\n"
+			"\n"
+			"\n"
+			"\n"
+			"* Links\n"
+			"- Parents\n"
+			"- Children\n"
+			"- References\n"
+			"- Other")
+	(goto-char (point-min)) (forward-line 2)
+	(insert "* " (capitalize TITLE))
+	(insert " :" (replace-regexp-in-string "\s-*" ":" (downcase TAGS)) ":\n")))
+
 ;; Org
 ;; =====================================================================
 (use-package org
@@ -331,12 +355,15 @@
   :init (require 'org-journal)
 
   :bind (("C-c a" . org-agenda)
-		 ("C-c c" . org-capture)
-		 ("C-c j" . org-journal-new-entry)
-		 ("C-c l" . org-store-link)
-		 ("C-c u" . org-switchb)
 		 ("C-c i" . org-time-stamp-inactive)
+		 ("C-c u" . org-switchb)
 		 ("C-x p i" . org-cliplink)
+
+		 ("C-c C-d c" . org-capture)
+		 ("C-c C-d b" . my/create-brain-file)
+		 ("C-c C-d j" . org-journal-new-entry)
+		 ("C-c C-d l" . org-store-link)
+
 		 :map org-mode-map
 		 ([s-return] . org-meta-return)
 		 ([return] . org-return-indent)
@@ -373,33 +400,6 @@
 
   :bind
   ("<f8>" . deft))
-
-;; Here's my brain!
-;; ============================================================
-(defun my/create-brain-file ()
-  "Create a new brain file, prompting for TITLE and TAGS."
-  (interactive)
-  (let
-	  ((TITLE (read-string "Title: "))
-	   (TAGS  (read-string "Tags: ")))
-	(find-file (format "~/org-shared/brain/%s_%s.org"
-					   (format-time-string "%Y%m%d-%H%M%S")
-					   (replace-regexp-in-string " " "_" (downcase TITLE))))
-	(insert "#+TITLE: " (capitalize TITLE) "\n"
-			"\n"
-			"\n"
-			"\n"
-			"* Links\n"
-			"- Parents\n"
-			"- Children\n"
-			"- References\n"
-			"- Other")
-	(goto-char (point-min)) (forward-line 2)
-	(insert "* " (capitalize TITLE))
-	(insert " :" (replace-regexp-in-string "\s-*" ":" (downcase TAGS)) ":\n")))
-
-(global-set-key (kbd "C-c g") 'my/create-brain-file)
-(global-set-key (kbd "C-c C-g") 'my/create-brain-file)
 
 (provide 'init-05-org)
 ;;; init-05-org.el ends here

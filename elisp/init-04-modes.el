@@ -113,6 +113,7 @@
   
   :config
   (ivy-mode 1)
+  (local-unset-key "S-SPC")
 
   :custom
   (ivy-use-virtual-buffers t)
@@ -122,7 +123,8 @@
   (("C-x b"   . 'ivy-switch-buffer)
    ("C-c v"   . 'ivy-push-view)
    ("C-c V"   . 'ivy-pop-view)
-   ("C-c C-r" . 'ivy-resume)))
+   ("C-c C-r" . 'ivy-resume)
+   ("M-S-SPC" . 'ivy-restrict-to-matches)))
 
 (use-package swiper
   :ensure t

@@ -355,14 +355,12 @@
   :init (require 'org-journal)
 
   :bind (("C-c a" . org-agenda)
+		 ("C-c c" . org-capture)
 		 ("C-c i" . org-time-stamp-inactive)
-		 ("C-c u" . org-switchb)
-		 ("C-x p i" . org-cliplink)
+		 ("C-c p" . org-cliplink)
 
-		 ("C-c C-d c" . org-capture)
 		 ("C-c C-d b" . my/create-brain-file)
 		 ("C-c C-d j" . org-journal-new-entry)
-		 ("C-c C-d l" . org-store-link)
 
 		 :map org-mode-map
 		 ([s-return] . org-meta-return)

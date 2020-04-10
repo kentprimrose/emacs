@@ -368,8 +368,8 @@
 		 ("C-c C-l s" . org-store-link)
 		 ("C-c C-l i" . org-insert-link)
 
-		 ("C-c C-d b" . kap/create-brain-file)
-		 ("C-c C-d j" . org-journal-new-entry)
+		 ("C-c b b" . kap/create-brain-file)
+		 ("C-c b j" . org-journal-new-entry)
 
 		 :map org-mode-map
 		 ([s-return] . org-meta-return)

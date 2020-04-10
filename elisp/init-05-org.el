@@ -9,7 +9,7 @@
 
 ;; Templates
 ;; ============================================================
-(defun my/create-brain-file ()
+(defun kap/create-brain-file ()
   "Create a new brain file, prompting for TITLE and TAGS."
   (interactive)
   (let
@@ -368,7 +368,7 @@
 		 ("C-c C-l s" . org-store-link)
 		 ("C-c C-l i" . org-insert-link)
 
-		 ("C-c C-d b" . my/create-brain-file)
+		 ("C-c C-d b" . kap/create-brain-file)
 		 ("C-c C-d j" . org-journal-new-entry)
 
 		 :map org-mode-map

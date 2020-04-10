@@ -12,21 +12,13 @@
 (defun kap/create-brain-file ()
   "Create a new brain file, prompting for TITLE and TAGS."
   (interactive)
-  (let
-	  ((TITLE (read-string "Title: "))
-	   (TAGS  (read-string "Tags: ")))
+  (let ((TITLE (read-string "Title: "))
+		(TAGS  (read-string "Tags: ")))
 	(find-file (format "~/org-shared/brain/%s_%s.org"
 					   (format-time-string "%Y%m%d-%H%M%S")
 					   (replace-regexp-in-string " " "_" (downcase TITLE))))
-	(insert "#+TITLE: " (capitalize TITLE) "\n"
-			"\n"
-			"\n"
-			"\n"
-			"* Links\n"
-			"- Parents\n"
-			"- Children\n"
-			"- References\n"
-			"- Other")
+	(insert "#+TITLE: " (capitalize TITLE) "\n\n\n\n"
+			"* Links\n" "- Parents\n" "- Children\n" "- References\n" "- Other")
 	(goto-char (point-min)) (forward-line 2)
 	(insert "* " (capitalize TITLE))
 	(insert " :" (replace-regexp-in-string "\s-*" ":" (downcase TAGS)) ":\n")))

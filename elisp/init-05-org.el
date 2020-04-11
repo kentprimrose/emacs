@@ -83,22 +83,15 @@
 
   ;; Capture Setup
   (org-capture-templates
-   '(("t" "Todo" entry
+   '(("p" "Project" entry
+	  (file+headline org-default-notes-file "Projects")
+	  "* %^{Description} [/] :PROJ:\n  CREATED: %U %?")
+	 ("t" "Todo" entry
 	  (file+headline org-default-notes-file "Tasks")
 	  "* TODO %^{Description}\n  CREATED: %U %?")
 	 ("a" "Appointment" entry
 	  (file+headline org-default-notes-file "Appointments")
-	  "* %^{Description} @%^{Location}\n  %^{When}T CREATED: %U %?")
-	 ("p" "Project" entry
-	  (file+headline org-default-notes-file "Projects")
-	  "* %^{Description} [/] :PROJ:\n  CREATED: %U %?")
-	 ("n" "Note" entry
-	  (file+headline org-default-notes-file "Notes")
-	  "* %^{Description}\n  CREATED: %U %?")
-	 ("i" "Idea" entry
-	  (file+headline org-default-notes-file "Ideas")
-	  "* %^{Description}\n  CREATED: %U %?")
-	 ))
+	  "* %^{Description} @%^{Location}\n  %^{When}T CREATED: %U %?")))
 
   ;; GTD Contexts
   (org-use-fast-tag-selection t)

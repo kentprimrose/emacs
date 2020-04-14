@@ -138,7 +138,7 @@
 
    ("C-c C-c g" . counsel-git)
    ("C-c C-c j" . counsel-git-grep)
-   ("C-c C-c k" . counsel-rg)
+   ("C-c C-c r" . counsel-rg)
    ("C-c C-c m" . counsel-linux-app)
    ("C-c C-c l" . counsel-locate)
    ("C-c C-c b" . counsel-bookmark)
@@ -172,10 +172,15 @@
         '(".git" "node_modules" "__pycache__" ".vs"))
   (projectile-globally-ignored-files '("TAGS" "tags" ".DS_Store"))
   (projectile-completion-system 'ivy)
-  
+
   :bind
-  (("M-p p"   . projectile-commander)
-   ("M-p M-p" . projectile-commander)))
+  (:map projectile-mode-map
+		("M-p" . 'projectile-command-map))
+  
+  :config
+  ;; (define-key projectile-mode-map (kbd "M-p") 'projectile-command-map)
+  (projectile-mode +1)
+  )
 
 ;; elfeed
 ;; ========================================

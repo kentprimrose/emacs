@@ -173,14 +173,18 @@
   (projectile-globally-ignored-files '("TAGS" "tags" ".DS_Store"))
   (projectile-completion-system 'ivy)
 
+  :config
+  (projectile-mode +1)
+
   :bind
   (:map projectile-mode-map
-		("M-p" . 'projectile-command-map))
-  
+		("C-x p" . 'projectile-command-map)))
+
+(use-package counsel-projectile
+  :ensure t
+
   :config
-  ;; (define-key projectile-mode-map (kbd "M-p") 'projectile-command-map)
-  (projectile-mode +1)
-  )
+  (counsel-projectile-mode +1))
 
 ;; elfeed
 ;; ========================================

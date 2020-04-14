@@ -85,10 +85,11 @@
   (org-capture-templates
    '(("t" "Todo" entry
 	  (file+headline org-default-notes-file "Tasks")
-	  "* TODO %^{Description}\n  CREATED: %U %?")
+	  "* TODO %^{Description}\n   CREATED: %U %?")
 	 ("a" "Appointment" entry
 	  (file+headline org-default-notes-file "Appointments")
-	  "* %^{Description} @%^{Location}\n  %^{When}T CREATED: %U %?")))
+	  "* %^{Description} @%^{Location} %^{When}T\n   CREATED: %U %?")
+	 ))
 
   ;; GTD Contexts
   (org-use-fast-tag-selection t)

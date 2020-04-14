@@ -31,8 +31,9 @@
   (use-package evil-nerd-commenter
     :ensure t
 
-    :bind (("M-;"   . evilnc-comment-or-uncomment-lines)
-		   ("C-M-;" . evilnc-comment-or-uncomment-paragraphs))))
+    :bind
+	(("M-;"   . evilnc-comment-or-uncomment-lines)
+	 ("C-M-;" . evilnc-comment-or-uncomment-paragraphs))))
 
 ;; dired
 ;; ========================================
@@ -158,60 +159,23 @@
 (use-package smex  ;; for M-x memory
   :ensure t)
 
-;; ;; helm
-;; ;; ========================================
-;; (use-package helm
-;;   :ensure t
-;;   :delight
-;; 
-;;   :init
-;;   (helm-mode 1)
-;; 
-;;   :bind
-;;   (("M-x"     . 'helm-M-x)
-;;    ("s-x"     . 'helm-M-x)
-;;    ("C-x C-f" . 'helm-find-files)
-;;    ("C-x C-d" . 'helm-browse-project)
-;;    ("C-x b"   . 'helm-mini)
-;;    ("C-h a"   . 'helm-apropos)
-;;    ("C-h i"   . 'helm-info)
-;;    ("C-s"     . 'helm-occur)
-;;    ("C-c a"   . 'helm-do-grep-ag)
-;;    ("C-c g"   . 'helm-grep-do-git-grep)))
-
-;; projectIle
+;; projectile
 ;; ========================================
 (use-package projectile
   :ensure t
   :delight '(:eval (concat " " (projectile-project-name)))
 
-  :config
-  ;; (setq projectile-enable-caching t)
-  ;; (setq projectile-indexing-method 'alien)
-
-  (setq projectile-globally-ignored-file-suffixes
+  :custom
+  (projectile-globally-ignored-file-suffixes
         '("#" "~" ".swp" ".o" ".so" ".exe" ".dll" ".elc" ".pyc" ".jar" "*.class"))
-  (setq projectile-globally-ignored-directories
+  (projectile-globally-ignored-directories
         '(".git" "node_modules" "__pycache__" ".vs"))
-  (setq projectile-globally-ignored-files '("TAGS" "tags" ".DS_Store"))
-  (projectile-mode +1)
-
-  (setq-default
-   projectile-global-mode t
-   projectile-mode-line
-   '(:eval
-     (if (file-remote-p default-directory)
-         " Projectile"
-       (format " Proj[%s]"
-               (projectile-project-name)))))
-
+  (projectile-globally-ignored-files '("TAGS" "tags" ".DS_Store"))
+  (projectile-completion-system 'ivy)
+  
   :bind
-  (("M-p p" . projectile-commander)
-   ("M-p M-p" . projectile-commander)
-   ("M-p f" . projectile-find-file)
-   ("M-p d" . projectile-find-dir)
-   ("M-p t" . projectile-find-tag)
-   ("M-p r" . projectile-ripgrep)))
+  (("M-p p"   . projectile-commander)
+   ("M-p M-p" . projectile-commander)))
 
 ;; elfeed
 ;; ========================================

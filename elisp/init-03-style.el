@@ -37,7 +37,12 @@
 (use-package minions
   :demand
   :ensure t
-  :config (minions-mode 1))
+  :config (minions-mode))
+
+(use-package which-key
+  :demand
+  :ensure t
+  :config (which-key-mode))
 
 (provide 'init-03-style)
 ;;; init-03-style.el ends here

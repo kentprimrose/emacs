@@ -70,9 +70,8 @@
 	 ("1." . "-") ("1)" . "-")))
 
   (org-agenda-files `("~/org-local" "~/org-local/archive"
-					  "~/org-shared" "~/org-shared/archive"
-					  "~/org-shared/brain"))
-  (org-default-notes-file "~/org-shared/capture.org")
+					  "~/org-shared" "~/org-shared/archive"))
+  (org-default-notes-file "~/org-local/capture.org")
   (org-archive-location "archive/%s_archive::")
 
   (org-journal-dir "~/org-shared/journal/")
@@ -241,14 +240,18 @@
 				   (org-agenda-span 'week)
 				   (org-agenda-start-on-weekday 0)
 				   (org-agenda-todo-ignore-deadlines nil)
-				   (org-deadline-warning-days 7)
 				   (org-use-tag-inheritance t)))))
 	 ("rm" "Monthly Review"
 	  ((agenda "" ((org-agenda-overriding-header "Monthly Review:")
 				   (org-agenda-span 'month)
 				   (org-agenda-include-diary nil)
 				   (org-agenda-todo-ignore-deadlines nil)
-				   (org-deadline-warning-days 28)
+				   (org-use-tag-inheritance t)))))
+	 ("ry" "Yearly Review"
+	  ((agenda "" ((org-agenda-overriding-header "Yearly Review:")
+				   (org-agenda-span 'year)
+				   (org-agenda-include-diary nil)
+				   (org-agenda-todo-ignore-deadlines nil)
 				   (org-use-tag-inheritance t)))))
 	 ("rh" "Habits Review"
 	  ((agenda "" ((org-agenda-overriding-header "Habits Review:")

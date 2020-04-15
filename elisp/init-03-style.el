@@ -28,56 +28,16 @@
 (setq visible-bell nil) ;; The default
 (setq ring-bell-function 'ignore)
 
-;; (load-theme 'tango-dark t)
-
-;; (use-package overcast-theme
-;;   :ensure t
-;;   :config
-;;   (load-theme 'overcast t))
-
-;; (use-package color-theme-sanityinc-tomorrow
-;;   :demand
-;;   :ensure t
-;;   :config
-;;   (load-theme 'sanityinc-tomorrow-bright t))
-
-;; (use-package alect-themes
-;;   :demand
-;;   :ensure t
-;;   :config
-;;   (alect-set-color 'dark 'bg-1 "gray10")
-;;   (setq alect-overriding-faces
-;;         '((font-lock-comment-face ((t :foreground "gray50" :slant italic)))
-;;           (mode-line ((t :background "gray30")))))
-;;   (load-theme 'alect-dark t))
-
-;; (use-package dimmer
-;;   :demand
-;;   :ensure t
-;;   :config
-;;   (dimmer-mode)
-;;   (setq dimmer-fraction 0.40))
-
 (use-package modus-vivendi-theme
   :demand
   :ensure t
   :config
   (load-theme 'modus-vivendi))
 
-(use-package smart-mode-line
+(use-package minions
   :demand
   :ensure t
-  :custom
-  (sml/no-confirm-load-theme t)
-  (sml/shorten-directory t)
-  (sml/shorten-modes t)
-  (sml/name-width 40)
-  (sml/mode-width 'full)
-  (rm-blacklist '(" Undo-Tree"
-                  " ElDoc"
-                  " company"))
-  :config
-  (sml/setup))
+  :config (minions-mode 1))
 
 (provide 'init-03-style)
 ;;; init-03-style.el ends here

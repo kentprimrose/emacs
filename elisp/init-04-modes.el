@@ -72,14 +72,13 @@
 
 ;; Control mode lines
 ;; ========================================
-(use-package delight
-  :ensure t)
+;; (use-package delight
+;;   :ensure t)
 
 ;; company
 ;; ========================================
 (use-package company
   :ensure t
-  :delight
 
   :config
   (global-company-mode)
@@ -107,7 +106,6 @@
 ;; ========================================
 (use-package ivy
   :ensure t
-  :delight
   
   :config
   (ivy-mode 1)
@@ -163,7 +161,7 @@
 ;; ========================================
 (use-package projectile
   :ensure t
-  :delight '(:eval (concat " " (projectile-project-name)))
+  ;; :delight '(:eval (concat " " (projectile-project-name)))
 
   :custom
   (projectile-globally-ignored-file-suffixes
@@ -213,7 +211,6 @@
 ;; ========================================
 (use-package flycheck
   :ensure t
-  :delight
 
   :init
   (global-flycheck-mode)
@@ -225,7 +222,6 @@
 ;; ========================================
 (use-package flyspell
   :ensure t
-  :delight
 
   :init
   (defun flyspell-check-next-highlighted-word ()

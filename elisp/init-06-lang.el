@@ -81,9 +81,15 @@
 ;; ========================================
 (use-package elpy
   :ensure t
+  :defer t
   :init
   (elpy-enable)
   (setq elpy-rpc-virtualenv-path 'current))
+
+(use-package blacken
+  :ensure t
+  :defer t
+  :config (blacken-mode 1))
 
 ;; javascript
 ;; ========================================

@@ -84,10 +84,10 @@
   (org-capture-templates
    '(("t" "Todo" entry
 	  (file+headline org-default-notes-file "Tasks")
-	  "* TODO %^{Description}\n   CREATED: %U %?")
+	  "* TODO %^{Description}\nCREATED: %U %?")
 	 ("a" "Appointment" entry
 	  (file+headline org-default-notes-file "Appointments")
-	  "* %^{Description} @%^{Location} %^{When}T\n   CREATED: %U %?")
+	  "* %^{Description} @%^{Location} %^{When}T\nCREATED: %U %?")
 	 ))
 
   ;; GTD Contexts
@@ -95,15 +95,9 @@
   (org-fast-tag-selection-single-key t)
   (org-tag-alist
    `((:startgroup . nil)
-	 ("@wrk" . ?w)
-	 ("@hom" . ?h)
-	 ("@out" . ?o)
-	 ("@net" . ?n)
-	 ("@cmp" . ?c)
-	 ("@pho" . ?p)
-	 ("@eml" . ?m)
-	 ("@del" . ?d)
-	 ("PROJ" . ?j)
+	 ("@wrk" . ?w) ("@hom" . ?h) ("@out" . ?o)
+	 ("@net" . ?n) ("@cmp" . ?c) ("@pho" . ?p)
+	 ("@eml" . ?m) ("@del" . ?d) ("PROJ" . ?j)
 	 (:endgroup . nil)))
 
   ;; Refile Setup

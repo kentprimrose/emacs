@@ -324,7 +324,9 @@
 	   (org-use-tag-inheritance t)
 	   (org-agenda-include-diary nil)))))
 
-  :init (require 'org-journal)
+  :init
+  (use-package org-journal
+    :ensure t)
 
   :bind (("C-c a" . org-agenda)
 		 ("C-c c" . org-capture)

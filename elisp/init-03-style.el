@@ -29,18 +29,19 @@
 (setq ring-bell-function 'ignore)
 
 (use-package modus-vivendi-theme
-  :demand
   :ensure t
   :config
   (load-theme 'modus-vivendi))
 
 (use-package minions
-  :demand
   :ensure t
   :config (minions-mode))
 
+(use-package simple-modeline
+  :ensure t
+  :hook (after-init . simple-modeline-mode))
+
 (use-package which-key
-  :demand
   :ensure t
   :config (which-key-mode))
 

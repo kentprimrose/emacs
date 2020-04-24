@@ -37,9 +37,9 @@
   :ensure t
   :config (minions-mode))
 
-(use-package simple-modeline
-  :ensure t
-  :hook (after-init . simple-modeline-mode))
+;; (use-package simple-modeline
+  ;; :ensure t
+  ;; :hook (after-init . simple-modeline-mode))
 
 (use-package which-key
   :ensure t

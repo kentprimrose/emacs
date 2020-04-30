@@ -196,38 +196,38 @@
 				   (org-use-tag-inheritance t)
 				   ))
 	   (tags-todo "-PROJ-STYLE=\"habit\"-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
-				  ((org-agenda-overriding-header "Open Tasks: =======================================================")
+				  ((org-agenda-overriding-header "Open Tasks: ========================================================")
 				   (org-use-tag-inheritance t)))
 	   (tags-todo "PRIORITY=\"A\""
-				  ((org-agenda-overriding-header "Top Priority Tasks: ===============================================")))
+				  ((org-agenda-overriding-header "Top Priority Tasks: ================================================")))
 	   (tags-todo "PRIORITY=\"B\""
-				  ((org-agenda-overriding-header "Lower Priority Tasks: =============================================")))
+				  ((org-agenda-overriding-header "Lower Priority Tasks: ==============================================")))
 	   (tags-todo "PRIORITY=\"C\""
-				  ((org-agenda-overriding-header "Someday Tasks: ====================================================")))
+				  ((org-agenda-overriding-header "Someday Tasks: =====================================================")))
 	   (tags-todo "PROJ"
-				  ((org-agenda-overriding-header "Projects: =========================================================")
+				  ((org-agenda-overriding-header "Projects: ==========================================================")
 				   (org-use-tag-inheritance t)))
 	   ))
 
 	 ("p" "Planning"
 	  ((tags-todo "-PROJ-STYLE=\"habit\"-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
-				  ((org-agenda-overriding-header "Open Tasks: =======================================================")))
+				  ((org-agenda-overriding-header "Open Tasks: ========================================================")))
 	   (tags-todo "PRIORITY=\"A\""
-				  ((org-agenda-overriding-header "Top Priority Tasks: ===============================================")))
+				  ((org-agenda-overriding-header "Top Priority Tasks: ================================================")))
 	   (tags-todo "PRIORITY=\"B\""
-				  ((org-agenda-overriding-header "Lower Priority Tasks: =============================================")))
+				  ((org-agenda-overriding-header "Lower Priority Tasks: ==============================================")))
 	   (tags-todo "PRIORITY=\"C\""
-				  ((org-agenda-overriding-header "Low Priority Tasks: ===============================================")))
+				  ((org-agenda-overriding-header "Low Priority Tasks: ================================================")))
 	   (tags "-ARCHIVE+PROJ+LEVEL=2"
-			 ((org-agenda-overriding-header "Active Projects: ==================================================")
+			 ((org-agenda-overriding-header "Active Projects: ===================================================")
 			  (org-use-tag-inheritance t)))
 	   (tags "STYLE=\"habit\""
-			 ((org-agenda-overriding-header "Habits: ===========================================================")))
+			 ((org-agenda-overriding-header "Habits: ============================================================")))
 	   ))
 
 	 ("h" "Habits"
 	  ((tags "STYLE=\"habit\""
-			 ((org-agenda-overriding-header "Habits: ===========================================================")))
+			 ((org-agenda-overriding-header "Habits: ============================================================")))
 	   ))
 
 	 ("r" . "Review")

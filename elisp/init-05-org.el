@@ -202,6 +202,8 @@
 				  ((org-agenda-overriding-header "Top Priority Tasks: ===============================================")))
 	   (tags-todo "PRIORITY=\"B\""
 				  ((org-agenda-overriding-header "Lower Priority Tasks: =============================================")))
+	   (tags-todo "PRIORITY=\"C\""
+				  ((org-agenda-overriding-header "Someday Tasks: ====================================================")))
 	   (tags-todo "PROJ"
 				  ((org-agenda-overriding-header "Projects: =========================================================")
 				   (org-use-tag-inheritance t)))

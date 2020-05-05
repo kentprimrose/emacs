@@ -158,9 +158,9 @@
 	 (search   . " %i %-12:c ")))
 
   (org-agenda-sorting-strategy
-   `((agenda habit-down time-up priority-down category-keep tag-down)
-	 (todo priority-down category-keep)
-	 (tags priority-down category-keep)
+   `((agenda habit-down time-up priority-down alpha-up category-keep tag-down)
+	 (todo priority-down alpha-up category-keep)
+	 (tags priority-down alpha-up category-keep)
 	 (search category-keep)))
 
   (org-agenda-custom-commands
@@ -328,7 +328,7 @@
 
   :init
   (use-package org-journal
-    :ensure t)
+	:ensure t)
 
   :bind (("C-c a" . org-agenda)
 		 ("C-c c" . org-capture)

@@ -190,7 +190,7 @@
 				   (org-agenda-start-on-weekday nil)
 				   (org-agenda-start-day "+0d")
 				   (org-agenda-todo-ignore-deadlines nil)
-				   (org-deadline-warning-days 7)
+				   (org-deadline-warning-days 3)
 				   (org-agenda-skip-deadline-if-done t)
 				   (org-agenda-use-time-grid t)
 				   (org-use-tag-inheritance t)

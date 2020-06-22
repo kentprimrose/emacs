@@ -28,10 +28,10 @@
 (setq visible-bell nil) ;; The default
 (setq ring-bell-function 'ignore)
 
-(use-package modus-vivendi-theme
-  :ensure t
-  :config
-  (load-theme 'modus-vivendi))
+;; (use-package modus-vivendi-theme
+  ;; :ensure t
+  ;; :config
+  ;; (load-theme 'modus-vivendi))
 
 (use-package minions
   :ensure t

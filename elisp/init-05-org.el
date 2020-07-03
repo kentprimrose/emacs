@@ -327,6 +327,7 @@
 	   (org-agenda-include-diary nil)))))
 
   :init
+  (require 'org-agenda)
   (use-package org-journal
 	:ensure t)
 

@@ -33,6 +33,8 @@
   ;; :config
   ;; (load-theme 'modus-vivendi))
 
+(load-theme 'deeper-blue)
+
 (use-package minions
   :ensure t
   :config (minions-mode))

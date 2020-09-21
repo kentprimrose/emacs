@@ -67,14 +67,15 @@
 ;; ;; Benchmark (only when benchmarking)
 ;; (use-package benchmark-init :ensure t)
 
-;; Auto update
-(use-package auto-package-update
-  :demand
-  :custom
-  (auto-package-update-delete-old-versions t)
-  (auto-package-update-interval 4)
-  :config
-  (auto-package-update-maybe))
+;; Doesn't work well - misses updates
+;; ;; Auto update
+;; (use-package auto-package-update
+;;   :demand
+;;   :custom
+;;   (auto-package-update-delete-old-versions t)
+;;   (auto-package-update-interval 4)
+;;   :config
+;;   (auto-package-update-maybe))
 
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
 (load-library "init-01-env")

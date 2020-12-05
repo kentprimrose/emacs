@@ -132,6 +132,7 @@
   (org-agenda-use-time-grid nil)
   (org-agenda-include-diary t)
   (org-agenda-tags-column -80)
+  (org-agenda-tags-todo-honor-ignore-options t)
   (org-agenda-window-setup 'current-window)
   (org-agenda-inhibit-startup t)
   (org-agenda-ignore-drawer-properties `(effort appt category)) ;; not used
@@ -197,15 +198,20 @@
 				   ))
 	   (tags-todo "-PROJ-STYLE=\"habit\"-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
 				  ((org-agenda-overriding-header "Open Tasks: ========================================================")
+				   (org-agenda-todo-ignore-scheduled 'future)
 				   (org-use-tag-inheritance t)))
 	   (tags-todo "PRIORITY=\"A\""
-				  ((org-agenda-overriding-header "Top Priority Tasks: ================================================")))
+				  ((org-agenda-overriding-header "Top Priority Tasks: ================================================")
+				   (org-agenda-todo-ignore-scheduled 'future)))
 	   (tags-todo "PRIORITY=\"B\""
-				  ((org-agenda-overriding-header "Lower Priority Tasks: ==============================================")))
+				  ((org-agenda-overriding-header "Lower Priority Tasks: ==============================================")
+				   (org-agenda-todo-ignore-scheduled 'future)))
 	   (tags-todo "PRIORITY=\"C\""
-				  ((org-agenda-overriding-header "Someday Tasks: =====================================================")))
+				  ((org-agenda-overriding-header "Somefuture Tasks: =====================================================")
+				   (org-agenda-todo-ignore-scheduled 'future)))
 	   (tags-todo "PROJ"
 				  ((org-agenda-overriding-header "Projects: ==========================================================")
+				   (org-agenda-todo-ignore-scheduled 'future)
 				   (org-use-tag-inheritance t)))
 	   ))
 

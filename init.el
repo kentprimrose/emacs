@@ -49,6 +49,7 @@
 		("elp"   . 5)
 		("melp"  . 0)))
 
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (package-initialize)
 
 ;; Bootstrap use-package

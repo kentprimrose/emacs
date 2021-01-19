@@ -88,6 +88,9 @@
 	 ("a" "Appointment" entry
 	  (file+headline org-default-notes-file "Appointments")
 	  "* %^{Description} @%^{Location} %^{When}T\nCREATED: %U %?")
+	 ("h" "Habit" entry
+	  (file+headline org-default-notes-file "Habits")
+	  "* %^{Description} @%^{Location} %^{When}T\nCREATED: %U %?")
 	 ))
 
   ;; GTD Contexts

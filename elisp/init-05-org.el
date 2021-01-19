@@ -90,7 +90,7 @@
 	  "* %^{Description} @%^{Location} %^{When}T\nCREATED: %U %?")
 	 ("h" "Habit" entry
 	  (file+headline org-default-notes-file "Habits")
-	  "* %^{Description} @%^{Location} %^{When}T\nCREATED: %U %?")
+	  "* TODO %^{Description}\nSCHEDULED: %^{When}t\n:PROPERTIES:\n:STYLE:    habit\n:END:\nCREATED: %U %?")
 	 ))
 
   ;; GTD Contexts

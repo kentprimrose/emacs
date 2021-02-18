@@ -86,6 +86,21 @@
   (elpy-enable)
   (setq elpy-rpc-virtualenv-path 'current))
 
+(use-package pyenv-mode
+  :ensure t
+  :defer t
+  :init
+  (pyenv-mode)
+  (defun ssbb-pyenv-hook ()
+	"Automatically activates pyenv version if .python-version file exists."
+	(f-traverse-upwards
+	 (lambda (path)
+	   (let ((pyenv-version-path (f-expand ".python-version" path)))
+		 (if (f-exists? pyenv-version-path)
+			 (pyenv-mode-set (s-trim (f-read-text pyenv-version-path 'utf-8))))))))
+
+  (add-hook 'find-file-hook 'ssbb-pyenv-hook))
+
 (use-package blacken
   :ensure t
   :defer t
@@ -101,8 +116,8 @@
 
   :config
   (use-package add-node-modules-path
-    :ensure t
-    :defer t)
+	:ensure t
+	:defer t)
 
   :custom
   (js2-mode-show-parse-errors nil)
@@ -131,8 +146,8 @@
   :defer t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode))
+		 ("\\.md\\'" . markdown-mode)
+		 ("\\.markdown\\'" . markdown-mode))
 
   :custom
   (markdown-command "multimarkdown"))

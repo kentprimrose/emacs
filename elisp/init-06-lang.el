@@ -101,9 +101,11 @@
 
   (add-hook 'find-file-hook 'ssbb-pyenv-hook))
 
-(use-package company-jedi
+(use-package jedi
   :ensure t
-  :defer t)
+  :defer t
+  :init (add-hook 'python-mode-hook 'jedi:setup)
+  :config (setq jedi:complete-on-dot t))
 
 (use-package blacken
   :ensure t

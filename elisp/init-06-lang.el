@@ -101,6 +101,10 @@
 
   (add-hook 'find-file-hook 'ssbb-pyenv-hook))
 
+(use-package company-jedi
+  :ensure t
+  :defer t)
+
 (use-package blacken
   :ensure t
   :defer t

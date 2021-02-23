@@ -112,6 +112,10 @@
   :defer t
   :config (blacken-mode 1))
 
+(use-package ein
+  :ensure t
+  :defer t)
+
 ;; javascript
 ;; ========================================
 (use-package js2-mode

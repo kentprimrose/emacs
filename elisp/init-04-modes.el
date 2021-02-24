@@ -165,9 +165,9 @@
 
   :custom
   (projectile-globally-ignored-file-suffixes
-        '("#" "~" ".swp" ".o" ".so" ".exe" ".dll" ".elc" ".pyc" ".jar" "*.class"))
+   '("#" "~" ".swp" ".o" ".so" ".exe" ".dll" ".elc" ".pyc" ".jar" "*.class"))
   (projectile-globally-ignored-directories
-        '(".git" "node_modules" "__pycache__" ".vs"))
+   '(".git" "node_modules" "__pycache__" ".vs"))
   (projectile-globally-ignored-files '("TAGS" "tags" ".DS_Store"))
   (projectile-completion-system 'ivy)
 
@@ -176,7 +176,7 @@
 
   :bind
   (:map projectile-mode-map
-		("C-x p" . 'projectile-command-map)))
+        ("C-x p" . 'projectile-command-map)))
 
 (use-package counsel-projectile
   :ensure t
@@ -215,34 +215,34 @@
   :init
   (global-flycheck-mode)
   (flycheck-define-checker textlint
-	"A linter for textlint."
-	:command ("npx" "textlint"
-			  "--config" "~/.emacs.d/.textlintrc"
-			  "--format" "unix"
-			  "--rule" "write-good"
-			  "--rule" "no-start-duplicated-conjunction"
-			  "--rule" "max-comma"
-			  "--rule" "terminology"
-			  "--rule" "period-in-list-item"
-			  "--rule" "abbr-within-parentheses"
-			  "--rule" "alex"
-			  "--rule" "common-misspellings"
-			  "--rule" "en-max-word-count"
-			  "--rule" "diacritics"
-			  "--rule" "stop-words"
-			  "--plugin"
-			  (eval
-			   (if (derived-mode-p 'tex-mode)
-				   "latex"
-				 "@textlint/text"))
-			  source-inplace)
-	:error-patterns
-	((warning line-start (file-name) ":" line ":" column ": "
-			  (message (one-or-more not-newline)
-					   (zero-or-more "\n" (any " ") (one-or-more not-newline)))
-			  line-end))
-	:modes (text-mode latex-mode org-mode markdown-mode)
-	)
+    "A linter for textlint."
+    :command ("npx" "textlint"
+              "--config" "~/.emacs.d/.textlintrc"
+              "--format" "unix"
+              "--rule" "write-good"
+              "--rule" "no-start-duplicated-conjunction"
+              "--rule" "max-comma"
+              "--rule" "terminology"
+              "--rule" "period-in-list-item"
+              "--rule" "abbr-within-parentheses"
+              "--rule" "alex"
+              "--rule" "common-misspellings"
+              "--rule" "en-max-word-count"
+              "--rule" "diacritics"
+              "--rule" "stop-words"
+              "--plugin"
+              (eval
+               (if (derived-mode-p 'tex-mode)
+                   "latex"
+                 "@textlint/text"))
+              source-inplace)
+    :error-patterns
+    ((warning line-start (file-name) ":" line ":" column ": "
+              (message (one-or-more not-newline)
+                       (zero-or-more "\n" (any " ") (one-or-more not-newline)))
+              line-end))
+    :modes (text-mode latex-mode org-mode markdown-mode)
+    )
   (add-to-list 'flycheck-checkers 'textlint)
 
   :custom
@@ -255,10 +255,10 @@
 
   :init
   (defun flyspell-check-next-highlighted-word ()
-	"Custom function to spell check next highlighted word."
-	(interactive)
-	(flyspell-goto-next-error)
-	(ispell-word))
+    "Custom function to spell check next highlighted word."
+    (interactive)
+    (flyspell-goto-next-error)
+    (ispell-word))
   (add-hook 'text-mode-hook 'flyspell-mode)
   (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
   (add-hook 'python-mode-hook 'flyspell-prog-mode)
@@ -283,7 +283,7 @@
 
   :bind
   (:map vdiff-mode-prefix-map
-		("C-c" . vdiff-mode-prefix-map)))
+        ("C-c" . vdiff-mode-prefix-map)))
 
 ;; restclient
 ;; ========================================

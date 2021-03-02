@@ -218,20 +218,17 @@
   :config
   (setq flycheck-display-errors-delay .3)
 
-  ;; flycheck-textlint-config "~/.config/textlint/textlintrc.json"))
   (flycheck-define-checker textlint
-	"A linter for textlint."
-	:command ("textlint --config ~/.config/textlint/textlintrc.json --format unix"
-			  source-inplace)
-	:error-patterns
-	((warning line-start (file-name) ":" line ":" column ": "
-			  (message (one-or-more not-newline)
-					   (zero-or-more "\n" (any " ") (one-or-more not-newline)))
-			  line-end))
-	:modes (text-mode latex-mode org-mode markdown-mode)
-	)
-  (add-to-list 'flycheck-checkers 'textlint)
-  )
+    "A linter for text."
+    :command ("textlint"
+              "--config" "~/.config/textlint/textlintrc.json"
+              "--format" "unix"
+              "--stdin" source-inplace)
+    :error-patterns
+    ((warning line-start (file-name) ":" line ":" column ": " (message) line-end))
+    :modes (text-mode latex-mode org-mode markdown-mode)
+    )
+  (add-to-list 'flycheck-checkers 'textlint))
 
 ;; flyspell
 ;; ========================================
@@ -240,10 +237,10 @@
 
   :init
   (defun flyspell-check-next-highlighted-word ()
-	"Custom function to spell check next highlighted word."
-	(interactive)
-	(flyspell-goto-next-error)
-	(ispell-word))
+    "Custom function to spell check next highlighted word."
+    (interactive)
+    (flyspell-goto-next-error)
+    (ispell-word))
   (add-hook 'text-mode-hook 'flyspell-mode)
   (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
   (add-hook 'python-mode-hook 'flyspell-prog-mode)
@@ -268,7 +265,7 @@
 
   :bind
   (:map vdiff-mode-prefix-map
-		("C-c" . vdiff-mode-prefix-map)))
+        ("C-c" . vdiff-mode-prefix-map)))
 
 ;; restclient
 ;; ========================================

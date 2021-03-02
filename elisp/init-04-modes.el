@@ -148,11 +148,11 @@
 
    ("C-h a" . counsel-apropos)))
 
-(use-package ivy-rich
-  :ensure t
+;; (use-package ivy-rich
+  ;; :ensure t
 
-  :config
-  (ivy-rich-mode 1))
+  ;; :init
+  ;; (ivy-rich-mode 1))
 
 (use-package smex  ;; for M-x memory
   :ensure t)
@@ -215,10 +215,23 @@
   :init
   (global-flycheck-mode)
 
-  :custom
-  (setq
-   flycheck-display-errors-delay .3
-   flycheck-textlint-config "~/.config/textlint/textlintrc.json"))
+  :config
+  (setq flycheck-display-errors-delay .3)
+
+  ;; flycheck-textlint-config "~/.config/textlint/textlintrc.json"))
+  (flycheck-define-checker textlint
+	"A linter for textlint."
+	:command ("textlint --config ~/.config/textlint/textlintrc.json --format unix"
+			  source-inplace)
+	:error-patterns
+	((warning line-start (file-name) ":" line ":" column ": "
+			  (message (one-or-more not-newline)
+					   (zero-or-more "\n" (any " ") (one-or-more not-newline)))
+			  line-end))
+	:modes (text-mode latex-mode org-mode markdown-mode)
+	)
+  (add-to-list 'flycheck-checkers 'textlint)
+  )
 
 ;; flyspell
 ;; ========================================

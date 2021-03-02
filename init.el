@@ -45,9 +45,9 @@
 
 (setq package-archive-priorities
 	  '(("org"   . 10)
-		("smelp" . 9)
-		("elp"   . 5)
-		("melp"  . 0)))
+		("melp"  . 9)
+		("smelp" . 5)
+		("elp"   . 0)))
 
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (package-initialize)

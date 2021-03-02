@@ -12,6 +12,11 @@
 (use-package evil
   :ensure t
 
+  :init
+  (setq
+   evil-want-integration t
+   evil-want-keybinding nil)
+
   :config
   (evil-mode 1)
 
@@ -28,10 +33,15 @@
   (indent-tabs-mode nil)
 
   :config
+  (setq evil-want-keybinding nil)
+  (use-package evil-collection
+	:ensure t
+	:init (evil-collection-init))
+  
   (use-package evil-nerd-commenter
-    :ensure t
+	:ensure t
 
-    :bind
+	:bind
 	(("M-;"   . evilnc-comment-or-uncomment-lines)
 	 ("C-M-;" . evilnc-comment-or-uncomment-paragraphs))))
 
@@ -96,10 +106,6 @@
   (magit-refresh-status-buffer nil)
   (smerge-command-prefix "C-c C-v")
 
-  :config
-  (use-package evil-magit
-    :ensure t)
-
   :bind ("C-x C-g" . magit-status))
 
 ;; ivy
@@ -149,10 +155,10 @@
    ("C-h a" . counsel-apropos)))
 
 ;; (use-package ivy-rich
-  ;; :ensure t
+;; :ensure t
 
-  ;; :init
-  ;; (ivy-rich-mode 1))
+;; :init
+;; (ivy-rich-mode 1))
 
 (use-package smex  ;; for M-x memory
   :ensure t)
@@ -176,7 +182,7 @@
 
   :bind
   (:map projectile-mode-map
-        ("C-x p" . 'projectile-command-map)))
+		("C-x p" . 'projectile-command-map)))
 
 (use-package counsel-projectile
   :ensure t
@@ -192,14 +198,14 @@
   :custom
   (elfeed-feeds
    '(("http://planet.emacsen.org/atom.xml" emacs emacsen)
-     ("http://batsov.com/atom.xml" emacs batsov)
-     ("https://nyoboo.com/channels/6-python-news/messages.rss" python pyweekly)
-     ("http://feeds.feedburner.com/PythonInsider" python insider)
-     ("http://planetpython.org/rss20.xml python" python planet)
-     ("http://pyfound.blogspot.com/feeds/posts/default" python pyfound)
-     ("http://pycon.blogspot.com/feeds/posts/default" python pycon)
-     ("http://www.reddit.com/r/python/.rss" python reddit)
-     ("http://www.reddit.com/r/pythontips/.rss" python reddit)))
+	 ("http://batsov.com/atom.xml" emacs batsov)
+	 ("https://nyoboo.com/channels/6-python-news/messages.rss" python pyweekly)
+	 ("http://feeds.feedburner.com/PythonInsider" python insider)
+	 ("http://planetpython.org/rss20.xml python" python planet)
+	 ("http://pyfound.blogspot.com/feeds/posts/default" python pyfound)
+	 ("http://pycon.blogspot.com/feeds/posts/default" python pycon)
+	 ("http://www.reddit.com/r/python/.rss" python reddit)
+	 ("http://www.reddit.com/r/pythontips/.rss" python reddit)))
 
   :config
   (evil-set-initial-state 'elfeed-search-mode 'emacs)
@@ -219,15 +225,15 @@
   (setq flycheck-display-errors-delay .3)
 
   ;; (flycheck-define-checker textlint
-    ;; "A linter for text."
-    ;; :command ("textlint"
-              ;; "--config" "~/.config/textlint/textlintrc.json"
-              ;; "--format" "unix"
-              ;; "--stdin" source-inplace)
-    ;; :error-patterns
-    ;; ((warning line-start (file-name) ":" line ":" column ": " (message) line-end))
-    ;; :modes (text-mode latex-mode org-mode markdown-mode)
-    ;; )
+  ;; "A linter for text."
+  ;; :command ("textlint"
+  ;; "--config" "~/.config/textlint/textlintrc.json"
+  ;; "--format" "unix"
+  ;; "--stdin" source-inplace)
+  ;; :error-patterns
+  ;; ((warning line-start (file-name) ":" line ":" column ": " (message) line-end))
+  ;; :modes (text-mode latex-mode org-mode markdown-mode)
+  ;; )
   ;; (add-to-list 'flycheck-checkers 'textlint)
   )
 
@@ -238,10 +244,10 @@
 
   :init
   (defun flyspell-check-next-highlighted-word ()
-    "Custom function to spell check next highlighted word."
-    (interactive)
-    (flyspell-goto-next-error)
-    (ispell-word))
+	"Custom function to spell check next highlighted word."
+	(interactive)
+	(flyspell-goto-next-error)
+	(ispell-word))
   (add-hook 'text-mode-hook 'flyspell-mode)
   (add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
   (add-hook 'python-mode-hook 'flyspell-prog-mode)
@@ -266,7 +272,7 @@
 
   :bind
   (:map vdiff-mode-prefix-map
-        ("C-c" . vdiff-mode-prefix-map)))
+		("C-c" . vdiff-mode-prefix-map)))
 
 ;; restclient
 ;; ========================================

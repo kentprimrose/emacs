@@ -222,20 +222,12 @@
   (global-flycheck-mode)
 
   :config
-  (setq flycheck-display-errors-delay .3)
-
-  ;; (flycheck-define-checker textlint
-  ;; "A linter for text."
-  ;; :command ("textlint"
-  ;; "--config" "~/.config/textlint/textlintrc.json"
-  ;; "--format" "unix"
-  ;; "--stdin" source-inplace)
-  ;; :error-patterns
-  ;; ((warning line-start (file-name) ":" line ":" column ": " (message) line-end))
-  ;; :modes (text-mode latex-mode org-mode markdown-mode)
-  ;; )
-  ;; (add-to-list 'flycheck-checkers 'textlint)
-  )
+  (setq
+   flycheck-display-errors-delay .3
+   flycheck-textlint-config "~/.config/textlint/textlintrc.json"
+   )
+  (add-to-list 'flycheck-textlint-plugin-alist '(text-mode . "@textlint/text"))
+  (add-to-list 'flycheck-textlint-plugin-alist '(org-mode . "@textlint/text")))
 
 ;; flyspell
 ;; ========================================

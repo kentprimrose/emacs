@@ -224,10 +224,12 @@
   :config
   (setq
    flycheck-display-errors-delay .3
-   flycheck-textlint-config "~/.config/textlint/textlintrc.json"
-   )
+   flycheck-idle-change-delay .3
+   flycheck-idle-buffer-switch-delay .3
+   flycheck-textlint-config "~/.config/textlint/textlintrc.json")
   (add-to-list 'flycheck-textlint-plugin-alist '(text-mode . "@textlint/text"))
-  (add-to-list 'flycheck-textlint-plugin-alist '(org-mode . "@textlint/text")))
+  (add-to-list 'flycheck-textlint-plugin-alist '(org-mode . "@textlint/text"))
+  )
 
 ;; flyspell
 ;; ========================================

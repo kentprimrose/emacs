@@ -79,27 +79,6 @@
 
 ;; python
 ;; ========================================
-(use-package elpy
-  :ensure t
-  :defer t
-  :init
-  (elpy-enable)
-  (setq elpy-rpc-virtualenv-path 'current))
-
-(use-package pyenv-mode
-  :ensure t
-  :defer t
-  :init
-  (pyenv-mode)
-  (defun ssbb-pyenv-hook ()
-	"Automatically activates pyenv version if .python-version file exists."
-	(f-traverse-upwards
-	 (lambda (path)
-	   (let ((pyenv-version-path (f-expand ".python-version" path)))
-		 (if (f-exists? pyenv-version-path)
-			 (pyenv-mode-set (s-trim (f-read-text pyenv-version-path 'utf-8))))))))
-
-  (add-hook 'find-file-hook 'ssbb-pyenv-hook))
 
 (use-package jedi
   :ensure t
@@ -111,10 +90,6 @@
   :ensure t
   :defer t
   :config (blacken-mode 1))
-
-(use-package ein
-  :ensure t
-  :defer t)
 
 ;; javascript
 ;; ========================================

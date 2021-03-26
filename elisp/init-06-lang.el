@@ -84,7 +84,9 @@
   :ensure t
   :defer t
   :init (add-hook 'python-mode-hook 'jedi:setup)
-  :config (setq jedi:complete-on-dot t))
+  :config
+  (setq jedi:complete-on-dot t
+		jedi:tooltip-method '(popup)))
 
 (use-package blacken
   :ensure t

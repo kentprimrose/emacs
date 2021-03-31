@@ -199,14 +199,17 @@
 				   (org-agenda-use-time-grid t)
 				   (org-use-tag-inheritance t)
 				   ))
-	   (tags-todo "-PROJ-STYLE=\"habit\"-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
-				  ((org-agenda-overriding-header "Open Tasks: ========================================================")
-				   (org-agenda-todo-ignore-scheduled 'future)
-				   (org-use-tag-inheritance t)))
+	   ;; At some point, org "fixed" to recognize that items without priority cookie are 'B' priority, so this doesn't work.
+	   ;; (tags-todo "-PROJ-STYLE=\"habit\"-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
+				  ;; ((org-agenda-overriding-header "Open Tasks: ========================================================")
+				   ;; (org-agenda-todo-ignore-scheduled 'future)
+				   ;; (org-use-tag-inheritance t)))
 	   (tags-todo "PRIORITY=\"A\""
 				  ((org-agenda-overriding-header "Top Priority Tasks: ================================================")
 				   (org-agenda-todo-ignore-scheduled 'future)))
-	   (tags-todo "PRIORITY=\"B\""
+	   ;; This changed to accommodate "fix" for missing priority cookies (considered priority 'B")
+	   ;; (tags-todo "PRIORITY=\"B\""
+	   (tags-todo "-PRIORITY=\"A\"-PRIORITY=\"C\""
 				  ((org-agenda-overriding-header "Lower Priority Tasks: ==============================================")
 				   (org-agenda-todo-ignore-scheduled 'future)))
 	   (tags-todo "PRIORITY=\"C\""

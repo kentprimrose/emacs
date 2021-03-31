@@ -55,7 +55,6 @@
   (org-reverse-note-order t)
   (org-log-state-notes-into-drawer t)
   (org-tags-column -80)
-  (org-default-priority 0)
   (org-catch-invisible-edits 'show-and-error)
   (org-cycle-separator-lines 0)
   (org-list-indent-offset 0)
@@ -84,7 +83,7 @@
   (org-capture-templates
    '(("t" "Todo" entry
 	  (file+headline org-default-notes-file "Tasks")
-	  "* TODO %^{Description}\nCREATED: %U %?")
+	  "* TODO [#0] %^{Description}\nCREATED: %U %?")
 	 ("a" "Appointment" entry
 	  (file+headline org-default-notes-file "Appointments")
 	  "* %^{Description} @%^{Location} %^{When}T\nCREATED: %U %?")
@@ -199,21 +198,18 @@
 				   (org-agenda-use-time-grid t)
 				   (org-use-tag-inheritance t)
 				   ))
-	   ;; At some point, org "fixed" to recognize that items without priority cookie are 'B' priority, so this doesn't work.
-	   ;; (tags-todo "-PROJ-STYLE=\"habit\"-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
-				  ;; ((org-agenda-overriding-header "Open Tasks: ========================================================")
-				   ;; (org-agenda-todo-ignore-scheduled 'future)
-				   ;; (org-use-tag-inheritance t)))
-	   (tags-todo "PRIORITY=\"A\""
-				  ((org-agenda-overriding-header "Top Priority Tasks: ================================================")
+	   (tags-todo "-STYLE=\"habit\"+PRIORITY=\"0\""
+				  ((org-agenda-overriding-header "Open Tasks: ========================================================")
+				   (org-agenda-todo-ignore-scheduled 'future)
+				   (org-use-tag-inheritance t)))
+	   (tags-todo "-STYLE=\"habit\"+PRIORITY=\"A\""
+				  ((org-agenda-overriding-header "NOW Tasks: =========================================================")
 				   (org-agenda-todo-ignore-scheduled 'future)))
-	   ;; This changed to accommodate "fix" for missing priority cookies (considered priority 'B")
-	   ;; (tags-todo "PRIORITY=\"B\""
-	   (tags-todo "-PRIORITY=\"A\"-PRIORITY=\"C\""
-				  ((org-agenda-overriding-header "Lower Priority Tasks: ==============================================")
+	   (tags-todo "-STYLE=\"habit\"+PRIORITY=\"B\""
+				  ((org-agenda-overriding-header "SOON Tasks: ========================================================")
 				   (org-agenda-todo-ignore-scheduled 'future)))
-	   (tags-todo "PRIORITY=\"C\""
-				  ((org-agenda-overriding-header "Somefuture Tasks: =====================================================")
+	   (tags-todo "-STYLE=\"habit\"+PRIORITY=\"C\""
+				  ((org-agenda-overriding-header "SOMEDAY Tasks: =====================================================")
 				   (org-agenda-todo-ignore-scheduled 'future)))
 	   (tags-todo "PROJ"
 				  ((org-agenda-overriding-header "Projects: ==========================================================")
@@ -222,14 +218,14 @@
 	   ))
 
 	 ("p" "Planning"
-	  ((tags-todo "-PROJ-STYLE=\"habit\"-PRIORITY=\"A\"-PRIORITY=\"B\"-PRIORITY=\"C\"/!+NEXT|+TODO|+WAIT"
+	  ((tags-todo "-STYLE=\"habit\"+PRIORITY=\"0\""
 				  ((org-agenda-overriding-header "Open Tasks: ========================================================")))
-	   (tags-todo "PRIORITY=\"A\""
-				  ((org-agenda-overriding-header "Top Priority Tasks: ================================================")))
-	   (tags-todo "PRIORITY=\"B\""
-				  ((org-agenda-overriding-header "Lower Priority Tasks: ==============================================")))
-	   (tags-todo "PRIORITY=\"C\""
-				  ((org-agenda-overriding-header "Low Priority Tasks: ================================================")))
+	   (tags-todo "-STYLE=\"habit\"+PRIORITY=\"A\""
+				  ((org-agenda-overriding-header "NOW Tasks: =========================================================")))
+	   (tags-todo "-STYLE=\"habit\"+PRIORITY=\"B\""
+				  ((org-agenda-overriding-header "SOON Tasks: ========================================================")))
+	   (tags-todo "-STYLE=\"habit\"+PRIORITY=\"C\""
+				  ((org-agenda-overriding-header "SOMEDAY Tasks: =====================================================")))
 	   (tags "-ARCHIVE+PROJ+LEVEL=2"
 			 ((org-agenda-overriding-header "Active Projects: ===================================================")
 			  (org-use-tag-inheritance t)))

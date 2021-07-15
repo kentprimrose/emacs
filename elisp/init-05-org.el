@@ -342,6 +342,7 @@
   :bind (("C-c a" . org-agenda)
 		 ("C-c c" . org-capture)
 		 ("C-c i" . org-time-stamp-inactive)
+		 ("C-c j" . org-agenda-goto-date)
 		 ("C-c p" . org-cliplink)
 
 		 ("C-c C-l s" . org-store-link)

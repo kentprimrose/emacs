@@ -24,6 +24,11 @@
 ;;   :config
 ;;   (auto-package-update-maybe))
 
+(use-package auto-sudoedit
+  :ensure t
+  :config
+  (auto-sudoedit-mode 1))
+
 (set-keyboard-coding-system nil)
 
 (setq

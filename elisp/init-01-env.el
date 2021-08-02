@@ -26,6 +26,8 @@
 
 (use-package auto-sudoedit
   :ensure t
+  :init
+  (add-to-list 'package-selected-packages 'auto-sudoedit)
   :config
   (auto-sudoedit-mode 1))
 

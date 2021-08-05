@@ -87,6 +87,9 @@
 	 ("a" "Appointment" entry
 	  (file+headline org-default-notes-file "Appointments")
 	  "* %^{Description} @%^{Location} %^{When}T\nCREATED: %U %?")
+	 ("j" "Journal" entry
+	  (file+headline org-default-notes-file "Appointments")
+	  "* %^{Description} %^{When}T\nCREATED: %U %?")
 	 ("h" "Habit" entry
 	  (file+headline org-default-notes-file "Habits")
 	  "* TODO %^{Description}\nSCHEDULED: %^{When}t\n:PROPERTIES:\n:STYLE:    habit\n:END:\nCREATED: %U %?")
